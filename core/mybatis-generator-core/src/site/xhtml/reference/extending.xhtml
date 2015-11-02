@@ -1,67 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Extending MyBatis Generator</title>
-  <link rel="stylesheet" type="text/css" href="../mbgstyle.css" />
+  <title>扩展MyBatis Generator</title>
+  <link rel="stylesheet" type="text/css" href="../mbgstyle.css"></link>
 </head>
 <body>
-<h1>Extending MyBatis Generator</h1>
-<p>MyBatis Generator (MBG) is designed for extensibility.  All code generation is performed using a
-simple DOM representation of Java and XML elements.</p>
-<p>The Java DOM is included in the package <code>org.mybatis.generator.api.dom.java</code></p>
-<p>The XML DOM is included in the package <code>org.mybatis.generator.api.dom.xml</code></p>
-<p>These classes are not sufficient for every conceivable code generation possibility, but they are quite
-useful for generating simple to moderately complex Java and XML code.</p>
+<h1>扩展MyBatis Generator</h1>
+<p>MyBatis Generator（MBG）是专为扩展性设计的。所有的代码生成使用Java和XML元素简单的DOM表示执行。</p>
+<p>Java的DOM包含在<code>org.mybatis.generator.api.dom.java</code>包</p>
+<p>该XML DOM包含在<code>org.mybatis.generator.api.dom.xml</code>包</p>
+<p>这些类不足以实现每个可以想象到的代码生成的可能性，但是用于生成简单到中等复杂Java和XML代码相当有用的。</p>
 
-<p>Using options in the configuration file, you can provide your own implementations
-of many of the key code generation interfaces.  You can also subclass any of the provided implementations
-to provide customized behaviors.  This page will describe the public APIs available
-and provide pointers to the source code for further investigation.  If you have
-any difficulty understanding how to extend MBG, feel free to send a note to the
-support mailing list at
-<a href="mailto:mybatis-user@googlegroups.com">mybatis-user@googlegroups.com</a>.</p>
+<p>在配置文件中使用的选项，您可以提供自己的许多关键代码生成接口的实现。您也可以继承任何提供的实现来提供定制的行为。这个页面将介绍可用的公共API，并提供进一步调查源代码的指示。如果您对如何扩展MBG有任何的困难，您可以在支持的邮件列表<a href="mailto:mybatis-user@googlegroups.com">mybatis-user@googlegroups.com</a> 发送信息。</p>
 
-<h2>Extending Versus Plugging In</h2>
-<p>Although there are a number of different extension points shown on this
-page, in most cases it will be far easier to extend MBG through the use of a plugin.  See the
-<a href="pluggingIn.html">Implementing Plugins</a> reference page for more information.</p>
-<p>The primary extension point for code generation is
-<code>org.mybatis.generator.api.IntrospectedTable</code>.  Implementing a code generator
-is a non-trivial task and should only be contemplated when you want to completely replace
-the code generation activities of MBG.  In the years since the original release of Abator,
-very few enhancement requests have appeared that could not be handled by a plugin.</p>
+<h2>扩展与插入</h2>
+<p>虽然本网页上显示了许多不同的扩展点，在大多数情况下，这将是很容易通过使用插件扩展MBG。查阅<a href="pluggingIn.html">开发插件</a>的参考页面了解更多信息。</p>
+<p>代码生成的主要扩展点是<code>org.mybatis.generator.api.IntrospectedTable</code> 。实现一个代码生成器是一个有意义的任务，只有当您想要完全取代MBG的代码生成活动时才考虑。自从Abator的原始版本以来，很少出现有增强请求无法通过一个插件来处理的。</p>
 
-<h2>Extension Points</h2>
-<p>MBG provides a number of different extension points.  The following sections
-list the different methods of extending MBG, and describe the types of
-activities that can be accomplished with the different extensions.  If you
-need some help understanding the different options, feel free to ask a question
-on the user mailing list.</p>
+<h2>扩展点</h2>
+<p>MBG提供了许多不同的扩展点。以下部分列出扩展MBG的不同方法，并描述了可以实现与不同的扩展活动的类型。如果您需要一些了解不同的选择的帮助，您可以自由的在用户邮件列表上询问问题。</p>
 
 <h3>org.mybatis.generator.api.IntrospectedTable</h3>
-<p><code>IntrospectedTable</code> is an abstract class that can be extended to supply
-different code generators than the versions supplied with MBG.  A good example of
-such an implementation would be a FreeMarker or Velocity template based
-implementation.  In most other instances, coding a plugin is the better way to go.</p>
-<p>If you choose to extend this class, you must supply code to generate Java and XML
-files.  You may choose to generated those files with the
-technology of your choice.  The base <code>IntrospectedTable</code> class holds an instance
-of <code>org.mybatis.generator.internal.rules.Rules</code> that can be queried
-to determine many of the rules for code generation.</p>
-<p>MBG supplies several implementations of introspected table.  The implementation is chosen
-based on the value of the <code>targetRuntime</code> attribute of the
-<code>&lt;context&gt;</code> element.  In many cases it will be far simpler
-to extend one of the built in implementations, rather than creating an implementation
-from scratch.  The following table shows the built in implementations:</p>
+<p><code>IntrospectedTable</code>是一个可以扩展用于提供和MBG供给的版本不同的代码生成的抽象类。这种实现的一个很好的例子是基于一个FreeMarker的或Velocity模板的实现。在大多数其他情况下，编写插件是一个更好途径。</p>
+<p>如果您选择扩展这个类，您必须提供代码来生成Java和XML文件。您可以选择生成的这些文件的技术。<code>IntrospectedTable</code>基础类持有的一个<code>org.mybatis.generator.internal.rules.Rules</code>实例可查询许多用于代码生成的规则。</p>
+<p>MBG提供反射表的几种实现。实现基于<code>&lt;context&gt;</code>元素的<code>targetRuntime</code>属性值。在大多数情况下，继承下面的一个内置的扩展比从头开始创建一个实现会容易很多。下表显示了内置的实现：</p>
 <table cellspacing="0" cellpadding="5" border="1">
   <tr>
     <th>TargetRuntime</th>
-    <th>Implementation</th>
+    <th>实现</th>
   </tr>
   <tr>
-    <td>MyBatis3 (default)</td>
+    <td>MyBatis3（默认）</td>
     <td><code>org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3Impl</code></td>
   </tr>
   <tr>
@@ -74,80 +45,37 @@ from scratch.  The following table shows the built in implementations:</p>
   </tr>
 </table>
 
-<p>If you choose to implement this extension point, specify the fully qualified
-class name of your implementation with the <code>targetRuntime</code>
-attribute of the <code>&lt;context&gt;</code> element.</p>
+<p>如果您选择实现此扩展点，指定<code>&lt;context&gt;</code>元素的<code>targetRuntime</code>属性为您的实现类的完全限定类名。</p>
 
 <h3>org.mybatis.generator.api.IntrospectedColumn</h3>
-<p><code>IntrospectedColumn</code> is a class that holds information about a
-column as it is returned from database metadata.  In some rare
-circumstances it might be desirable to override this class to provide
-your own implementation - especially if you create a new set of code
-generators.</p>
-<p>If you choose to implement this extension point, specify the fully qualified
-class name of your implementation with the <code>introspectedColumnImpl</code>
-attribute of the <code>&lt;context&gt;</code> element.</p>
+<p><code>IntrospectedColumn</code>是一个包含列的信息的类，因为它是一个从数据库返回的元数据类。在某些罕见的情况下，可能需要重写这个类来提供自己的 - 特别是如果您创建了一套新的代码生成器。</p>
+<p>如果您选择实施此扩展点，指定<code>&lt;context&gt;</code>元素的<code>introspectedColumnImpl</code>属性为您实现类的完全限定类名。</p>
 
 <h3>org.mybatis.generator.api.JavaTypeResolver</h3>
-<p>MBG calls methods in this interface to map JDBC types to Java types
-   during database introspection.  The default implementation of this
-   interface is <code>org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl</code>.
-   You can provide your own implementation, and the default implementation has
-   been designed for extensibility.</p>
+<p>MBG在内省数据库时调用这个接口的方法将JDBC类型映射到Java类型。这个接口的默认实现<code>org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl</code> 。您可以提供自己的实现，并且默认的实现已被设计为可扩展。</p>
 
-<p>To provide your own implementation, specify the fully qualified class name
-   in the XML configuration like this:</p>
+<p>提供您自己的实现，在XML配置中指定全限定的类名：</p>
 <pre>
-    &lt;javaTypeResolver type="mypackage.MyImplementation"&gt;
-      ...
-    &lt;/javaTypeResolver&gt;
-</pre>
+    &lt;javaTypeResolver type="mypackage.MyImplementation“&gt; ...&lt;/ javaTypeResolver&gt;</pre>
 
 <h3>org.mybatis.generator.api.ShellCallback</h3>
-<p>MBG calls methods in this interface to perform functions that it cannot
-   do on its own.  The most important of these functions are:</p>
+<p>MBG调用这个接口的方法来执行功能，它不能自己做。最重要的功能是：</p>
 <ul>
-  <li>Translating project/package into a directory structure</li>
-   <li>Merging Java source files in the event that an existing Java file of
-     the same name/package exists.</li>
+  <li>翻译 项​​目/包 到一个目录结构</li>
+   <li>合并事件中的Java源文件同名的现有的Java文件/程序包是否存在。</li>
 </ul>
 
-<p>The default implementation of this interface is
-   <code>org.mybatis.generator.internal.DefaultShellCallback</code>.  The default
-   implementation simply concatenates project and package together and creates
-   the necessary package directories if needed.  The default implementation does not
-   support merging of Java files, and will either overwrite or ignore files.</p>
+<p>这个接口的默认实现<code>org.mybatis.generator.internal.DefaultShellCallback</code> 。默认实现简单的将项目和包连接在一起，如果需要则创建必要的包目录。默认的实现不支持Java文件的合并，并将覆盖或忽略文件。</p>
 
-<p>You can provide your own implementation.  This would be the most important
-   class to write if you want to integrate MBG into some other environment.
-   For example, the Eclipse plugin provides an implementation of this interface that
-   supports Java file merging when running in the Eclipse environment.</p>
+<p>您可以提供自己的实现。如果您想将MBG集成到一些其他的环境中，这将是最重要的一个需要编写的类。例如，Eclipse插件提供的实现在Eclipse环境中运行时，它支持Java文件的合并。</p>
 
-<p>To provide your own implementation, supply an instance of the interface
-   on the constructor to the <code>org.mybatis.generator.api.MyBatisGenerator</code>
-   object.  This cannot be configured through XML.  If you are providing
-   your own implementation of this interface then we assume that you are
-   also providing some collateral code (like a new Ant task) to run
-   your implementation.</p>
+<p>提供您自己的实现，提供有关构造函数的接口<code>org.mybatis.generator.api.MyBatisGenerator</code>的实例对象。这个不能通过XML来配置。如果您提供自己的实现此接口的话，我们假设您也提供了一些附加的代码（如一个新的Ant任务）来运行您的实现。</p>
 
 <h3>org.mybatis.generator.api.ProgressCallback</h3>
-<p>MBG calls methods in this interface to report progress during the
-   generation of files (a long running process).  The default implementation
-   of this interface is
-   <code>org.mybatis.generator.internal.NullProgressCallback</code>
-   which simply ignores all progress messages.  You can provide an
-   implementation of this interface to support progress notifications and
-   cancellation of code generation.</p>
+<p>MBG调用这个接口的方法在文件的生成（长时间运行的进程）中报告进度。这个接口的默认实现<code>org.mybatis.generator.internal.NullProgressCallback</code>它只是忽略所有的进度消息。您可以提供此接口的实现，支持进度通知和取消代码生成。</p>
 
-<p>Implementing this interface would be important when integrating MBG
-   into other IDE environments.  The Eclipse plugin provides an implementation
-   of this interface that hooks into Eclipse's progress notification system.</p>
+<p>当集成MBG到其他IDE环境中实现此接口将是重要的。Eclipse的插件提供此接口挂接到Eclipse的进度通知系统的实现。</p>
 
-<p>To provide your own implementation, supply an instance of the interface
-   on one of the <code>org.mybatis.generator.api.MyBatisGenerator.generate()</code> method calls.
-   This cannot be configured through XML.  Again, we assume that if you are providing
-   your own implementation of this interface then you are
-   also providing some collateral code (like a new Ant task or an IDE integration) to run
-   your implementation.</p>
+<p>提供您自己的实现，在<code>org.mybatis.generator.api.MyBatisGenerator.generate()</code>的一个方法调用上提供其中一个接口的实例。这个不能通过XML来配置。同样，我们假设，如果您提供自己的实现此接口，那么您也提供了一些附加代码（如新的Ant任务或IDE集成）来运行您的实现。</p>
 </body>
 </html>

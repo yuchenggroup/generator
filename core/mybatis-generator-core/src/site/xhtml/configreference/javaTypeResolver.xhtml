@@ -17,38 +17,37 @@ You can also substitute your own implementation if you want different
 behavior than the default.  This element is an optional child element
 of the <a href="context.html">&lt;context&gt;</a> element.</p>
 
-<h2>Required Attributes</h2>
-<p>None</p>
+<h2>必选属性</h2>
+<p>无</p>
 
-<h2>Optional Attributes</h2>
+<h2>可选属性</h2>
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
-    <th>Attribute</th>
-    <th>Description</th>
+    <th>属性</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td valign="top">type</td>
     <td>This can be used to specify a user provided Java Type Resolver.
         The class must implement the interface
         <code>org.mybatis.generator.api.JavaTypeResolver</code>,
-        and must have a public default constructor.  The attribute also accepts
+        必须有一个公开默认的构造函数。.  The attribute also accepts
         the special value DEFAULT in which case the default implementation will
         be used (this has the same effect as not specifying the type).</td>
   </tr>
 </table>
 
-<h2>Child Elements</h2>
+<h2>子元素</h2>
 <ul>
   <li><a href="property.html">&lt;property&gt;</a> (0..N)</li>
 </ul>
 
-<h2>Supported Properties</h2>
-<p>This table lists the properties of the default Java type resolver that can be
-specified with the <a href="property.html">&lt;property&gt;</a> child element:</p>
+<h2>支持的属性</h2>
+<p>下面的表格列出了所有可用的 <a href="property.html">&lt;property&gt;</a> 子元素:</p>
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
-    <th>Property Name</th>
-    <th>Property Values</th>
+    <th>属性名</th>
+    <th>属性值</th>
   </tr>
   <tr>
     <td valign="top">forceBigDecimals</td>
@@ -56,12 +55,12 @@ specified with the <a href="property.html">&lt;property&gt;</a> child element:</
       This property is used to specify whether MyBatis Generator should force the use
       of <code>java.math.BigDecimal</code> for DECIMAL and NUMERIC fields,
       rather than substituting integral types when possible.
-      The property supports these values:
+      这个属性有以下可选值：
       <table>
         <tr>
           <th valign="top">false</th>
-          <td><i>This is the default value</i>
-            <br/>When the property is false or unspecified, the default Java
+          <td><i>这是默认值</i>
+            <br/>当这个属性是false或者没有指定时， the default Java
             type resolver will attempt to make JDBC DECIMAL and NUMERIC types
             easier to work with by substituting Integral types if possible.  The
             substitution rules are as follows:
@@ -79,7 +78,7 @@ specified with the <a href="property.html">&lt;property&gt;</a> child element:</
         </tr>
         <tr>
           <th valign="top">true</th>
-          <td>When the property is true, the Java type resolver will always use
+          <td>当这个属性是true时， the Java type resolver will always use
            java.math.BigDecimal if the database column is of type DECIMAL or NUMERIC.</td>
         </tr>
       </table>
@@ -87,7 +86,7 @@ specified with the <a href="property.html">&lt;property&gt;</a> child element:</
   </tr>
 </table>
 
-<h2>Example</h2>
+<h2>示例</h2>
 <p>This element specifies that we always want to use the java.math.BigDecimal
 type for DECIMAL and NUMERIC columns:</p>
 <pre>

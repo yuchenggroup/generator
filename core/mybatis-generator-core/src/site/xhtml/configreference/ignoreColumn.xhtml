@@ -3,45 +3,42 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>The &lt;ignoreColumn&gt; Element</title>
+  <title>&lt;ignoreColumn&gt; 元素</title>
   <link rel="stylesheet" type="text/css" href="../mbgstyle.css" />
 </head>
 <body>
-<h1>The &lt;ignoreColumn&gt; Element</h1>
-<p>The &lt;ignoreColumn&gt; element is used to tell MyBatis Generator (MBG) to ignore a column
-in an introspected table.  No generated SQL will refer to the column, and no
-property will be generated for the column in the model objects.
-This element is an optional child
-element of the <a href="table.html">&lt;table&gt;</a> element.</p>
+<h1>&lt;ignoreColumn&gt; 元素</h1>
+<p>&lt;ignoreColumn&gt;元素用来告诉 MyBatis Generator (MBG) 忽略一个表中的列。
+生成的SQL不会使用该列，而且生成的模型对象中将不包含该列。
+这个元素是<a href="table.html">&lt;table&gt;</a> 元素的一个可选的子元素。</p>
 
-<h2>Required Attributes</h2>
+<h2>必选属性</h2>
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
-    <th>Attribute</th>
-    <th>Description</th>
+    <th>属性</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td>column</td>
-    <td>The column name of the ignored column.</td>
+    <td>被忽略的列名。</td>
   </tr>
 </table>
 
-<h2>Optional Attributes</h2>
+<h2>可选属性</h2>
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
-    <th>Attribute</th>
-    <th>Description</th>
+    <th>属性</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td>delimitedColumnName</td>
-    <td>If <code>true</code> then MBG will perform a case-sensitive exact
-        match when matching against returned columns from the database.  If
-        <code>false</code> (default) then the name is considered case-insensitive.</td>
+    <td>当匹配对从数据库中返回的列时，如果为真，则MBG将执行区分大小写完全匹配。
+        如果为false(默认值)，则被认为是不区分大小写的名称。</td>
   </tr>
 </table>
 
-<h2>Child Elements</h2>
-<p>None</p>
+<h2>子元素</h2>
+<p>无</p>
 
 </body>
 </html>

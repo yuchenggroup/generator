@@ -1,17 +1,17 @@
-/**
- *    Copyright 2006-2015 the original author or authors.
+/*
+ *  Copyright 2009 The Apache Software Foundation
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package org.mybatis.generator.codegen.mybatis3;
 
@@ -40,33 +40,21 @@ import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.internal.ObjectFactory;
 
 /**
- * The Class IntrospectedTableMyBatis3Impl.
- *
+ * 
  * @author Jeff Butler
+ * 
  */
 public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
-    
-    /** The java model generators. */
     protected List<AbstractJavaGenerator> javaModelGenerators;
-    
-    /** The client generators. */
     protected List<AbstractJavaGenerator> clientGenerators;
-    
-    /** The xml mapper generator. */
     protected AbstractXmlGenerator xmlMapperGenerator;
 
-    /**
-     * Instantiates a new introspected table my batis3 impl.
-     */
     public IntrospectedTableMyBatis3Impl() {
         super(TargetRuntime.MYBATIS3);
         javaModelGenerators = new ArrayList<AbstractJavaGenerator>();
         clientGenerators = new ArrayList<AbstractJavaGenerator>();
     }
 
-    /* (non-Javadoc)
-     * @see org.mybatis.generator.api.IntrospectedTable#calculateGenerators(java.util.List, org.mybatis.generator.api.ProgressCallback)
-     */
     @Override
     public void calculateGenerators(List<String> warnings,
             ProgressCallback progressCallback) {
@@ -78,16 +66,6 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
         calculateXmlMapperGenerator(javaClientGenerator, warnings, progressCallback);
     }
 
-    /**
-     * Calculate xml mapper generator.
-     *
-     * @param javaClientGenerator
-     *            the java client generator
-     * @param warnings
-     *            the warnings
-     * @param progressCallback
-     *            the progress callback
-     */
     protected void calculateXmlMapperGenerator(AbstractJavaClientGenerator javaClientGenerator, 
             List<String> warnings,
             ProgressCallback progressCallback) {
@@ -104,12 +82,9 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
     }
 
     /**
-     * Calculate client generators.
-     *
+     * 
      * @param warnings
-     *            the warnings
      * @param progressCallback
-     *            the progress callback
      * @return true if an XML generator is required
      */
     protected AbstractJavaClientGenerator calculateClientGenerators(List<String> warnings,
@@ -129,11 +104,6 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
         return javaGenerator;
     }
     
-    /**
-     * Creates the java client generator.
-     *
-     * @return the abstract java client generator
-     */
     protected AbstractJavaClientGenerator createJavaClientGenerator() {
         if (context.getJavaClientGeneratorConfiguration() == null) {
             return null;
@@ -159,14 +129,6 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
         return javaGenerator;
     }
 
-    /**
-     * Calculate java model generators.
-     *
-     * @param warnings
-     *            the warnings
-     * @param progressCallback
-     *            the progress callback
-     */
     protected void calculateJavaModelGenerators(List<String> warnings,
             ProgressCallback progressCallback) {
         if (getRules().generateExampleClass()) {
@@ -198,16 +160,6 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
         }
     }
 
-    /**
-     * Initialize abstract generator.
-     *
-     * @param abstractGenerator
-     *            the abstract generator
-     * @param warnings
-     *            the warnings
-     * @param progressCallback
-     *            the progress callback
-     */
     protected void initializeAbstractGenerator(
             AbstractGenerator abstractGenerator, List<String> warnings,
             ProgressCallback progressCallback) {
@@ -221,9 +173,6 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
         abstractGenerator.setWarnings(warnings);
     }
 
-    /* (non-Javadoc)
-     * @see org.mybatis.generator.api.IntrospectedTable#getGeneratedJavaFiles()
-     */
     @Override
     public List<GeneratedJavaFile> getGeneratedJavaFiles() {
         List<GeneratedJavaFile> answer = new ArrayList<GeneratedJavaFile>();
@@ -257,9 +206,6 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
         return answer;
     }
 
-    /* (non-Javadoc)
-     * @see org.mybatis.generator.api.IntrospectedTable#getGeneratedXmlFiles()
-     */
     @Override
     public List<GeneratedXmlFile> getGeneratedXmlFiles() {
         List<GeneratedXmlFile> answer = new ArrayList<GeneratedXmlFile>();
@@ -278,26 +224,17 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
         return answer;
     }
 
-    /* (non-Javadoc)
-     * @see org.mybatis.generator.api.IntrospectedTable#getGenerationSteps()
-     */
     @Override
     public int getGenerationSteps() {
         return javaModelGenerators.size() + clientGenerators.size() +
             (xmlMapperGenerator == null ? 0 : 1);
     }
 
-    /* (non-Javadoc)
-     * @see org.mybatis.generator.api.IntrospectedTable#isJava5Targeted()
-     */
     @Override
     public boolean isJava5Targeted() {
         return true;
     }
 
-    /* (non-Javadoc)
-     * @see org.mybatis.generator.api.IntrospectedTable#requiresXMLGenerator()
-     */
     @Override
     public boolean requiresXMLGenerator() {
         AbstractJavaClientGenerator javaClientGenerator =

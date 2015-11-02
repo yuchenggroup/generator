@@ -3,14 +3,13 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Running MyBatis Generator With Ant</title>
+  <title>使用Ant运行 MyBatis Generator </title>
   <link rel="stylesheet" type="text/css" href="../mbgstyle.css" />
 </head>
 <body>
-<h1>Running MyBatis Generator With Ant</h1>
-<p>MyBatis Generator (MBG) includes a simple Ant task.  The task must be defined in your
-  build.xml file, and the task accepts several parameters.  Here is an example
-  build.xml file:</p>
+<h1>使用Ant运行 MyBatis Generator </h1>
+<p>MyBatis Generator  (MBG) 包含一个简单的 Ant 任务。这个任务必须定义在您的
+  build.xml 文件中。任务可以几个参数。这里是一个 build.xml 文件的例子:</p>
 <pre>
    &lt;project default="genfiles" basedir="."&gt;
      &lt;property name="generated.source.dir" value="${basedir}" /&gt;
@@ -28,72 +27,55 @@
    &lt;/project&gt;
 </pre>
 
-<p>MyBatis Generator task attributes are as follows:</p>
+<p>MyBatis Generator  任务属性如下:</p>
 <table border="1" cellspacing="0" cellpadding="5">
 <tr>
-  <th>Attribute</th>
-  <th>Value</th>
+  <th>属性</th>
+  <th>值</th>
 </tr>
 <tr>
-  <td>configfile (required)</td>
-  <td>Specifies the name of the configuration file.</td>
+  <td>configfile (必须的)</td>
+  <td>指定配置文件的名称。</td>
 </tr>
 <tr>
-  <td>overwrite (optional)</td>
-  <td>If "true", "yes", etc., then MBG will overwrite existing Java files if an existing Java
-      file if found with the same name as a generated file.  If "false", "no", etc., and a
-      Java file already exists with the same name as a generated file, then MBG
-      will write the newly generated Java file to the proper directory with a
-      unique name (e.g. MyClass.java.1, MyClass.java.2, etc.).
-      <b>Important: MBG will always merge and overwrite XML files.</b></td>
+  <td>overwrite (可选的)</td>
+  <td>如果指定了该参数，如果生成的java文件存在已经同名的文件，新生成的文件会覆盖原有的文件。
+    如果没有指定该参数，如果存在同名的文件，MBG会给新生成的代码文件生成一个唯一的名字(例如： MyClass.java.1, MyClass.java.2 等等)。
+    <b>重要: 生成器一定会自动合并或覆盖已经生成的XML文件。</b></td>
 </tr>
 <tr>
-  <td>contextids (optional)</td>
-  <td>If specified, then this is a comma delimited list of contexts to use in
-      the current run.  Any id specified in the list must exactly
-      match the value of the <code>id</code> attribute of an
-      &lt;context&gt; configuration element.  Only ids specified
-      in this list will be active for this run.  If this argument
-      is not specified, then all contexts will be active.</td>
+  <td>contextids (可选的)</td>
+  <td>如果指定了该参数，逗号隔开的这些context会被执行。
+    这些指定的context必须和配置文件中 &lt;context&gt; 元素的 <code>id</code> 属性一致。
+    只有指定的这些contextid会被激活执行。如果没有指定该参数，所有的context都会被激活执行。</td>
 </tr>
 <tr>
-  <td>tables (optional)</td>
-  <td>If specified, then this is a comma delimited list of tables to use in
-      the current run.  Any table specified in the list must exactly
-      match the fully qualified table name specified in a
-      &lt;table&gt; configuration element.  Only tables specified
-      in this list will be active for this run.  If this argument
-      is not specified, then all tables will be active.
-      Specify table names as: <br/><br/>
-      <code>table</code><br/>
-      <code>schema.table</code><br/>
-      <code>catalog..table</code><br/>
-      etc.</td>
+  <td>tables (可选的)</td>
+  <td>如果指定了该参数，逗号隔开的这个表会被运行，
+    这些表名必须和 &lt;table&gt; 配置中的表面完全一致。只有指定的这些表会被执行。
+    如果没有指定该参数，所有的表都会被执行。
+    按如下方式指定表明: <br/><br/>
+    <code>table</code><br/>
+    <code>schema.table</code><br/>
+    <code>catalog..table</code><br/>
+    等等。</td>
 </tr>
 <tr>
-  <td>verbose (optional)</td>
-  <td>If "true", "yes", etc., then MBG will log progress messages to the
-      ant console (if Ant is running in verbose mode).  The default is "false".</td>
+  <td>verbose (可选的)</td>
+  <td>如果设置为 "true", "yes"等等,MBG会将操作信息输出到 ant 控制台 (如果 Ant 在verbose模式下运行)。默认值是 "false"。</td>
 </tr>
 </table>
 
-<p>Notes:</p>
+<p>注意:</p>
 <ul>
-  <li>The classpath on the &lt;taskdef&gt; is used to tell Ant where the MBG JAR file
-     is.  This is optional if you add MBG to the Ant classpath in one
-     of the other ways described in the Ant manual</li>
-   <li>The name of the task can be anything you desire, "mbgenerator" is
-     simply an example</li>
-   <li>The task supports an optional nested <code>&lt;propertyset&gt;</code> element which
-       is the standard Ant property set type.  This can be used to pass parameters into
-       a configuration file.  For example, the above property
-       <code>generated.source.dir</code> can be
-       accessed in the configuration file with the escape sequence
-       <code>${generated.source.dir}</code>
+  <li>&lt;taskdef&gt;标记中的类路径用于告诉 Ant MBG JAR 文件在哪里。
+  这是可选的，除非您将 MBG 添加到 Ant 类路径中 Ant 手册所描述的其他地方。</li>
+   <li>任务的名称可以使任何您想要的, "mbgenerator" 只是一个简单的例子。</li>
+   <li>该任务支持可选嵌套的 <code>&lt; propertyset &gt;</code> 元素，这是标准的 Ant 属性设置的类型。
+       这可以用于将参数传递到配置文件。例如，上面提到
+       <code>generated.source.dir</code>这个属性可以在配置文件中使用<code>${generated.source.dir}</code>进行使用。
    </li>
-   <li>If a property is specified in the configuration file and is not resolved,
-       then the escaped property string will be passed "as is" into the generated code.
-   </li>
+   <li>如果没有指定配置文件中的一个属性，这个属性将会原样输出。</li>
 </ul>
 </body>
 </html>

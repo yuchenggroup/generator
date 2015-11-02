@@ -3,50 +3,47 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>The &lt;properties&gt; Element</title>
+  <title>&lt;properties&gt; 元素</title>
   <link rel="stylesheet" type="text/css" href="../mbgstyle.css" />
 </head>
 <body>
-<h1>The &lt;properties&gt; Element</h1>
-<p>The &lt;properties&gt; element is used to specify an external properties file
-for use in the parsing of the configuration.  Any attribute in the
-configuration will accept a property in the form <code>${property}</code>.
-The specified properties file will be searched for a matching value and the
-matching value will be substituted.  The properties file is of the normal
-format for a Java properties file.</p>
+<h1>&lt;properties&gt; 元素</h1>
+<p>&lt;properties&gt; 元素用于指定一个需要在配置中解析使用的外部属性文件。
+属性配置中的任何属性将接受  <code>${property}</code> 这种形式的属性。
+从指定的属性文件中搜索匹配的值，配置的值将会被替换。
+属性文件时正常的Java属性文件的格式。</p>
 
-<p>The &lt;properties&gt; element is a child element of the
+<p>&lt;properties&gt;元素是
 <a href="generatorConfiguration.html">&lt;generatorConfiguration&gt;</a>
-element.</p>
+元素的子元素。</p>
 
 
-<h2>Required Attributes</h2>
-<p>One, and only one, of the following attributes is required.</p>
+<h2>必选属性</h2>
+<p>以下属性是必需的，并且只能有其中一个。</p>
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
-    <th>Attribute</th>
-    <th>Description</th>
+    <th>属性</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td valign="top">resource</td>
-    <td>The qualified name of the property file.  When specifying the resource, the
-    classpath will be searched for the properties file.  So a file specified as
-    <code>com/myproject/generatorConfig.properties</code> must exist in the
-    <code>com.myproject</code> package.</td>
+    <td>属性文件的全限定名称。当指定了resource属性，将会从classpath下面搜索属性文件。
+    当指定为
+    <code>com/myproject/generatorConfig.properties</code> 时，他必须存在
+    <code>com.myproject</code> 包下面。</td>
   </tr>
   <tr>
     <td valign="top">url</td>
-    <td>A URL value to use for the property file.  This can be used to specify a property
-    file in a specific place on the file system when used in a form like
-    <code>file:///C:/myfolder/generatorConfig.properties</code>.</td>
+    <td>属性文件的URL值。这可以用于指定一个属性文件在文件系统上的特定位置，例如
+    <code>file:///C:/myfolder/generatorConfig.properties</code>。</td>
   </tr>
 </table>
 
-<h2>Optional Attributes</h2>
-<p>None</p>
+<h2>可选属性</h2>
+<p>无</p>
 
-<h2>Child Elements</h2>
-<p>None</p>
+<h2>子元素</h2>
+<p>无</p>
 
 </body>
 </html>

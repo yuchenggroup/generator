@@ -1,18 +1,3 @@
-/**
- *    Copyright 2006-2015 the original author or authors.
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
- */
 package org.mybatis.generator.internal.util;
 
 import java.lang.reflect.Array;
@@ -48,12 +33,6 @@ public final class HashCodeUtil {
 
     /**
      * booleans.
-     *
-     * @param aSeed
-     *            the a seed
-     * @param aBoolean
-     *            the a boolean
-     * @return the int
      */
     public static int hash(int aSeed, boolean aBoolean) {
         return firstTerm(aSeed) + (aBoolean ? 1 : 0);
@@ -61,12 +40,6 @@ public final class HashCodeUtil {
 
     /**
      * chars.
-     *
-     * @param aSeed
-     *            the a seed
-     * @param aChar
-     *            the a char
-     * @return the int
      */
     public static int hash(int aSeed, char aChar) {
         return firstTerm(aSeed) + aChar;
@@ -74,12 +47,6 @@ public final class HashCodeUtil {
 
     /**
      * ints.
-     *
-     * @param aSeed
-     *            the a seed
-     * @param aInt
-     *            the a int
-     * @return the int
      */
     public static int hash(int aSeed, int aInt) {
         /*
@@ -91,12 +58,6 @@ public final class HashCodeUtil {
 
     /**
      * longs.
-     *
-     * @param aSeed
-     *            the a seed
-     * @param aLong
-     *            the a long
-     * @return the int
      */
     public static int hash(int aSeed, long aLong) {
         return firstTerm(aSeed) + (int) (aLong ^ (aLong >>> 32));
@@ -104,12 +65,6 @@ public final class HashCodeUtil {
 
     /**
      * floats.
-     *
-     * @param aSeed
-     *            the a seed
-     * @param aFloat
-     *            the a float
-     * @return the int
      */
     public static int hash(int aSeed, float aFloat) {
         return hash(aSeed, Float.floatToIntBits(aFloat));
@@ -117,27 +72,17 @@ public final class HashCodeUtil {
 
     /**
      * doubles.
-     *
-     * @param aSeed
-     *            the a seed
-     * @param aDouble
-     *            the a double
-     * @return the int
      */
     public static int hash(int aSeed, double aDouble) {
         return hash(aSeed, Double.doubleToLongBits(aDouble));
     }
 
     /**
-     * <code>aObject</code> is a possibly-null object field, and possibly an array.
+     * <code>aObject</code> is a possibly-null object field, and possibly an
+     * array.
      * 
-     * If <code>aObject</code> is an array, then each element may be a primitive or a possibly-null object.
-     *
-     * @param aSeed
-     *            the a seed
-     * @param aObject
-     *            the a object
-     * @return the int
+     * If <code>aObject</code> is an array, then each element may be a primitive
+     * or a possibly-null object.
      */
     public static int hash(int aSeed, Object aObject) {
         int result = aSeed;
@@ -157,27 +102,12 @@ public final class HashCodeUtil {
     }
 
     // / PRIVATE ///
-    /** The odd prime number. */
     private static final int fODD_PRIME_NUMBER = 37;
 
-    /**
-     * First term.
-     *
-     * @param aSeed
-     *            the a seed
-     * @return the int
-     */
     private static int firstTerm(int aSeed) {
         return fODD_PRIME_NUMBER * aSeed;
     }
 
-    /**
-     * Checks if is array.
-     *
-     * @param aObject
-     *            the a object
-     * @return true, if is array
-     */
     private static boolean isArray(Object aObject) {
         return aObject.getClass().isArray();
     }

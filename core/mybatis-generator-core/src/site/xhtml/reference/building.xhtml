@@ -3,43 +3,35 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Building from Source</title>
+  <title>从源码构建</title>
   <link rel="stylesheet" type="text/css" href="../mbgstyle.css" />
 </head>
 <body>
-<h1>Building from Source</h1>
-<p>All MyBatis Generator (MBG) distributions include source code.  The only compile time dependency
-is on <code>ant.jar</code> - for successful compilation of the included Ant task.
-It is straight forward to compile MBG from source - simply unzip the source in
-a distribution and compile it with your favorite tool.</p>
-<p>The MBG distribution does not contain the tests that are run during the build,
-or other classes that are a necessary part of the build.  If you would like to
-inspect those classes, or build MBG from the very latest version of the source code
-at Google then follow these steps:</p>
+<h1>从源码构建</h1>
+<p>所有 MyBatis 代码生成器(MBG)发行版都包含源代码。
+运行时的唯一依赖是 <code>ant.jar</code> - 为了圆满完成包含的Ant任务。
+它是直接从源代码编译MBG - 只需要解压发行包并使用您喜欢的工具进行编译。</p>
+<p>MBG发行包不包含编译期间的测试，或者编译期间必须部分的其他的类。
+如果您想检查这些类，或者使用github上最新版本的源码编译MBG，那么按照下面的步骤操作：</p>
 <ol>
-  <li>MBG is built with Apache Maven.  First you must get maven
-      running.  If you are new to Maven, here are the most simple steps (for Windows):
+  <li>MBG用Apache Maven构建。 首先您必须能运行maven。
+      如果您不熟悉Maven，这里有最简单的步骤 (针对 Windows):
       <ol type="a">
-        <li>Download a Maven distribution from <a target="_blank" href="http://maven.apache.org/">
-          http://maven.apache.org/</a></li>
-        <li>Unzip the distribution somewhere convenient</li>
-        <li>Setup environment variables and the PATH.  Examples:<br/>
+        <li>从这里 <a target="_blank" href="http://maven.apache.org/">
+          http://maven.apache.org/</a> 下载Maven发行包。</li>
+        <li>解压发行包到一个方便的位置。</li>
+        <li>设置环境变量和PATH。示例:<br/>
             set JAVA_HOME=C:\JavaTools\jdk1.6.0_17<br/>
             set M2_HOME=C:\JavaTools\apache-maven-3.0<br/>
             set PATH=%PATH%;%M2_HOME%\bin;
         </li>
       </ol>
   </li>
-  <li>Do a Subversion checkout of the source tree from the location
-    <a target="_blank" href="https://mybatis.googlecode.com/svn/sub-projects/generator/trunk/core/">
-    https://mybatis.googlecode.com/svn/sub-projects/generator/trunk/core/</a>
-    (You may use any Subversion client you prefer.  We recommend
-    <a target="_blank" href="http://tortoisesvn.tigris.org/">TortoiseSVN</a>.)
+  <li>使用git从下面的位置检出代码
+    <a target="_blank" href="https://github.com/mybatis/generator">
+    https://github.com/mybatis/generator</a>
   </li>
-  <li>Open a command window in the directory where you checked out the source and
-      run the command <code>mvn clean install</code> - or any of the other Maven lifecycle commands.
-      You can use the <code>mvn site</code> command to generate the code coverage reports, but the
-      MyBatis website is not built with Maven at this time.
+  <li>在检出的目录下打开CMD执行<code>mvn clean install</code>命令，或者其他的Maven命令。
   </li>
 </ol>
 

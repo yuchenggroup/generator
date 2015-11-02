@@ -3,52 +3,40 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>The &lt;columnRenamingRule&gt; Element</title>
+  <title>&lt;columnRenamingRule&gt; 元素</title>
   <link rel="stylesheet" type="text/css" href="../mbgstyle.css" />
 </head>
 <body>
-<h1>The &lt;columnRenamingRule&gt; Element</h1>
-<p>MyBatis Generator (MBG) uses the &lt;columnRenamingRule&gt; element
-to rename database columns before calculating the corresponding property
-name in an introspected table.  This is useful when all columns
-in a table have a common prefix that should be removed before
-calculating the property name.  For example, suppose a table
-contains the following columns:</p>
+<h1>&lt;columnRenamingRule&gt; 元素</h1>
+<p>MyBatis Generator (MBG) 使用 &lt;columnRenamingRule&gt; 元素处理在内省表
+中相应的属性名之前重命名数据库列。
+这对那些存在同一前缀的字段想在生成属性名时去除前缀的表非常有用。
+例子，假设一个表包含以下的列：</p>
  <ul>
    <li>CUST_BUSINESS_NAME</li>
    <li>CUST_STREET_ADDRESS</li>
    <li>CUST_CITY</li>
    <li>CUST_STATE</li>
  </ul>
-<p>It might be annoying to have the generated properties
- all containing the CUST prefix.  The prefix can be removed by
- specifying a renaming rule like this:</p>
+<p>生成的所有属性名中如果都包含 CUST的前缀可能会让人不爽。这些前缀可以通过如下方式定义重命名规则:</p>
 
 <p><code>&lt;columnRenamingRule searchString="^CUST_" replaceString="" /&gt;</code></p>
 
-<p>Note that, internally, MBG uses the
- <code>java.util.regex.Matcher.replaceAll</code> method
- for this function.  See the documentation for that method
- and class for examples of the regular expression language used in
- Java.</p>
+<p>注意，在内部，MBG使用<code>java.util.regex.Matcher.replaceAll</code>方法实现这个功能。
+请参阅有关该方法的文档和在Java中使用正则表达式的例子。</p>
 
-<p>This element will be ignored for any column where a &lt;columnOverride&gt; element
-   matches a column - the &lt;columnOverride&gt;
-  will take precedence over the renaming rule.</p>
+<p>当 &lt;columnOverride&gt; 匹配一列时，这个元素（&lt;columnRenamingRule&gt;）会被忽略。
+  &lt;columnOverride&gt;优先于重命名的规则。</p>
 
-<p>If specified, the renaming rule in this element will rename the column
-  before the property name is calculated.  The calculated property name
-  may be different depending on the value of the
-  "useActualColumnNames" property on the corresponding &lt;table&gt; element.
-  The following table shows the different values that will result if
-  the column renaming rule shown above is applied to the field set
-  shown above:</p>
+<p>如果指定该选项，重命名规则会在生成属性名前替换列名。
+计算出的属性名可能不同，这取决于 &lt;table&gt; 元素上的 "useActualColumnNames"属性。
+下表显示了如果重命名规则用于字段集上时不同的值:</p>
 
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
-    <th>Column Name</th>
-    <th>Property if useActualColumnNames="true"</th>
-    <th>Property if useActualColumnNames="false"</th>
+    <th>列名</th>
+    <th>属性 useActualColumnNames="true"</th>
+    <th>属性 useActualColumnNames="false"</th>
   </tr>
   <tr>
     <td>CUST_BUSINESS_NAME</td>
@@ -72,36 +60,34 @@ contains the following columns:</p>
   </tr>
 </table>
 
-<p>This element is an optional child
-element of the <a href="table.html">&lt;table&gt;</a> element.</p>
+<p>这个元素是<a href="table.html">&lt;table&gt;</a> 元素的一个可选的子元素。</p>
 
-<h2>Required Attributes</h2>
+<h2>必选属性</h2>
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
-    <th>Attribute</th>
-    <th>Description</th>
+    <th>属性</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td>searchString</td>
-    <td>This is a regular expression that defines the substring to be replaced.</td>
+    <td>定义将被替换的子字符串的正则表达式。</td>
   </tr>
 </table>
 
-<h2>Optional Attributes</h2>
+<h2>可选属性</h2>
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
-    <th>Attribute</th>
-    <th>Description</th>
+    <th>属性</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td>replaceString</td>
-    <td>This is a string to be substituted for every occurrence of the
-        search string.  If not specified, the empty string is used.</td>
+    <td>这是一个用来替换搜索字符串列每一个匹配项的字符串。如果没有指定，就会使用空字符串。</td>
   </tr>
 </table>
 
-<h2>Child Elements</h2>
-<p>None</p>
+<h2>子元素</h2>
+<p>无</p>
 
 </body>
 </html>

@@ -18,8 +18,8 @@
 <!--
   version: $Id$
 -->
-<project xmlns="http://maven.apache.org/DECORATION/1.6.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.6.0.xsd"
+<project xmlns="http://maven.apache.org/DECORATION/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd"
   name="MyBatis Generator">
 
   <bannerLeft>
@@ -30,20 +30,20 @@
   </bannerLeft>
   
   <body>
-    <menu name="User's Guide">
-      <item href="index.html" name="Introduction" />
-      <item href="whatsNew.html" name="What's New?" />
-      <item href="quickstart.html" name="Quick Start Guide" />
-      <item href="running/running.html" name="Running MyBatis Generator" collapse="true">
-        <item href="running/runningFromCmdLine.html" name="From the Command Line" />
-        <item href="running/runningWithAnt.html" name="With Ant" />
-        <item href="running/runningWithMaven.html" name="With Maven" />
-        <item href="running/runningWithJava.html" name="With Java" />
+    <menu name="用户手册">
+      <item href="index.html" name="介绍" />
+      <item href="whatsNew.html" name="新的特性？" />
+      <item href="quickstart.html" name="快速开发指南" />
+      <item href="running/running.html" name="运行 MyBatis Generator" collapse="true">
+        <item href="running/runningFromCmdLine.html" name="从命令行执行" />
+        <item href="running/runningWithAnt.html" name="使用 Ant" />
+        <item href="running/runningWithMaven.html" name="使用 Maven" />
+        <item href="running/runningWithJava.html" name="使用 Java" />
       </item>
-      <item href="afterRunning.html" name="Tasks After Running MyBatis Generator" />
-      <item href="migratingFromIbator.html" name="Migrating from Ibator" />
-      <item href="migratingFromAbator.html" name="Migrating from Abator" />
-      <item href="configreference/xmlconfig.html" name="XML Configuration Reference" collapse="true" >
+      <item href="afterRunning.html" name="运行 MyBatis Generator 后的任务" />
+      <item href="migratingFromIbator.html" name="从 Ibator 迁移" />
+      <item href="migratingFromAbator.html" name="从 Abator 迁移" />
+      <item href="configreference/xmlconfig.html" name="XML 配置" collapse="true" >
         <item href="configreference/classPathEntry.html" name="&amp;lt;classPathEntry&amp;gt;" />
         <item href="configreference/columnOverride.html" name="&amp;lt;columnOverride&amp;gt;" />
         <item href="configreference/columnRenamingRule.html" name="&amp;lt;columnRenamingRule&amp;gt;" />
@@ -62,26 +62,26 @@
         <item href="configreference/sqlMapGenerator.html" name="&amp;lt;sqlMapGenerator&amp;gt;" />
         <item href="configreference/table.html" name="&amp;lt;table&amp;gt;" />
       </item>
-      <item href="generatedobjects/results.html" name="Using the Generated Objects" collapse="true" >
-        <item href="generatedobjects/javamodel.html" name="Java Model Objects" />
-        <item href="generatedobjects/sqlmap.html" name="SQL Map Files" />
-        <item href="generatedobjects/javaclient.html" name="Java Client Objects" />
-        <item href="generatedobjects/exampleClassUsage.html" name="Example Class Usage Notes" />
-        <item href="generatedobjects/extendingExampleClass.html" name="Extending the Example Classes" />
+      <item href="generatedobjects/results.html" name="使用生成的对象" collapse="true" >
+        <item href="generatedobjects/javamodel.html" name="Java 模型对象" />
+        <item href="generatedobjects/sqlmap.html" name="SQL 映射文件" />
+        <item href="generatedobjects/javaclient.html" name="Java 客户端对象" />
+        <item href="generatedobjects/exampleClassUsage.html" name="Example类用法说明" />
+        <item href="generatedobjects/extendingExampleClass.html" name="扩展Example类" />
       </item>
-      <item href="usage/intro.html" name="Database Specific Information" collapse="true" >
+      <item href="usage/intro.html" name="数据库使用注意事项" collapse="true" >
         <item href="usage/db2.html" name="DB2" />
         <item href="usage/mysql.html" name="MySql" />
         <item href="usage/oracle.html" name="Oracle" />
         <item href="usage/postgresql.html" name="PostgreSQL" />
       </item>
-      <item href="reference/intro.html" name="Other Reference Information" collapse="true" >
-        <item href="reference/building.html" name="Building from Source" />
-        <item href="reference/extending.html" name="Extending MyBatis Generator" />
-        <item href="reference/pluggingIn.html" name="Implementing Plugins" />
-        <item href="reference/logging.html" name="Logging Information" />
-        <item href="reference/plugins.html" name="Supplied Plugins" />
-        <item href="philosophy.html" name="Design Philosophy" />
+      <item href="reference/intro.html" name="其他参考资料" collapse="true" >
+        <item href="reference/building.html" name="从源码构建" />
+        <item href="reference/extending.html" name="扩展 MyBatis Generator" />
+        <item href="reference/pluggingIn.html" name="开发插件" />
+        <item href="reference/logging.html" name="日志信息" />
+        <item href="reference/plugins.html" name="提供的插件" />
+        <item href="philosophy.html" name="设计理念" />
       </item>
     </menu>
     

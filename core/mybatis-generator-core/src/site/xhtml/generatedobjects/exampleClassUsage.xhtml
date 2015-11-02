@@ -3,39 +3,25 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Example Class Usage Notes</title>
+  <title>Example类使用说明</title>
   <link rel="stylesheet" type="text/css" href="../mbgstyle.css" />
 </head>
 <body>
-<h1>Example Class Usage Notes</h1>
-<p>The example class specifies how to build a dynamic where clause.  Each non-BLOB column in the
-table can optionally be included in the where clause.  Examples are the best way
-to demonstrate the usage of this class.</p>
-<p>The example class can be used to generate a virtually
-unlimited where clauses.</p>
-<p>The example classes contain
-an inner static class called <code>Criteria</code>
-that holds a list of conditions that will be <code>anded</code> together in the where clause.  The
-example class holds a list of <code>Criteria</code> objects and all the clauses
-from the inner classes will be <code>ored</code> together.  Using different sets of
-<code>Criteria</code> classes allows you to generate virtually unlimited
-types of where clauses.</p>
-<p><code>Criteria</code> objects can be created with the either the <code>createCriteria</code> method
-or the <code>or</code> method
-in the example class.  When the first <code>Criteria</code> object is created with the
-<code>createCriteria</code> method it is automatically
-added to the list of <code>Criteria</code> objects - this makes it easy to write
-a simple where clause if you don't need to <code>or</code> several other clauses together.
-When using the <code>or</code> method, the <code>Criteria</code> class is added to the
-list in all instances.</p>
+<h1>Example类使用说明</h1>
+<p>Example类指定如何构建一个动态的where子句.  表中的每个non-BLOB列可以被包括在where子句中.  例子是展示此类用法的最好方式.</p>
+<p>Example类可以用来生成一个几乎无限的where子句.</p>
+<p>Example类包含一个内部静态类 <code>Criteria</code>
+包含一个用 <code>anded</code> 组合在where子句中的条件列表.  Example类包含一个 <code>List&lt;Criteria&gt;</code> 属性,所有内部类Criteria中的子句会用 <code>ored</code>组合在一起.  使用不同属性的
+<code>Criteria</code> 类允许您生成无限类型的where子句.</p>
+<p>创建 <code>Criteria</code> 对象 可以使用Example类中的 <code>createCriteria()</code> 
+或者 <code>or()</code> .  如果 <code>Criteria</code> 对象是用
+<code>createCriteria()</code> 创建的，它会自动为 <code>List&lt;Criteria&gt;</code> 属性添加一个 <code>Criteria</code> 对象 - 这使得它更容易写一个简单的where子句， 如果您不需要 <code>or</code> 或者其他几个子句组合的话.
+用 <code>or(Criteria criteria)</code> 方法创建 <code>Criteria</code> 对象, 方法里的 <code>criteria</code> 对象会被添加进 <code>Criteria</code> 对象的列表中.</p>
 
-<p><b>Important</b> We recommend that
-you only use the <code>or</code> method for creating <code>Criteria</code> classes.  We
-believe that this method makes for more readable code.</p>
+<p><b>重要</b> 我们推荐您只使用 <code>or()</code> 方法创建 <code>Criteria</code> 对象.  我们相信这种方法使代码更有可读性.</p>
 
-<h2>Simple Queries</h2>
-<p>This example shows how to generate a simple WHERE clause using the generated
-example class:</p>
+<h2>简单查询</h2>
+<p>这个例子展示了如何用生成后的Example类去生成一个简单的where子句:</p>
 
 <pre>
   TestTableExample example = new TestTableExample();
@@ -43,21 +29,20 @@ example class:</p>
   example.createCriteria().andField1EqualTo(5);
 </pre>
 
-<p>Alternatively, the following syntax also works:</p>
+<p>作为另一种选择, 下面的方式也是可以的:</p>
 <pre>
   TestTableExample example = new TestTableExample();
 
   example.or().andField1EqualTo(5);
 </pre>
 
-<p>In either above example, the dynamically generated where clause will effectively be:</p>
+<p>在上面的例子中, 动态生成的where子句是:</p>
 <pre>
   where field1 = 5
 </pre>
 
-<h2>Complex Queries</h2>
-<p>The next example shows how to generate a complex WHERE clause using the generated
-example class (using JSE 5.0 parameterized types):</p>
+<h2>复杂查询</h2>
+<p>下面的例子展示了如何用生成后的Example类去生成一个复杂的where子句 (用到了 JSE 5.0 的泛型):</p>
 <pre>
   TestTableExample example = new TestTableExample();
 
@@ -82,47 +67,40 @@ example class (using JSE 5.0 parameterized types):</p>
     .andField6Between(3, 7);
 
 </pre>
-<p>In the above example, the dynamically generated where clause will effectively be:</p>
+<p>在上面的例子中, 动态生成的where子句是:</p>
 <pre>
   where (field1 = 5 and field2 is null)
      or (field3 &lt;&gt; 9 and field4 is not null)
      or (field5 in (8, 11, 14, 22))
      or (field6 between 3 and 7)
 </pre>
-<p>Returned records will meet these criteria.</p>
+<p>将会返回满足这些条件的记录结果.</p>
 
-<h2>Distinct Queries</h2>
-<p>You can force queries to be DISTINCT by calling the <code>setDistinct(true)</code>
-method on any example class.</p>
+<h2>去重复查询</h2>
+<p>您可以在所有的Example类中调用 <code>setDistinct(true)</code>
+方法进行强制去重复查询.</p>
 
-<h2>Criteria Classes</h2>
-<p>The <code>Criteria</code> inner class includes <code>andXXX</code> methods for each field,
-and each standard SQL predicate including:</p>
+<h2>Criteria类</h2>
+<p> <code>Criteria</code> 内部类的每个属性都包含 <code>andXXX</code> 方法，以及如下的标准的SQL查询方法:</p>
 <ul>
-  <li>IS NULL - meaning the related column must be NULL</li>
-  <li>IS NOT NULL - meaning the related column must not be NULL</li>
-  <li>= (equal) - meaning the related column must be equal to the value passed in on the method call</li>
-  <li>&lt;&gt; (not equal) - meaning the related column must not be equal to the value passed in on the method call</li>
-  <li>&gt; (greater than) - meaning the related column must be greater than the value passed in on the method call</li>
-  <li>&gt;= (greater than or equal) - meaning the related column must be greater than or equal to the value passed in on the method call</li>
-  <li>&lt; (less than) - meaning the related column must be less than the value passed in on the method call</li>
-  <li>&lt;= (less than or equal) - meaning the related column must be less than or equal to the value passed in on the method call</li>
-  <li>LIKE - meaning the related column must be "like" the value passed in on the method call.
-    The code does not add the required '%', you must set that value yourself in the value you pass
-    in on the method call.
+  <li>IS NULL - 指相关的列必须为NULL</li>
+  <li>IS NOT NULL - 指相关的列必须不为NULL</li>
+  <li>= (equal) - 指相关的列必须等于方法参数中的值</li>
+  <li>&lt;&gt; (not equal) - 指相关的列必须不等于方法参数中的值</li>
+  <li>&gt; (greater than) - 指相关的列必须大于方法参数中的值</li>
+  <li>&gt;= (greater than or equal) - 指相关的列必须大于等于方法参数中的值</li>
+  <li>&lt; (less than) - 指相关的列必须小于于方法参数中的值</li>
+  <li>&lt;= (less than or equal) - 指相关的列必须小于等于方法参数中的值</li>
+  <li>LIKE - 指相关的列必须 "like" 方法参数中的值.
+    这个方法不用必须加入 '%', 您必须设置方法参数中的值.
   </li>
-  <li>NOT LIKE - meaning the related column must be "not like" the value passed in on the method call.
-    The code does not add the required '%', you must set that value yourself in the value you pass
-    in on the method call.
+  <li>NOT LIKE - 指相关的列必须 "not like"  方法参数中的值.
+    这个方法不用必须加入 '%', 您必须设置方法参数中的值.
   </li>
-  <li>BETWEEN - meaning the related column must be "between" the two values passed in on
-      the method call.</li>
-  <li>NOT BETWEEN - meaning the related column must be "not between" the two values passed in on
-      the method call.</li>
-  <li>IN - meaning the related column must be one of the list of values passed in on
-      the method call.</li>
-  <li>NOT IN - meaning the related column must not be one of the list of values passed in on
-      the method call.</li>
+  <li>BETWEEN - 指相关的列必须在 "between" 方法参数中的两个值之间.</li>
+  <li>NOT BETWEEN - 指相关的列必须不在 "not between" 方法参数中的两个值之间.</li>
+  <li>IN - 指相关的列必须在传入的方法参数的list中.</li>
+  <li>NOT IN - 指相关的列必须不在传入的方法参数的list中.</li>
 </ul>
 
 

@@ -1,75 +1,55 @@
-/**
- *    Copyright 2006-2015 the original author or authors.
+/*
+ *  Copyright 2005 The Apache Software Foundation
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package org.mybatis.generator.internal.db;
 
 /**
- * Typesafe enum of known database dialects.
- *
+ * Typesafe enum of known database dialects
+ * 
  * @author Jeff Butler
  */
 public enum DatabaseDialects {
 
-    /** The D b2. */
     DB2("VALUES IDENTITY_VAL_LOCAL()"), //$NON-NLS-1$
-    /** The mysql. */
- MYSQL("SELECT LAST_INSERT_ID()"), //$NON-NLS-1$
-    /** The sqlserver. */
- SQLSERVER("SELECT SCOPE_IDENTITY()"), //$NON-NLS-1$
-    /** The cloudscape. */
- CLOUDSCAPE("VALUES IDENTITY_VAL_LOCAL()"), //$NON-NLS-1$
-    /** The derby. */
- DERBY("VALUES IDENTITY_VAL_LOCAL()"), //$NON-NLS-1$
-    /** The hsqldb. */
- HSQLDB("CALL IDENTITY()"), //$NON-NLS-1$
-    /** The sybase. */
- SYBASE("SELECT @@IDENTITY"), //$NON-NLS-1$
-    /** The D b2_ mf. */
- DB2_MF("SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1"), //$NON-NLS-1$
-    /** The informix. */
- INFORMIX("select dbinfo('sqlca.sqlerrd1') from systables where tabid=1"); //$NON-NLS-1$
+    MYSQL("SELECT LAST_INSERT_ID()"), //$NON-NLS-1$
+    SQLSERVER("SELECT SCOPE_IDENTITY()"), //$NON-NLS-1$
+    CLOUDSCAPE("VALUES IDENTITY_VAL_LOCAL()"), //$NON-NLS-1$
+    DERBY("VALUES IDENTITY_VAL_LOCAL()"), //$NON-NLS-1$
+    HSQLDB("CALL IDENTITY()"), //$NON-NLS-1$
+    SYBASE("SELECT @@IDENTITY"), //$NON-NLS-1$
+    DB2_MF("SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1"), //$NON-NLS-1$
+    INFORMIX("select dbinfo('sqlca.sqlerrd1') from systables where tabid=1"); //$NON-NLS-1$
 
-    /** The identity retrieval statement. */
- private String identityRetrievalStatement;
+    private String identityRetrievalStatement;
 
     /**
-     * Instantiates a new database dialects.
-     *
-     * @param identityRetrievalStatement
-     *            the identity retrieval statement
+     *  
      */
     private DatabaseDialects(String identityRetrievalStatement) {
         this.identityRetrievalStatement = identityRetrievalStatement;
     }
 
-    /**
-     * Gets the identity retrieval statement.
-     *
-     * @return the identity retrieval statement
-     */
     public String getIdentityRetrievalStatement() {
         return identityRetrievalStatement;
     }
 
     /**
-     * Gets the database dialect.
-     *
+     * 
      * @param database
-     *            the database
-     * @return the database dialect for the selected database. May return null if there is no known dialect for the
-     *         selected db
+     * @return the database dialect for the selected database. May return null
+     *         if there is no known dialect for the selected db
      */
     public static DatabaseDialects getDatabaseDialect(String database) {
         DatabaseDialects returnValue = null;

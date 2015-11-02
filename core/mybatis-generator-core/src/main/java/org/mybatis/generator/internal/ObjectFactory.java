@@ -1,17 +1,17 @@
-/**
- *    Copyright 2006-2015 the original author or authors.
+/*
+ *  Copyright 2005 The Apache Software Foundation
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package org.mybatis.generator.internal;
 
@@ -46,16 +46,12 @@ import org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl;
 import org.mybatis.generator.internal.util.StringUtility;
 
 /**
- * This class creates the different objects needed by the generator.
- *
+ * This class creates the different objects needed by the generator
+ * 
  * @author Jeff Butler
  */
 public class ObjectFactory {
-    
-    /** The external class loaders. */
     private static List<ClassLoader> externalClassLoaders;
-    
-    /** The resource class loaders. */
     private static List<ClassLoader> resourceClassLoaders;
     
     static {
@@ -71,11 +67,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Adds a custom classloader to the collection of classloaders searched for resources. Currently, this is only used
-     * when searching for properties files that may be referenced in the configuration file.
-     *
+     * Adds a custom classloader to the collection of classloaders
+     * searched for resources.  Currently, this is only used
+     * when searching for properties files that may be
+     * referenced in the configuration file. 
+     * 
      * @param classLoader
-     *            the class loader
      */
     public static synchronized void addResourceClassLoader(
             ClassLoader classLoader) {
@@ -83,12 +80,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Adds a custom classloader to the collection of classloaders searched for "external" classes. These are classes
-     * that do not depend on any of the generator's classes or interfaces. Examples are JDBC drivers, root classes, root
+     * Adds a custom classloader to the collection of classloaders
+     * searched for "external" classes.  These are classes that
+     * do not depend on any of the generator's classes or
+     * interfaces.  Examples are JDBC drivers, root classes, root
      * interfaces, etc.
-     *
+     * 
      * @param classLoader
-     *            the class loader
      */
     public static synchronized void addExternalClassLoader(
             ClassLoader classLoader) {
@@ -96,15 +94,14 @@ public class ObjectFactory {
     }
     
     /**
-     * This method returns a class loaded from the context classloader, or the classloader supplied by a client. This is
-     * appropriate for JDBC drivers, model root classes, etc. It is not appropriate for any class that extends one of
-     * the supplied classes or interfaces.
-     *
+     * This method returns a class loaded from the context classloader, or the
+     * classloader supplied by a client. This is appropriate for JDBC drivers,
+     * model root classes, etc. It is not appropriate for any class that extends
+     * one of the supplied classes or interfaces.
+     * 
      * @param type
-     *            the type
      * @return the Class loaded from the external classloader
      * @throws ClassNotFoundException
-     *             the class not found exception
      */
     public static Class<?> externalClassForName(String type)
             throws ClassNotFoundException {
@@ -124,13 +121,6 @@ public class ObjectFactory {
         return internalClassForName(type);
     }
 
-    /**
-     * Creates a new Object object.
-     *
-     * @param type
-     *            the type
-     * @return the object
-     */
     public static Object createExternalObject(String type) {
         Object answer;
 
@@ -145,15 +135,6 @@ public class ObjectFactory {
         return answer;
     }
 
-    /**
-     * Internal class for name.
-     *
-     * @param type
-     *            the type
-     * @return the class
-     * @throws ClassNotFoundException
-     *             the class not found exception
-     */
     public static Class<?> internalClassForName(String type)
             throws ClassNotFoundException {
         Class<?> clazz = null;
@@ -172,13 +153,6 @@ public class ObjectFactory {
         return clazz;
     }
 
-    /**
-     * Gets the resource.
-     *
-     * @param resource
-     *            the resource
-     * @return the resource
-     */
     public static URL getResource(String resource) {
         URL url;
 
@@ -199,13 +173,6 @@ public class ObjectFactory {
         return url;
     }
 
-    /**
-     * Creates a new Object object.
-     *
-     * @param type
-     *            the type
-     * @return the object
-     */
     public static Object createInternalObject(String type) {
         Object answer;
 
@@ -222,15 +189,6 @@ public class ObjectFactory {
         return answer;
     }
 
-    /**
-     * Creates a new Object object.
-     *
-     * @param context
-     *            the context
-     * @param warnings
-     *            the warnings
-     * @return the java type resolver
-     */
     public static JavaTypeResolver createJavaTypeResolver(Context context,
             List<String> warnings) {
         JavaTypeResolverConfiguration config = context
@@ -258,15 +216,6 @@ public class ObjectFactory {
         return answer;
     }
 
-    /**
-     * Creates a new Object object.
-     *
-     * @param context
-     *            the context
-     * @param pluginConfiguration
-     *            the plugin configuration
-     * @return the plugin
-     */
     public static Plugin createPlugin(Context context,
             PluginConfiguration pluginConfiguration) {
         Plugin plugin = (Plugin) createInternalObject(pluginConfiguration
@@ -276,13 +225,6 @@ public class ObjectFactory {
         return plugin;
     }
 
-    /**
-     * Creates a new Object object.
-     *
-     * @param context
-     *            the context
-     * @return the comment generator
-     */
     public static CommentGenerator createCommentGenerator(Context context) {
 
         CommentGeneratorConfiguration config = context
@@ -305,13 +247,6 @@ public class ObjectFactory {
         return answer;
     }
 
-    /**
-     * Creates a new Object object.
-     *
-     * @param context
-     *            the context
-     * @return the java formatter
-     */
     public static JavaFormatter createJavaFormatter(Context context) {
         String type = context.getProperty(PropertyRegistry.CONTEXT_JAVA_FORMATTER);
         if (!StringUtility.stringHasValue(type)) {
@@ -325,13 +260,6 @@ public class ObjectFactory {
         return answer;
     }
     
-    /**
-     * Creates a new Object object.
-     *
-     * @param context
-     *            the context
-     * @return the xml formatter
-     */
     public static XmlFormatter createXmlFormatter(Context context) {
         String type = context.getProperty(PropertyRegistry.CONTEXT_XML_FORMATTER);
         if (!StringUtility.stringHasValue(type)) {
@@ -345,17 +273,6 @@ public class ObjectFactory {
         return answer;
     }
     
-    /**
-     * Creates a new Object object.
-     *
-     * @param tableConfiguration
-     *            the table configuration
-     * @param table
-     *            the table
-     * @param context
-     *            the context
-     * @return the introspected table
-     */
     public static IntrospectedTable createIntrospectedTable(
             TableConfiguration tableConfiguration, FullyQualifiedTable table,
             Context context) {
@@ -368,13 +285,12 @@ public class ObjectFactory {
     }
 
     /**
-     * This method creates an introspected table implementation that is only usable for validation (i.e. for a context
-     * to determine if the target is ibatis2 or mybatis3).
-     * 
-     *
+     * This method creates an introspected table implementation that is
+     * only usable for validation (i.e. for a context to determine
+     * if the target is ibatis2 or mybatis3).
+     *  
      * @param context
-     *            the context
-     * @return the introspected table
+     * @return
      */
     public static IntrospectedTable createIntrospectedTableForValidation(Context context) {
         String type = context.getTargetRuntime();
@@ -398,13 +314,6 @@ public class ObjectFactory {
         return answer;
     }
     
-    /**
-     * Creates a new Object object.
-     *
-     * @param context
-     *            the context
-     * @return the introspected column
-     */
     public static IntrospectedColumn createIntrospectedColumn(Context context) {
         String type = context.getIntrospectedColumnImpl();
         if (!stringHasValue(type)) {

@@ -3,86 +3,68 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Philosophy and Apology</title>
+  <title>设计理念</title>
   <link rel="stylesheet" type="text/css" href="mbgstyle.css" />
 </head>
 <body>
-<h1>Philosophy and Apology</h1>
-<p>Some philosophical questions might be raised by this tool because the
- tool is more focused on database tables than on the domain model.
- We will take a few paragraphs to talk about this approach.</p>
+<h1>设计理念</h1>
+<p>此工具可能会引发一些哲理性问题，
+因为该工具是更侧重于数据库表，而不是实体类。
+我们将采取几个段落来谈论这种做法。</p>
 
-<p>First of all, this tool does what it does.  We are not making any kind of statement
-about how projects should, or should not, be structured.  In general we are strong proponents
-of rich domain models - but creating a rich domain model is quite a different thing from
-answering the question of how that model should be persisted.</p>
+<p>首先，这个工具做什么。我们不是在做任何有关项目应该或不应该是结构化这种说法的。
+在一般情况下我们支持富实体类，
+但创建一个富实体类和是否应该坚持这种模式完全不是一码事。</p>
 
-<p>If your particular design philosophy  is that the domain model drives all decisions, and
- that the database design is subservient to the domain model, then this tool - and MyBatis
- itself - may not be the proper fit for your application.  In that case, we would suggest
- taking a serious look at <a target="_blank" href="http://www.hibernate.org">Hibernate</a>
- - it may fit
- more closely with your application design and philosophy.</p>
+<p>如果您特定的设计理念是实体类驱动所有的决策，数据库设计是屈从于实体类，
+那么这个工具 - 和MyBatis本身 - 可能不适合您的应用程序。
+在这种情况下，我们建议您认真考虑
+<a target="_blank" href="http://www.hibernate.org">Hibernate</a> - 他可能更贴近您的应用程序和设计理念。</p>
 
-<p>But not all projects fit that paradigm.  Very few truly enterprise
- class applications do.  MyBatis can be of great help in projects where
- database design is seen as a co-equal to domain object design.
-MyBatis is not an object relational mapper, and does not attempt to transparently
-persist objects.  So it falls on application developers to write SQL to interact with
-database tables.</p>
+<p>但并非所有的项目都适合这种模式。很少有真正的企业级应用程序会这么做。
+MyBatis对那些将数据库表设计和实体对象设计看做一样的项目有很大的帮助。
+MyBatis不是对象关系映射，并且不会尝试去持久化对象。所以他着眼于应用开发人员编写SQL和数据库表进行交互。</p>
 
-<p>In large or enterprise class projects, many of these factors are quite common:</p>
+<p>在大型或企业级的项目，其中的许多因素是很常见:</p>
 <ul>
-  <li>Database design is often a separate function (with separate management) from OO domain
-      design
+  <li>数据库设计往往是从 OO 实体设计一个单独的功能（有单独的管理）
   </li>
-  <li>Database designers do not have OO tools (like inheritance), so they don't think
-      in OO terms</li>
-  <li>Application designers do not have complete control over the final form of database tables.
-    For example, the data that seems to fit in one object for the application, may be split
-    into several tables in the database.</li>
-  <li>The database design often ends up quite different from the OO design, leading to
-   a significant mismatch between tables and objects.</li>
+  <li>数据库设计者没有 OO 工具 （比如继承），所以他们不从 OO 考虑。</li>
+  <li>应用程序设计人员并不能完全控制数据库表的最后形式。
+    例如，在应用中适合存在于一个对象的数据，在数据库中可能被分成几个表。</li>
+  <li>数据库设计最终和OO设计的完全不同，从而导致表和对象之间的明显不能匹配。</li>
 </ul>
 <p>
-These factors are primary indicators that MyBatis is a good candidate tool for your
-application, and this is the type of project where MyBatis Generator can make a significant impact.
-So how should MyBatis be used in this case?</p>
+从这些主要的指标来看，对您的应用来说 MyBatis 是一个非常不错的候选工具，MyBatis Generator 可以在这类项目起到重要的影响。
+那么，在这种情况下应该如何使用MyBatis?</p>
 
-<p>The Data Access Object(DAO) pattern is still a primary pattern.  MyBatis Generator can generate a basic
-set of objects that match each individual table.  Generated code is transaction neutral.  This means
-that it is easy to extend the generated code to add transaction attributes if more than one table is involved in
-a transaction.  Or, you could create another DAO (or service method) that more closely matches the
-persistence needs of a domain object
-and make use of one or more generated objects in a single transaction.</p>
+<p>数据访问对象(DAO)模式仍然是一种主要的模式。MyBatis Generator可以生成一组基本的和每个表对应的对象。
+生成的代码是和事务无关的。这意味着如果在一个事务中涉及多个表参与，可以很容易的扩展生成的代码。
+或者您可以创建另一个DAO（或服务方法），更紧密地匹配实体对象的持久性需求，并可以再一个事务中使用一个或多个生成的对象。</p>
 
-<p>As an example, consider a typical <code>Order</code> object - the typical header/detail problem.
-In some environments such an object would be persisted into at least 4 tables -
-two key tables, a "header" table, and a "detail" table (again, we are not making any kind of
-statement about whether this is "correct" design, just stating a fact).
-Your application should still interact with interact with the <code>Order</code> object, and
-there might
-be a <code>saveOrder(Order order)</code> method
-somewhere (in an OrderDAO, or a service object).  That method
-would interact with the generated code for each of the 4 tables involved.</p>
+<p>举个例子，考虑一个典型的 <code>Order</code> 对象，典型的标题和细节的问题。
+在某些环境中这种对象将保存到至少四个表 -
+两个关键表、"标题"表和"详细信息"表 (再次声明，我们不做任何种类的关于这是否"正确"的语句设计，只在陈述一个事实)。
+您的应用程序还应与 <code>Order</code> 对象进行交互,
+并且可能在某个地方（在OrderDAO 或者在一个Service对象）存在一个<code>saveOrder(Order order)</code>方法
+该方法将与所涉及的4个表生成的代码进行交互。</p>
 
-<p>What has code generation bought us in this case?  Several things:</p>
+<p>在这种情况下，代码生成器给我们带来什么? 有以下几种:</p>
 <ul>
-  <li>Reuse - it is likely that some tables will need to be accessed from multiple different DAOs
-  or service methods.  Creating a DAO for each table promotes reuse and consistency within the
-  application.</li>
-  <li>Database abstraction - a service layer typically defines persistence in your application.  Those
-    methods can be stabilized fairly quickly.  As database design evolves:
+  <li>重用（复用） - 很可能是一些表将需要从不同的DAO或者Service方法访问。
+    为每个表创建一个 DAO 可以促进重用和应用程序内的一致性。</li>
+  <li>数据库抽象 - 服务层通常在应用程序中定义持久性。这些方法可以很快稳定。
+    随着数据库设计的发展：
     <ol>
-      <li>Code can quickly be regenerated as the tables change</li>
-      <li>The service methods can be modified as necessary</li>
-      <li>Higher layers in the application remain unchanged</li>
+      <li>代码可以很快的随着表的改变而重新生成</li>
+      <li>Service方法可以根据需要修改</li>
+      <li>更高层的应用程序保持不变</li>
     </ol>
   </li>
-  <li>Developer productivity - generating table based DAOs is quick and repeatable and error free.
-    Developers can concentrate on Object persistence, and on complex join queries if needed.</li>
-  <li>Fewer defects - because the most tedious and error prone part of any application (getting the
-   SQL to match the objects) is automated.</li>
+  <li>开发者的效率 - 生成基于表的DAO是很快速、可重复和无差错的。
+
+   开发人员可以专注于对象持久化和可能需要的复杂的联接查询。</li>
+  <li>更少的缺陷 - 因为所有应用程序中最繁琐和最容易出错的部分（获得SQL匹配的对象）是自动化的。</li>
 </ul>
 </body>
 </html>

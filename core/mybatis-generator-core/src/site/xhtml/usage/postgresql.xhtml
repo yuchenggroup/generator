@@ -3,33 +3,26 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>PostgreSQL Usage Notes</title>
+  <title>PostgreSQL 使用注意事项</title>
   <link rel="stylesheet" type="text/css" href="../mbgstyle.css" />
 </head>
 <body>
-<h1>PostgreSQL Usage Notes</h1>
-<h2>Case Sensitivity</h2>
-<p>PostgreSQL is case sensitive with regards to all database identifiers
-(table names, schema names, column names, etc.)  In addition, PostgreSQL
-has a distinct preference for all identifiers being in all lower case letters.
-If you use all lower case identifiers for PostgreSQL, then MyBatis Generator will find tables
-and write correct SQL with no additional consideration.  If you used mixed cased,
-or upper case, identifiers you will
-need to configure MyBatis Generator appropriately:</p>
+<h1>PostgreSQL 使用注意事项</h1>
+<h2>区分大小写</h2>
+<p>PostgreSQL所有的数据库标识符(表名,模式名,列明等)是区分大小写的。此外，PostgreSQL明显的偏好所有标识符使用小写字母。
+如果您使用全部小写标识符的PostgreSQL，MyBatis Generator不需要任何额外的配置就会发现表并且编写正确的SQL。如果您使用混合或者大写模式，您需要适当配置MyBatis Generator:</p>
 <ul>
-  <li>Use the <code>delimitIdentifiers</code> option if your table or schema
-      is mixed case or all upper case.</li>
-  <li>For each mixed case or upper case column you could specify a
-      <code>&lt;columnOverride&gt;</code> element to specifically delimit the column,
-      or you could specify the <code>delimitAllColumns</code> attribute
-      to delimit all column names.</li>
+  <li>当您的表或模式是大小写混合或全部大写时，使用<code>delimitIdentifiers</code>配置。</li>
+  <li>为每个大小写混合或大写的列可以指定
+      <code>&lt;columnOverride&gt;</code>元素来指定列，
+      或者您可以指定<code>delimitAllColumns</code>属性来指定所有的列。</li>
 </ul>
-<p>Examples:</p>
+<p>例子1:</p>
 <pre>
   &lt;table schema="HR" tableName="Employees"
       delimitIdentifiers="true" delimitAllColumns="true"/&gt;
 </pre>
-<p>Or...</p>
+<p>例子2...</p>
 <pre>
   &lt;table schema="HR" tableName="Employees" delimitIdentifiers="true" &gt;
     &lt;columnOverride column="EmployeeId" delimitedColumnName="true" /&gt;
