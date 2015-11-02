@@ -11,11 +11,9 @@ MyBatis 代码生成器 (MBG)
 
 专为 MyBatis 和 iBATIS 设计的代码生成器.
 
-本程序主要为各个版本的 MyBatis 生成代码, 同时也兼容 2.2.0 及以上的 iBATIS 版本. 
+本程序主要为各个版本的 MyBatis 生成代码, 同时也兼容 2.2.0 及以上版本的 iBATIS. 
 
-实现原理是解析数据库中的表(一或多张表), 然后生成相应的访问数据库的组件。
-
-减少了MyBatis的大量初始化配置/映射任务。MBG的目标是生成最常见的CRUD操作(创建、检索、更新、删除; Create, Retrieve, Update, Delete)。
+实现原理是解析数据库中的表(一或多张表), 然后生成相应的访问数据库的组件。通过MBG可以节省使用MyBatis的大量初始化配置/映射任务。MBG的目标是生成最常见的CRUD操作(创建、检索、更新、删除; Create, Retrieve, Update, Delete)。
 
 
 
