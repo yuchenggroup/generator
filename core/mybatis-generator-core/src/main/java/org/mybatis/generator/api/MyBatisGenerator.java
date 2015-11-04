@@ -1,33 +1,19 @@
-/*
- *  Copyright 2005 The Apache Software Foundation
+/**
+ *    Copyright 2006-2015 the original author or authors.
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
  */
 package org.mybatis.generator.api;
-
-import static org.mybatis.generator.internal.util.ClassloaderUtility.getCustomClassloader;
-import static org.mybatis.generator.internal.util.messages.Messages.getString;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.Context;
@@ -35,9 +21,19 @@ import org.mybatis.generator.config.MergeConstants;
 import org.mybatis.generator.exception.InvalidConfigurationException;
 import org.mybatis.generator.exception.ShellException;
 import org.mybatis.generator.internal.DefaultShellCallback;
-import org.mybatis.generator.internal.ObjectFactory;
 import org.mybatis.generator.internal.NullProgressCallback;
+import org.mybatis.generator.internal.ObjectFactory;
 import org.mybatis.generator.internal.XmlFileMergerJaxp;
+
+import java.io.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static org.mybatis.generator.internal.util.ClassloaderUtility.getCustomClassloader;
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
 /**
  * This class is the main interface to MyBatis generator. A typical execution of
@@ -61,6 +57,8 @@ public class MyBatisGenerator {
     private ShellCallback shellCallback;
 
     private List<GeneratedJavaFile> generatedJavaFiles;
+
+    private List<GeneratedExtjsFile> generatedExtjsFiles;
 
     private List<GeneratedXmlFile> generatedXmlFiles;
 
@@ -108,6 +106,7 @@ public class MyBatisGenerator {
             this.warnings = warnings;
         }
         generatedJavaFiles = new ArrayList<GeneratedJavaFile>();
+        generatedExtjsFiles = new ArrayList<GeneratedExtjsFile>();
         generatedXmlFiles = new ArrayList<GeneratedXmlFile>();
         projects = new HashSet<String>();
 
@@ -190,6 +189,7 @@ public class MyBatisGenerator {
         }
 
         generatedJavaFiles.clear();
+        generatedExtjsFiles.clear();
         generatedXmlFiles.clear();
 
         // calculate the contexts to run
@@ -232,11 +232,13 @@ public class MyBatisGenerator {
 
         for (Context context : contextsToRun) {
             context.generateFiles(callback, generatedJavaFiles,
+                    generatedExtjsFiles,
                     generatedXmlFiles, warnings);
         }
 
         // now save the files
         callback.saveStarted(generatedXmlFiles.size()
+                + generatedExtjsFiles.size()
                 + generatedJavaFiles.size());
 
         for (GeneratedXmlFile gxf : generatedXmlFiles) {
@@ -312,6 +314,45 @@ public class MyBatisGenerator {
                 callback.startTask(getString(
                         "Progress.15", targetFile.getName())); //$NON-NLS-1$
                 writeFile(targetFile, source, gjf.getFileEncoding());
+            } catch (ShellException e) {
+                warnings.add(e.getMessage());
+            }
+        }
+
+
+
+        for (GeneratedExtjsFile extf : generatedExtjsFiles) {
+            projects.add(extf.getTargetProject());
+
+            File targetFile;
+            String source;
+            try {
+                File directory = shellCallback.getDirectory(extf
+                        .getTargetProject(), extf.getTargetPackage());
+                targetFile = new File(directory, extf.getFileName());
+                if (targetFile.exists()) {
+                    if (shellCallback.isMergeSupported()) {
+                        // TODO 未处理合并
+                        source = extf.getFormattedContent();
+                    } else if (shellCallback.isOverwriteEnabled()) {
+                        source = extf.getFormattedContent();
+                        warnings.add(getString("Warning.11", //$NON-NLS-1$
+                                targetFile.getAbsolutePath()));
+                    } else {
+                        source = extf.getFormattedContent();
+                        targetFile = getUniqueFileName(directory, extf
+                                .getFileName());
+                        warnings.add(getString(
+                                "Warning.2", targetFile.getAbsolutePath())); //$NON-NLS-1$
+                    }
+                } else {
+                    source = extf.getFormattedContent();
+                }
+
+                callback.checkCancel();
+                callback.startTask(getString(
+                        "Progress.15", targetFile.getName())); //$NON-NLS-1$
+                writeFile(targetFile, source, extf.getFileEncoding());
             } catch (ShellException e) {
                 warnings.add(e.getMessage());
             }

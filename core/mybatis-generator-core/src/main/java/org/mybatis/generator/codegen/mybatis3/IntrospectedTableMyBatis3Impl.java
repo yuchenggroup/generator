@@ -1,33 +1,28 @@
-/*
- *  Copyright 2009 The Apache Software Foundation
+/**
+ *    Copyright 2006-2015 the original author or authors.
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
  */
 package org.mybatis.generator.codegen.mybatis3;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.mybatis.generator.api.GeneratedJavaFile;
-import org.mybatis.generator.api.GeneratedXmlFile;
-import org.mybatis.generator.api.IntrospectedTable;
-import org.mybatis.generator.api.ProgressCallback;
+import org.mybatis.generator.api.*;
 import org.mybatis.generator.api.dom.java.CompilationUnit;
 import org.mybatis.generator.api.dom.xml.Document;
-import org.mybatis.generator.codegen.AbstractGenerator;
-import org.mybatis.generator.codegen.AbstractJavaClientGenerator;
-import org.mybatis.generator.codegen.AbstractJavaGenerator;
-import org.mybatis.generator.codegen.AbstractXmlGenerator;
+import org.mybatis.generator.codegen.*;
+import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsControllerGenerator;
+import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsGridGenerator;
+import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsModelGenerator;
+import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsStoreGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.AnnotatedClientGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.JavaMapperGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.MixedClientGenerator;
@@ -36,8 +31,12 @@ import org.mybatis.generator.codegen.mybatis3.model.ExampleGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.PrimaryKeyGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.RecordWithBLOBsGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.XMLMapperGenerator;
+import org.mybatis.generator.config.ExtjsGeneratorConfiguration;
 import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.internal.ObjectFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -47,19 +46,22 @@ import org.mybatis.generator.internal.ObjectFactory;
 public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
     protected List<AbstractJavaGenerator> javaModelGenerators;
     protected List<AbstractJavaGenerator> clientGenerators;
+    protected List<AbstractExtjsGenerator> extjsGenerators;
     protected AbstractXmlGenerator xmlMapperGenerator;
 
     public IntrospectedTableMyBatis3Impl() {
         super(TargetRuntime.MYBATIS3);
         javaModelGenerators = new ArrayList<AbstractJavaGenerator>();
         clientGenerators = new ArrayList<AbstractJavaGenerator>();
+        extjsGenerators = new ArrayList<AbstractExtjsGenerator>();
     }
 
     @Override
     public void calculateGenerators(List<String> warnings,
             ProgressCallback progressCallback) {
         calculateJavaModelGenerators(warnings, progressCallback);
-        
+        calculateExtjsGenerators(warnings, progressCallback);
+
         AbstractJavaClientGenerator javaClientGenerator =
             calculateClientGenerators(warnings, progressCallback);
             
@@ -160,6 +162,40 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
         }
     }
 
+
+    protected void calculateExtjsGenerators(List<String> warnings,
+                                                ProgressCallback progressCallback) {
+
+        // 初始化4个生成器
+        if ("".length() < 5) {
+            AbstractExtjsGenerator extjsGenerator = new ExtjsModelGenerator();
+            initializeAbstractGenerator(extjsGenerator, warnings,
+                    progressCallback);
+            extjsGenerators.add(extjsGenerator);
+        }
+
+        if ("".length() < 5) {
+            AbstractExtjsGenerator extjsGenerator = new ExtjsStoreGenerator();
+            initializeAbstractGenerator(extjsGenerator, warnings,
+                    progressCallback);
+            extjsGenerators.add(extjsGenerator);
+        }
+
+        if ("".length() < 5) {
+            AbstractExtjsGenerator extjsGenerator = new ExtjsGridGenerator();
+            initializeAbstractGenerator(extjsGenerator, warnings,
+                    progressCallback);
+            extjsGenerators.add(extjsGenerator);
+        }
+
+        if ("".length() < 5) {
+            AbstractExtjsGenerator extjsGenerator = new ExtjsControllerGenerator();
+            initializeAbstractGenerator(extjsGenerator, warnings,
+                    progressCallback);
+            extjsGenerators.add(extjsGenerator);
+        }
+    }
+
     protected void initializeAbstractGenerator(
             AbstractGenerator abstractGenerator, List<String> warnings,
             ProgressCallback progressCallback) {
@@ -207,6 +243,38 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
     }
 
     @Override
+    public List<GeneratedExtjsFile> getGeneratedExtjsFiles() {
+        List<GeneratedExtjsFile> answer = new ArrayList<GeneratedExtjsFile>();
+
+        // 依赖的是JavaModel
+        // TODO 需要生成多个文件
+        for (AbstractExtjsGenerator extjsGenerator : extjsGenerators) {
+            List<CompilationUnit> compilationUnits = extjsGenerator
+                    .getCompilationUnits();
+            if(compilationUnits.isEmpty()){
+                continue;
+            }
+            CompilationUnit compilationUnit = compilationUnits.get(0);
+            ExtjsGeneratorConfiguration extjsGeneratorConfiguration
+                    = context.getExtjsGeneratorConfiguration();
+            if(null == extjsGeneratorConfiguration){
+                continue;
+            }
+
+            GeneratedExtjsFile extjsFile = new GeneratedExtjsFile(
+                    extjsGenerator,
+                    compilationUnit,
+                    extjsGeneratorConfiguration,
+                    context.getProperty(PropertyRegistry.CONTEXT_EXTJS_FILE_ENCODING),
+                    context.getExtjsFormatter()
+            );
+            answer.add(extjsFile);
+        }
+
+        return answer;
+    }
+
+    @Override
     public List<GeneratedXmlFile> getGeneratedXmlFiles() {
         List<GeneratedXmlFile> answer = new ArrayList<GeneratedXmlFile>();
 
@@ -226,7 +294,7 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
 
     @Override
     public int getGenerationSteps() {
-        return javaModelGenerators.size() + clientGenerators.size() +
+        return javaModelGenerators.size() + clientGenerators.size() + extjsGenerators.size() +
             (xmlMapperGenerator == null ? 0 : 1);
     }
 

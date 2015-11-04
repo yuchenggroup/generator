@@ -1,24 +1,27 @@
-/*
- *  Copyright 2005 The Apache Software Foundation
+/**
+ *    Copyright 2006-2015 the original author or authors.
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
  */
 package org.mybatis.generator.config;
 
-import static org.mybatis.generator.internal.util.StringUtility.composeFullyQualifiedTableName;
-import static org.mybatis.generator.internal.util.StringUtility.isTrue;
-import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
-import static org.mybatis.generator.internal.util.messages.Messages.getString;
+import org.mybatis.generator.api.*;
+import org.mybatis.generator.api.dom.xml.Attribute;
+import org.mybatis.generator.api.dom.xml.XmlElement;
+import org.mybatis.generator.internal.ObjectFactory;
+import org.mybatis.generator.internal.PluginAggregator;
+import org.mybatis.generator.internal.db.ConnectionFactory;
+import org.mybatis.generator.internal.db.DatabaseIntrospector;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,21 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.mybatis.generator.api.CommentGenerator;
-import org.mybatis.generator.api.GeneratedJavaFile;
-import org.mybatis.generator.api.GeneratedXmlFile;
-import org.mybatis.generator.api.JavaFormatter;
-import org.mybatis.generator.api.Plugin;
-import org.mybatis.generator.api.IntrospectedTable;
-import org.mybatis.generator.api.JavaTypeResolver;
-import org.mybatis.generator.api.ProgressCallback;
-import org.mybatis.generator.api.XmlFormatter;
-import org.mybatis.generator.api.dom.xml.Attribute;
-import org.mybatis.generator.api.dom.xml.XmlElement;
-import org.mybatis.generator.internal.ObjectFactory;
-import org.mybatis.generator.internal.PluginAggregator;
-import org.mybatis.generator.internal.db.ConnectionFactory;
-import org.mybatis.generator.internal.db.DatabaseIntrospector;
+import static org.mybatis.generator.internal.util.StringUtility.*;
+import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
 /**
  * @author Jeff Butler
@@ -55,6 +45,8 @@ public class Context extends PropertyHolder {
     private JavaTypeResolverConfiguration javaTypeResolverConfiguration;
 
     private JavaModelGeneratorConfiguration javaModelGeneratorConfiguration;
+
+    private ExtjsGeneratorConfiguration extjsGeneratorConfiguration;
 
     private JavaClientGeneratorConfiguration javaClientGeneratorConfiguration;
 
@@ -81,7 +73,9 @@ public class Context extends PropertyHolder {
     private Boolean autoDelimitKeywords;
     
     private JavaFormatter javaFormatter;
-    
+
+    private ExtjsFormatter extjsFormatter;
+
     private XmlFormatter xmlFormatter;
 
     /**
@@ -119,6 +113,10 @@ public class Context extends PropertyHolder {
         return javaModelGeneratorConfiguration;
     }
 
+    public ExtjsGeneratorConfiguration getExtjsGeneratorConfiguration() {
+        return extjsGeneratorConfiguration;
+    }
+
     public JavaTypeResolverConfiguration getJavaTypeResolverConfiguration() {
         return javaTypeResolverConfiguration;
     }
@@ -153,6 +151,10 @@ public class Context extends PropertyHolder {
             errors.add(getString("ValidationError.8", id)); //$NON-NLS-1$
         } else {
             javaModelGeneratorConfiguration.validate(errors, id);
+        }
+
+        if (extjsGeneratorConfiguration != null) {
+            extjsGeneratorConfiguration.validate(errors, id);
         }
 
         if (javaClientGeneratorConfiguration != null) {
@@ -205,6 +207,11 @@ public class Context extends PropertyHolder {
     public void setJavaModelGeneratorConfiguration(
             JavaModelGeneratorConfiguration javaModelGeneratorConfiguration) {
         this.javaModelGeneratorConfiguration = javaModelGeneratorConfiguration;
+    }
+
+    public void setExtjsGeneratorConfiguration(
+            ExtjsGeneratorConfiguration extjsGeneratorConfiguration) {
+        this.extjsGeneratorConfiguration = extjsGeneratorConfiguration;
     }
 
     public void setJavaTypeResolverConfiguration(
@@ -276,6 +283,11 @@ public class Context extends PropertyHolder {
                     .toXmlElement());
         }
 
+        if (extjsGeneratorConfiguration != null) {
+            xmlElement.addElement(extjsGeneratorConfiguration
+                    .toXmlElement());
+        }
+
         if (sqlMapGeneratorConfiguration != null) {
             xmlElement.addElement(sqlMapGeneratorConfiguration.toXmlElement());
         }
@@ -333,7 +345,14 @@ public class Context extends PropertyHolder {
 
         return javaFormatter;
     }
-    
+
+    public ExtjsFormatter getExtjsFormatter() {
+        if (extjsFormatter == null) {
+            extjsFormatter = ObjectFactory.createExtjsFormatter(this);
+        }
+        return extjsFormatter;
+    }
+
     public XmlFormatter getXmlFormatter() {
         if (xmlFormatter == null) {
             xmlFormatter = ObjectFactory.createXmlFormatter(this);
@@ -518,6 +537,55 @@ public class Context extends PropertyHolder {
 
         generatedJavaFiles.addAll(pluginAggregator
                 .contextGenerateAdditionalJavaFiles());
+        generatedXmlFiles.addAll(pluginAggregator
+                .contextGenerateAdditionalXmlFiles());
+    }
+
+
+    public void generateFiles(ProgressCallback callback,
+                              List<GeneratedJavaFile> generatedJavaFiles,
+                              List<GeneratedExtjsFile> generatedExtjsFiles,
+                              List<GeneratedXmlFile> generatedXmlFiles, List<String> warnings)
+            throws InterruptedException {
+
+        pluginAggregator = new PluginAggregator();
+        for (PluginConfiguration pluginConfiguration : pluginConfigurations) {
+            Plugin plugin = ObjectFactory.createPlugin(this,
+                    pluginConfiguration);
+            if (plugin.validate(warnings)) {
+                pluginAggregator.addPlugin(plugin);
+            } else {
+                warnings.add(getString("Warning.24", //$NON-NLS-1$
+                        pluginConfiguration.getConfigurationType(), id));
+            }
+        }
+
+        if (introspectedTables != null) {
+            for (IntrospectedTable introspectedTable : introspectedTables) {
+                callback.checkCancel();
+
+                introspectedTable.initialize();
+                introspectedTable.calculateGenerators(warnings, callback);
+                generatedJavaFiles.addAll(introspectedTable
+                        .getGeneratedJavaFiles());
+                generatedExtjsFiles.addAll(introspectedTable
+                        .getGeneratedExtjsFiles());
+                generatedXmlFiles.addAll(introspectedTable
+                        .getGeneratedXmlFiles());
+
+                generatedJavaFiles.addAll(pluginAggregator
+                        .contextGenerateAdditionalJavaFiles(introspectedTable));
+                generatedExtjsFiles.addAll(pluginAggregator
+                        .contextGenerateAdditionalExtjsFiles(introspectedTable));
+                generatedXmlFiles.addAll(pluginAggregator
+                        .contextGenerateAdditionalXmlFiles(introspectedTable));
+            }
+        }
+
+        generatedJavaFiles.addAll(pluginAggregator
+                .contextGenerateAdditionalJavaFiles());
+        generatedExtjsFiles.addAll(pluginAggregator
+                .contextGenerateAdditionalExtjsFiles());
         generatedXmlFiles.addAll(pluginAggregator
                 .contextGenerateAdditionalXmlFiles());
     }

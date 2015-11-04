@@ -49,7 +49,7 @@
   tables.
 -->
 <!ELEMENT context (property*, plugin*, commentGenerator?, jdbcConnection, javaTypeResolver?,
-                         javaModelGenerator, sqlMapGenerator?, javaClientGenerator?, table+)>
+                         javaModelGenerator, extjsGenerator?, sqlMapGenerator?, javaClientGenerator?, table+)>
 <!ATTLIST context id ID #REQUIRED
   defaultModelType CDATA #IMPLIED
   targetRuntime CDATA #IMPLIED
@@ -109,7 +109,8 @@
 <!ELEMENT extjsGenerator (property*)>
 <!ATTLIST extjsGenerator
         targetPackage CDATA #REQUIRED
-        targetProject CDATA #REQUIRED>
+        targetProject CDATA #REQUIRED
+        appName CDATA #REQUIRED>
 
 
 <!--

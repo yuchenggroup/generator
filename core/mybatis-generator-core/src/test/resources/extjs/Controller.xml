@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class>
+Ext.define('${appName}.controller.${shortPackage}.${modelName}Controller', {
+    extend: 'Ext.app.Controller',
+    views: ['${shortPackage}.${modelName}Grid'],
+    stores : ["${shortPackage}.${modelName}Store"],
+    models : ["${shortPackage}.${modelName}"],
+    refs: [{
+        ref : 'grid',
+        selector : '${shortPackage}${modelName}Grid'
+    }],
+
+    getMainView: function () {
+        return this.getView('${shortPackage}.${modelName}Grid');
+    },
+    init: function () {
+    }
+});
+</class>

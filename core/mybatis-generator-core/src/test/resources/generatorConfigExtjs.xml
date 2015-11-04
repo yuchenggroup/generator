@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <classPathEntry
+            location="E:/CODE_ALL/01_SVN_ALL/achievement/dao_gen_util/mysql-connector-java-5.1.30.jar"/>
+    <context id="MyBatis3XMLMapper" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.11.100.12:6000/ezb_global_achievement?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="ezb_global_achie" password="ezb_global_achie">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.yuchenggroup.global.model"
+                            targetProject="target/generated-sources/mybatis3">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <extjsGenerator appName="ESSM" targetPackage="achieve"
+                        targetProject="target/generated-sources/mybatis3">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </extjsGenerator>
+
+        <sqlMapGenerator targetPackage="com.yuchenggroup.global.dao"
+                         targetProject="target/generated-sources/mybatis3">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.yuchenggroup.global.client"
+                             targetProject="target/generated-sources/mybatis3">
+        </javaClientGenerator>
+
+        <table tableName="sm_user" domainObjectName="SmUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <columnOverride column="enablestate" javaType="Integer" jdbcType="TINYINT" />
+            <columnOverride column="dr" javaType="Integer" jdbcType="TINYINT" />
+        </table>
+    </context>
+
+</generatorConfiguration>

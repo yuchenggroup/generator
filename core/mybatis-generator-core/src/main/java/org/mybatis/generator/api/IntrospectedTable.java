@@ -1,44 +1,30 @@
-/*
- *  Copyright 2006 The Apache Software Foundation
+/**
+ *    Copyright 2006-2015 the original author or authors.
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
  */
-
 package org.mybatis.generator.api;
 
-import static org.mybatis.generator.internal.util.StringUtility.isTrue;
-import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
-import org.mybatis.generator.config.Context;
-import org.mybatis.generator.config.GeneratedKey;
-import org.mybatis.generator.config.JavaClientGeneratorConfiguration;
-import org.mybatis.generator.config.JavaModelGeneratorConfiguration;
-import org.mybatis.generator.config.ModelType;
-import org.mybatis.generator.config.PropertyHolder;
-import org.mybatis.generator.config.PropertyRegistry;
-import org.mybatis.generator.config.SqlMapGeneratorConfiguration;
-import org.mybatis.generator.config.TableConfiguration;
+import org.mybatis.generator.config.*;
 import org.mybatis.generator.internal.rules.ConditionalModelRules;
 import org.mybatis.generator.internal.rules.FlatModelRules;
 import org.mybatis.generator.internal.rules.HierarchicalModelRules;
 import org.mybatis.generator.internal.rules.Rules;
+
+import java.util.*;
+
+import static org.mybatis.generator.internal.util.StringUtility.isTrue;
+import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
 
 /**
  * Base class for all code generator implementations. This class provides many
@@ -60,6 +46,10 @@ public abstract class IntrospectedTable {
         ATTR_BASE_RECORD_TYPE,
         ATTR_RECORD_WITH_BLOBS_TYPE,
         ATTR_EXAMPLE_TYPE,
+        ATTR_EXTJS_MODEL_TYPE,
+        ATTR_EXTJS_STORE_TYPE,
+        ATTR_EXTJS_GRID_TYPE,
+        ATTR_EXTJS_CONTROLLER_TYPE,
         ATTR_IBATIS2_SQL_MAP_PACKAGE,
         ATTR_IBATIS2_SQL_MAP_FILE_NAME,
         ATTR_IBATIS2_SQL_MAP_NAMESPACE,
@@ -364,6 +354,23 @@ public abstract class IntrospectedTable {
         return internalAttributes
                 .get(InternalAttribute.ATTR_RECORD_WITH_BLOBS_TYPE);
     }
+    //
+    public String getExtjsModelType() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_EXTJS_MODEL_TYPE);
+    }
+    public String getExtjsStoreType() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_EXTJS_STORE_TYPE);
+    }
+    public String getExtjsGridType() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_EXTJS_GRID_TYPE);
+    }
+    public String getExtjsControllerType() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_EXTJS_CONTROLLER_TYPE);
+    }
 
     /**
      * Calculates an SQL Map file name for the table. Typically the name is
@@ -487,6 +494,7 @@ public abstract class IntrospectedTable {
     public void initialize() {
         calculateJavaClientAttributes();
         calculateModelAttributes();
+        calculateExtjsAttributes();
         calculateXmlAttributes();
 
         if (tableConfiguration.getModelType() == ModelType.HIERARCHICAL) {
@@ -870,6 +878,93 @@ public abstract class IntrospectedTable {
         setExampleType(sb.toString());
     }
 
+    protected String calculateExtjsPackage() {
+        ExtjsGeneratorConfiguration config = context
+                .getExtjsGeneratorConfiguration();
+
+        StringBuilder sb = new StringBuilder();
+
+        if(null != config){
+            sb.append(config.getTargetPackage());
+        }
+        return sb.toString();
+    }
+
+    protected String calculateExtjsAppName() {
+        ExtjsGeneratorConfiguration config = context
+                .getExtjsGeneratorConfiguration();
+        StringBuilder sb = new StringBuilder();
+        if(null != config){
+            sb.append(config.getAppName());
+        }
+
+        return sb.toString();
+    }
+
+    protected void calculateExtjsAttributes() {
+        String appName = calculateExtjsAppName();
+        String pakkage = calculateExtjsPackage();
+        if(null == appName || appName.trim().isEmpty()){
+            return;
+        }
+        if(null == pakkage || pakkage.trim().isEmpty()){
+            return;
+        }
+        //
+        String domainObjectName = fullyQualifiedTable.getDomainObjectName();
+
+        // TODO 添加
+        //
+        StringBuilder sb = new StringBuilder();
+        // model
+        sb.setLength(0);
+        sb.append(appName);
+        sb.append(".");
+        sb.append("model");
+        sb.append(".");
+        sb.append(pakkage);
+        sb.append('.');
+        sb.append(domainObjectName);
+        setExtjsModel(sb.toString());
+
+        // store
+        sb.setLength(0);
+        sb.append(appName);
+        sb.append(".");
+        sb.append("store");
+        sb.append(".");
+        sb.append(pakkage);
+        sb.append('.');
+        sb.append(domainObjectName);
+        sb.append("Store"); //$NON-NLS-1$
+        setExtjsStore(sb.toString());
+
+        // grid
+        sb.setLength(0);
+        sb.append(appName);
+        sb.append(".");
+        sb.append("view");
+        sb.append(".");
+        sb.append(pakkage);
+        sb.append('.');
+        sb.append(domainObjectName);
+        sb.append("Grid"); //$NON-NLS-1$
+        setExtjsGrid(sb.toString());
+
+
+        // controller
+        sb.setLength(0);
+        sb.append(appName);
+        sb.append(".");
+        sb.append("controller");
+        sb.append(".");
+        sb.append(pakkage);
+        sb.append('.');
+        sb.append(domainObjectName);
+        sb.append("Controller"); //$NON-NLS-1$
+        setExtjsController(sb.toString());
+    }
+
     protected String calculateSqlMapPackage() {
         StringBuilder sb = new StringBuilder();
         SqlMapGeneratorConfiguration config = context
@@ -952,6 +1047,12 @@ public abstract class IntrospectedTable {
     public abstract List<GeneratedJavaFile> getGeneratedJavaFiles();
 
     /**
+     * 获取需要生成的EXTJS文件
+     * @return
+     */
+    public abstract List<GeneratedExtjsFile> getGeneratedExtjsFiles();
+
+    /**
      * This method should return a list of generated XML files related to this
      * table. Most implementations will only return one file - the generated
      * SqlMap file.
@@ -1018,6 +1119,26 @@ public abstract class IntrospectedTable {
     public void setExampleType(String exampleType) {
         internalAttributes
                 .put(InternalAttribute.ATTR_EXAMPLE_TYPE, exampleType);
+    }
+
+    public void setExtjsModel(String extjsModel) {
+        internalAttributes
+                .put(InternalAttribute.ATTR_EXTJS_MODEL_TYPE, extjsModel);
+    }
+
+    public void setExtjsStore(String extjsStore) {
+        internalAttributes
+                .put(InternalAttribute.ATTR_EXTJS_STORE_TYPE, extjsStore);
+    }
+
+    public void setExtjsGrid(String extjsGrid) {
+        internalAttributes
+                .put(InternalAttribute.ATTR_EXTJS_GRID_TYPE, extjsGrid);
+    }
+
+    public void setExtjsController(String extjsController) {
+        internalAttributes
+                .put(InternalAttribute.ATTR_EXTJS_CONTROLLER_TYPE, extjsController);
     }
 
     public void setIbatis2SqlMapPackage(String sqlMapPackage) {
