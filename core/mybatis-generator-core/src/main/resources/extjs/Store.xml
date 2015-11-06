@@ -12,7 +12,6 @@ Ext.define('${appName}.store.${shortPackage}.${modelName}Store', {
             read: 'rest/${shortPackage}/listBy.json'
         },
         actionMethods: {
-            // by default GET
             read   : 'POST'
         },
         reader: {
