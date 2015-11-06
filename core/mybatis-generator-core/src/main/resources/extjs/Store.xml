@@ -9,7 +9,7 @@ Ext.define('${appName}.store.${shortPackage}.${modelName}Store', {
     proxy: {
         type: 'ajax',
         api: {
-            read: 'rest/${shortPackage}/listBy.json' //读取
+            read: 'rest/${shortPackage}/listBy.json'
         },
         actionMethods: {
             // by default GET

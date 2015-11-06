@@ -242,6 +242,7 @@ public abstract class ExtClass {
                         //
                         if("separator".equalsIgnoreCase(name)){
                             //
+                            value = value.replace("\\n","\n");
                             separator = value;
                         }
                     }

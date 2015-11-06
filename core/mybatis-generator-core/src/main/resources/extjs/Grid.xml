@@ -13,7 +13,7 @@ Ext.define("${appName}.view.${shortPackage}.${modelName}Grid", {
 	},
     tbar: [],
 	columns: [
-        <field separator=",\\n">{header: '${fieldName}', dataIndex: '${fieldName}', align:'center', width: 225}</field>
+        <field separator=",\n        ">{header: '${fieldName}', dataIndex: '${fieldName}', align:'center', width: 225}</field>
     ],
 	bbar: {
 		xtype: 'pagingtoolbar',
