@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<class>
-Ext.define('${appName}.model.${shortPackage}.${modelName}',{
-    extend: 'Ext.data.Model',
-    fields: [
-        <field separator=",">'${fieldName}'</field>
-    ]
-});
-</class>
