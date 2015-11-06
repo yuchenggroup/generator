@@ -57,6 +57,7 @@ public abstract class AbstractExtjsGenerator extends AbstractGenerator {
 
             Field field = getJavaBeansField(introspectedColumn, context, introspectedTable);
 
+            topLevelClass.addField(field);
         }
 
         List<CompilationUnit> answer = new ArrayList<CompilationUnit>();

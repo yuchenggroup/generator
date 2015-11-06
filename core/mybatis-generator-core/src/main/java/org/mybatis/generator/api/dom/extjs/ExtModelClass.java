@@ -26,4 +26,11 @@ public class ExtModelClass extends ExtClass {
     public ExtModelClass(List<Field> fields) {
         super(fields);
     }
+
+
+    public String getResName(){
+        String resName = "extjs/Model.xml";
+
+        return resName;
+    }
 }

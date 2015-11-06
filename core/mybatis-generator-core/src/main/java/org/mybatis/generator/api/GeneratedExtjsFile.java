@@ -15,13 +15,18 @@
  */
 package org.mybatis.generator.api;
 
+import org.mybatis.generator.api.dom.extjs.*;
 import org.mybatis.generator.api.dom.java.CompilationUnit;
+import org.mybatis.generator.api.dom.java.Field;
+import org.mybatis.generator.api.dom.java.InnerClass;
 import org.mybatis.generator.codegen.AbstractExtjsGenerator;
 import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsControllerGenerator;
 import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsGridGenerator;
 import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsModelGenerator;
 import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsStoreGenerator;
 import org.mybatis.generator.config.ExtjsGeneratorConfiguration;
+
+import java.util.List;
 
 /**
  * @author Jeff Butler
@@ -65,7 +70,46 @@ public class GeneratedExtjsFile extends GeneratedFile {
 
     @Override
     public String getFormattedContent() {
+        // TODO 在此处使用生成
+        ExtClass moduleClass = getModuleCLass();
+        if(null != moduleClass){
+            return  moduleClass.getFormattedContent(0);
+        }
+        //
         return extjsFormatter.getFormattedContent(compilationUnit,this, generator, extjsGeneratorConfiguration);
+    }
+
+    private ExtClass getModuleCLass(){
+        ExtClass moduleClass = null;
+        //
+        if( compilationUnit instanceof InnerClass){
+            InnerClass innerClass = (InnerClass)compilationUnit;
+            //
+            List<Field> fields = innerClass.getFields();
+            //
+            if(generator instanceof ExtjsModelGenerator){
+                moduleClass = new ExtModelClass(fields);
+            }else if(generator instanceof ExtjsStoreGenerator){
+                moduleClass = new ExtStoreClass(fields);
+            }else if(generator instanceof ExtjsGridGenerator){
+                moduleClass = new ExtGridClass(fields);
+            }else if(generator instanceof ExtjsControllerGenerator){
+                moduleClass = new ExtControllerClass(fields);
+            }
+            //
+            String appName = extjsGeneratorConfiguration.getAppName();
+            String shortPackage = extjsGeneratorConfiguration.getTargetPackage();
+            String modelName = compilationUnit.getType().getShortName();
+            //
+            if(null != moduleClass){
+                moduleClass.setAppName(appName);
+                moduleClass.setShortPackage(shortPackage);
+                moduleClass.setModelName(modelName);
+            }
+        }
+
+        //
+        return moduleClass;
     }
 
     @Override

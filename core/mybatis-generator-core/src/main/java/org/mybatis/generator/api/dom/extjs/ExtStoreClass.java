@@ -26,4 +26,11 @@ public class ExtStoreClass extends ExtClass {
     public ExtStoreClass(List<Field> fields) {
         super(fields);
     }
+
+
+    public String getResName(){
+        String resName = "extjs/Store.xml";
+
+        return resName;
+    }
 }

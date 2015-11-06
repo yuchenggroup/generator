@@ -26,4 +26,11 @@ public class ExtGridClass extends ExtClass {
     public ExtGridClass(List<Field> fields) {
         super(fields);
     }
+
+
+    public String getResName(){
+        String resName = "extjs/Grid.xml";
+
+        return resName;
+    }
 }

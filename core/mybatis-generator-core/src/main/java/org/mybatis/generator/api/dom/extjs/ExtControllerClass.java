@@ -27,4 +27,10 @@ public class ExtControllerClass extends ExtClass {
     public ExtControllerClass(List<Field> fields) {
         super(fields);
     }
+
+    public String getResName(){
+        String resName = "extjs/Controller.xml";
+        return resName;
+    }
+
 }
