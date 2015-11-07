@@ -267,6 +267,8 @@
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
+<parameter name="introspectedColumn" type="org.mybatis.generator.api.IntrospectedColumn">
+</parameter>
 </method>
 <method name="addFieldComment"
  return="void"
@@ -281,8 +283,6 @@
 <parameter name="field" type="org.mybatis.generator.api.dom.java.Field">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
-</parameter>
-<parameter name="introspectedColumn" type="org.mybatis.generator.api.IntrospectedColumn">
 </parameter>
 </method>
 <method name="addGeneralMethodComment"
@@ -551,6 +551,59 @@
 </parameter>
 </method>
 </interface>
+<interface name="ExtjsFormatter"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getFormattedContent"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="compilationUnit" type="org.mybatis.generator.api.dom.java.CompilationUnit">
+</parameter>
+</method>
+<method name="getFormattedContent"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="compilationUnit" type="org.mybatis.generator.api.dom.java.CompilationUnit">
+</parameter>
+<parameter name="generatedExtjsFile" type="org.mybatis.generator.api.GeneratedExtjsFile">
+</parameter>
+<parameter name="generator" type="org.mybatis.generator.codegen.AbstractExtjsGenerator">
+</parameter>
+<parameter name="extjsGeneratorConfiguration" type="org.mybatis.generator.config.ExtjsGeneratorConfiguration">
+</parameter>
+</method>
+<method name="setContext"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="org.mybatis.generator.config.Context">
+</parameter>
+</method>
+</interface>
 <class name="FullyQualifiedTable"
  extends="java.lang.Object"
  abstract="false"
@@ -689,6 +742,129 @@
 >
 <parameter name="isSubPackagesEnabled" type="boolean">
 </parameter>
+</method>
+</class>
+<class name="GeneratedExtjsFile"
+ extends="org.mybatis.generator.api.GeneratedFile"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="GeneratedExtjsFile"
+ type="org.mybatis.generator.api.GeneratedExtjsFile"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="compilationUnit" type="org.mybatis.generator.api.dom.java.CompilationUnit">
+</parameter>
+<parameter name="targetProject" type="java.lang.String">
+</parameter>
+<parameter name="fileEncoding" type="java.lang.String">
+</parameter>
+<parameter name="extjsFormatter" type="org.mybatis.generator.api.ExtjsFormatter">
+</parameter>
+</constructor>
+<constructor name="GeneratedExtjsFile"
+ type="org.mybatis.generator.api.GeneratedExtjsFile"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="compilationUnit" type="org.mybatis.generator.api.dom.java.CompilationUnit">
+</parameter>
+<parameter name="targetProject" type="java.lang.String">
+</parameter>
+<parameter name="extjsFormatter" type="org.mybatis.generator.api.ExtjsFormatter">
+</parameter>
+</constructor>
+<constructor name="GeneratedExtjsFile"
+ type="org.mybatis.generator.api.GeneratedExtjsFile"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="generator" type="org.mybatis.generator.codegen.AbstractExtjsGenerator">
+</parameter>
+<parameter name="compilationUnit" type="org.mybatis.generator.api.dom.java.CompilationUnit">
+</parameter>
+<parameter name="extjsGeneratorConfiguration" type="org.mybatis.generator.config.ExtjsGeneratorConfiguration">
+</parameter>
+<parameter name="property" type="java.lang.String">
+</parameter>
+<parameter name="extjsFormatter" type="org.mybatis.generator.api.ExtjsFormatter">
+</parameter>
+</constructor>
+<method name="getCompilationUnit"
+ return="org.mybatis.generator.api.dom.java.CompilationUnit"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getFileEncoding"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getFileName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getFormattedContent"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTargetPackage"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isMergeable"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 </class>
 <class name="GeneratedFile"
@@ -1694,6 +1870,39 @@
 <parameter name="columnName" type="java.lang.String">
 </parameter>
 </method>
+<method name="calculateExtjsAppName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</method>
+<method name="calculateExtjsAttributes"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</method>
+<method name="calculateExtjsPackage"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</method>
 <method name="calculateGenerators"
  return="void"
  abstract="true"
@@ -2054,6 +2263,50 @@
  visibility="public"
 >
 </method>
+<method name="getExtjsControllerType"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getExtjsGridType"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getExtjsModelType"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getExtjsStoreType"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
 <method name="getFullyQualifiedTable"
  return="org.mybatis.generator.api.FullyQualifiedTable"
  abstract="false"
@@ -2068,6 +2321,17 @@
 <method name="getFullyQualifiedTableNameAtRuntime"
  return="java.lang.String"
  abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getGeneratedExtjsFiles"
+ return="java.util.List&lt;org.mybatis.generator.api.GeneratedExtjsFile&gt;"
+ abstract="true"
  native="false"
  synchronized="false"
  static="false"
@@ -2810,6 +3074,58 @@
  visibility="public"
 >
 <parameter name="s" type="java.lang.String">
+</parameter>
+</method>
+<method name="setExtjsController"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="extjsController" type="java.lang.String">
+</parameter>
+</method>
+<method name="setExtjsGrid"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="extjsGrid" type="java.lang.String">
+</parameter>
+</method>
+<method name="setExtjsModel"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="extjsModel" type="java.lang.String">
+</parameter>
+</method>
+<method name="setExtjsStore"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="extjsStore" type="java.lang.String">
 </parameter>
 </method>
 <method name="setFullyQualifiedTable"
@@ -3570,7 +3886,7 @@
 >
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
-<parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
+<parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
@@ -3587,23 +3903,6 @@
 >
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
-<parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
-</parameter>
-<parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
-</parameter>
-</method>
-<method name="clientDeleteByExampleMethodGenerated"
- return="boolean"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
-</parameter>
 <parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
@@ -3626,7 +3925,7 @@
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
 </method>
-<method name="clientDeleteByPrimaryKeyMethodGenerated"
+<method name="clientDeleteByExampleMethodGenerated"
  return="boolean"
  abstract="true"
  native="false"
@@ -3656,6 +3955,23 @@
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
 <parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
+</parameter>
+<parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
+</parameter>
+</method>
+<method name="clientDeleteByPrimaryKeyMethodGenerated"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
+</parameter>
+<parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
@@ -3689,7 +4005,7 @@
 >
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
-<parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
+<parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
@@ -3706,23 +4022,6 @@
 >
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
-<parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
-</parameter>
-<parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
-</parameter>
-</method>
-<method name="clientInsertSelectiveMethodGenerated"
- return="boolean"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
-</parameter>
 <parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
@@ -3741,6 +4040,23 @@
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
 <parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
+</parameter>
+<parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
+</parameter>
+</method>
+<method name="clientInsertSelectiveMethodGenerated"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
+</parameter>
+<parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
@@ -3791,7 +4107,7 @@
 >
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
-<parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
+<parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
@@ -3808,23 +4124,6 @@
 >
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
-<parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
-</parameter>
-<parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
-</parameter>
-</method>
-<method name="clientSelectByExampleWithoutBLOBsMethodGenerated"
- return="boolean"
- abstract="true"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
-</parameter>
 <parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
@@ -3847,7 +4146,7 @@
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
 </method>
-<method name="clientSelectByPrimaryKeyMethodGenerated"
+<method name="clientSelectByExampleWithoutBLOBsMethodGenerated"
  return="boolean"
  abstract="true"
  native="false"
@@ -3881,7 +4180,7 @@
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
 </method>
-<method name="clientUpdateByExampleSelectiveMethodGenerated"
+<method name="clientSelectByPrimaryKeyMethodGenerated"
  return="boolean"
  abstract="true"
  native="false"
@@ -3915,7 +4214,7 @@
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
 </method>
-<method name="clientUpdateByExampleWithBLOBsMethodGenerated"
+<method name="clientUpdateByExampleSelectiveMethodGenerated"
  return="boolean"
  abstract="true"
  native="false"
@@ -3949,7 +4248,7 @@
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
 </method>
-<method name="clientUpdateByExampleWithoutBLOBsMethodGenerated"
+<method name="clientUpdateByExampleWithBLOBsMethodGenerated"
  return="boolean"
  abstract="true"
  native="false"
@@ -3983,7 +4282,7 @@
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
 </method>
-<method name="clientUpdateByPrimaryKeySelectiveMethodGenerated"
+<method name="clientUpdateByExampleWithoutBLOBsMethodGenerated"
  return="boolean"
  abstract="true"
  native="false"
@@ -4017,7 +4316,7 @@
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
 </method>
-<method name="clientUpdateByPrimaryKeyWithBLOBsMethodGenerated"
+<method name="clientUpdateByPrimaryKeySelectiveMethodGenerated"
  return="boolean"
  abstract="true"
  native="false"
@@ -4051,7 +4350,7 @@
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
 </method>
-<method name="clientUpdateByPrimaryKeyWithoutBLOBsMethodGenerated"
+<method name="clientUpdateByPrimaryKeyWithBLOBsMethodGenerated"
  return="boolean"
  abstract="true"
  native="false"
@@ -4081,6 +4380,23 @@
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
 <parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
+</parameter>
+<parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
+</parameter>
+</method>
+<method name="clientUpdateByPrimaryKeyWithoutBLOBsMethodGenerated"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
+</parameter>
+<parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
@@ -6419,6 +6735,131 @@
 </package>
 <package name="org.mybatis.generator.api.dom"
 >
+<class name="DefaultExtjsFormatter"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.mybatis.generator.api.ExtjsFormatter">
+</implements>
+<constructor name="DefaultExtjsFormatter"
+ type="org.mybatis.generator.api.dom.DefaultExtjsFormatter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getFormattedContent"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="compilationUnit" type="org.mybatis.generator.api.dom.java.CompilationUnit">
+</parameter>
+</method>
+<method name="getFormattedContent"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="compilationUnit" type="org.mybatis.generator.api.dom.java.CompilationUnit">
+</parameter>
+<parameter name="generatedExtjsFile" type="org.mybatis.generator.api.GeneratedExtjsFile">
+</parameter>
+<parameter name="generator" type="org.mybatis.generator.codegen.AbstractExtjsGenerator">
+</parameter>
+<parameter name="extjsGeneratorConfiguration" type="org.mybatis.generator.config.ExtjsGeneratorConfiguration">
+</parameter>
+</method>
+<method name="getModuleName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="compilationUnit" type="org.mybatis.generator.api.dom.java.CompilationUnit">
+</parameter>
+<parameter name="generator" type="org.mybatis.generator.codegen.AbstractExtjsGenerator">
+</parameter>
+<parameter name="extjsGeneratorConfiguration" type="org.mybatis.generator.config.ExtjsGeneratorConfiguration">
+</parameter>
+</method>
+<method name="getPackage"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="compilationUnit" type="org.mybatis.generator.api.dom.java.CompilationUnit">
+</parameter>
+<parameter name="generator" type="org.mybatis.generator.codegen.AbstractExtjsGenerator">
+</parameter>
+<parameter name="extjsGeneratorConfiguration" type="org.mybatis.generator.config.ExtjsGeneratorConfiguration">
+</parameter>
+</method>
+<method name="setContext"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="org.mybatis.generator.config.Context">
+</parameter>
+</method>
+<field name="context"
+ type="org.mybatis.generator.config.Context"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+</class>
+<class name="DefaultExtjsFormatter.Store"
+ extends="java.lang.Object"
+ abstract="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="DefaultExtjsFormatter.Store"
+ type="org.mybatis.generator.api.dom.DefaultExtjsFormatter.Store"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
 <class name="DefaultJavaFormatter"
  extends="java.lang.Object"
  abstract="false"
@@ -6593,6 +7034,466 @@
 <parameter name="indentLevel" type="int">
 </parameter>
 </method>
+</class>
+</package>
+<package name="org.mybatis.generator.api.dom.extjs"
+>
+<class name="ExtClass"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtClass"
+ type="org.mybatis.generator.api.dom.extjs.ExtClass"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="fields" type="java.util.List&lt;org.mybatis.generator.api.dom.java.Field&gt;">
+</parameter>
+</constructor>
+<method name="_getFormattedContent"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="indentLevel" type="int">
+</parameter>
+</method>
+<method name="getAppName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getAttributesMap"
+ return="java.util.Map&lt;java.lang.String, java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getFieldAttrMap"
+ return="java.util.List&lt;java.util.Map&lt;java.lang.String, java.lang.String&gt;&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</method>
+<method name="getFields"
+ return="java.util.List&lt;org.mybatis.generator.api.dom.java.Field&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getFormattedContent"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="indentLevel" type="int">
+</parameter>
+</method>
+<method name="getModelName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getResName"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getResourceAsTemplates"
+ return="java.util.List&lt;org.mybatis.generator.api.dom.extjs.ExtjsTemplate&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="resName" type="java.lang.String">
+</parameter>
+</method>
+<method name="getShortPackage"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setAppName"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="appName" type="java.lang.String">
+</parameter>
+</method>
+<method name="setFields"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="fields" type="java.util.List&lt;org.mybatis.generator.api.dom.java.Field&gt;">
+</parameter>
+</method>
+<method name="setModelName"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="modelName" type="java.lang.String">
+</parameter>
+</method>
+<method name="setShortPackage"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="shortPackage" type="java.lang.String">
+</parameter>
+</method>
+<field name="fieldNameKey"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="fields"
+ type="java.util.List"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+</class>
+<class name="ExtControllerClass"
+ extends="org.mybatis.generator.api.dom.extjs.ExtClass"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtControllerClass"
+ type="org.mybatis.generator.api.dom.extjs.ExtControllerClass"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="fields" type="java.util.List&lt;org.mybatis.generator.api.dom.java.Field&gt;">
+</parameter>
+</constructor>
+<method name="getResName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="ExtGridClass"
+ extends="org.mybatis.generator.api.dom.extjs.ExtClass"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtGridClass"
+ type="org.mybatis.generator.api.dom.extjs.ExtGridClass"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="fields" type="java.util.List&lt;org.mybatis.generator.api.dom.java.Field&gt;">
+</parameter>
+</constructor>
+<method name="getResName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="ExtModelClass"
+ extends="org.mybatis.generator.api.dom.extjs.ExtClass"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtModelClass"
+ type="org.mybatis.generator.api.dom.extjs.ExtModelClass"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="fields" type="java.util.List&lt;org.mybatis.generator.api.dom.java.Field&gt;">
+</parameter>
+</constructor>
+<method name="getResName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="ExtStoreClass"
+ extends="org.mybatis.generator.api.dom.extjs.ExtClass"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtStoreClass"
+ type="org.mybatis.generator.api.dom.extjs.ExtStoreClass"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="fields" type="java.util.List&lt;org.mybatis.generator.api.dom.java.Field&gt;">
+</parameter>
+</constructor>
+<method name="getResName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="ExtjsTemplate"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtjsTemplate"
+ type="org.mybatis.generator.api.dom.extjs.ExtjsTemplate"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getFieldTemplate"
+ return="org.mybatis.generator.api.dom.extjs.ExtjsTemplate"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="templateContent" type="java.lang.String">
+</parameter>
+<parameter name="separator" type="java.lang.String">
+</parameter>
+</method>
+<method name="getStringTemplate"
+ return="org.mybatis.generator.api.dom.extjs.ExtjsTemplate"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="templateContent" type="java.lang.String">
+</parameter>
+</method>
+<method name="getTemplateContent"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTemplateType"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="parseAttrs"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="attrMap" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+<parameter name="fieldAttr" type="java.util.List&lt;java.util.Map&lt;java.lang.String, java.lang.String&gt;&gt;">
+</parameter>
+</method>
+<method name="setTemplateContent"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="templateContent" type="java.lang.String">
+</parameter>
+</method>
+<method name="setTemplateType"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="templateType" type="int">
+</parameter>
+</method>
+<field name="template_field"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="2"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="template_string"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="1"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
 </class>
 </package>
 <package name="org.mybatis.generator.api.dom.java"
@@ -7242,8 +8143,6 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="index" type="int">
-</parameter>
 <parameter name="line" type="java.lang.String">
 </parameter>
 </method>
@@ -7257,7 +8156,22 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<parameter name="index" type="int">
+</parameter>
 <parameter name="line" type="java.lang.String">
+</parameter>
+</method>
+<method name="addBodyLines"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="lines" type="java.util.Collection&lt;java.lang.String&gt;">
 </parameter>
 </method>
 <method name="addBodyLines"
@@ -7272,19 +8186,6 @@
 >
 <parameter name="index" type="int">
 </parameter>
-<parameter name="lines" type="java.util.Collection&lt;java.lang.String&gt;">
-</parameter>
-</method>
-<method name="addBodyLines"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 <parameter name="lines" type="java.util.Collection&lt;java.lang.String&gt;">
 </parameter>
 </method>
@@ -7376,7 +8277,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="typeName" type="java.lang.String">
+<parameter name="type" type="org.mybatis.generator.api.dom.java.FullyQualifiedJavaType">
 </parameter>
 </constructor>
 <constructor name="InnerClass"
@@ -7386,7 +8287,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="type" type="org.mybatis.generator.api.dom.java.FullyQualifiedJavaType">
+<parameter name="typeName" type="java.lang.String">
 </parameter>
 </constructor>
 <method name="addField"
@@ -7602,7 +8503,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="superClassType" type="java.lang.String">
+<parameter name="superClass" type="org.mybatis.generator.api.dom.java.FullyQualifiedJavaType">
 </parameter>
 </method>
 <method name="setSuperClass"
@@ -7615,7 +8516,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="superClass" type="org.mybatis.generator.api.dom.java.FullyQualifiedJavaType">
+<parameter name="superClassType" type="java.lang.String">
 </parameter>
 </method>
 </class>
@@ -7823,7 +8724,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="type" type="java.lang.String">
+<parameter name="type" type="org.mybatis.generator.api.dom.java.FullyQualifiedJavaType">
 </parameter>
 </constructor>
 <constructor name="Interface"
@@ -7833,7 +8734,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="type" type="org.mybatis.generator.api.dom.java.FullyQualifiedJavaType">
+<parameter name="type" type="java.lang.String">
 </parameter>
 </constructor>
 <method name="addFileCommentLine"
@@ -8338,8 +9239,6 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="index" type="int">
-</parameter>
 <parameter name="line" type="java.lang.String">
 </parameter>
 </method>
@@ -8353,7 +9252,22 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<parameter name="index" type="int">
+</parameter>
 <parameter name="line" type="java.lang.String">
+</parameter>
+</method>
+<method name="addBodyLines"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="lines" type="java.util.Collection&lt;java.lang.String&gt;">
 </parameter>
 </method>
 <method name="addBodyLines"
@@ -8368,19 +9282,6 @@
 >
 <parameter name="index" type="int">
 </parameter>
-<parameter name="lines" type="java.util.Collection&lt;java.lang.String&gt;">
-</parameter>
-</method>
-<method name="addBodyLines"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
 <parameter name="lines" type="java.util.Collection&lt;java.lang.String&gt;">
 </parameter>
 </method>
@@ -8407,8 +9308,6 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="index" type="int">
-</parameter>
 <parameter name="parameter" type="org.mybatis.generator.api.dom.java.Parameter">
 </parameter>
 </method>
@@ -8422,6 +9321,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<parameter name="index" type="int">
+</parameter>
 <parameter name="parameter" type="org.mybatis.generator.api.dom.java.Parameter">
 </parameter>
 </method>
@@ -8613,6 +9514,8 @@
 </parameter>
 <parameter name="name" type="java.lang.String">
 </parameter>
+<parameter name="isVarargs" type="boolean">
+</parameter>
 </constructor>
 <constructor name="Parameter"
  type="org.mybatis.generator.api.dom.java.Parameter"
@@ -8624,8 +9527,6 @@
 <parameter name="type" type="org.mybatis.generator.api.dom.java.FullyQualifiedJavaType">
 </parameter>
 <parameter name="name" type="java.lang.String">
-</parameter>
-<parameter name="isVarargs" type="boolean">
 </parameter>
 </constructor>
 <constructor name="Parameter"
@@ -8852,7 +9753,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="typeName" type="java.lang.String">
+<parameter name="type" type="org.mybatis.generator.api.dom.java.FullyQualifiedJavaType">
 </parameter>
 </constructor>
 <constructor name="TopLevelClass"
@@ -8862,7 +9763,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="type" type="org.mybatis.generator.api.dom.java.FullyQualifiedJavaType">
+<parameter name="typeName" type="java.lang.String">
 </parameter>
 </constructor>
 <method name="addFileCommentLine"
@@ -9245,6 +10146,10 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<parameter name="publicId" type="java.lang.String">
+</parameter>
+<parameter name="systemId" type="java.lang.String">
+</parameter>
 </constructor>
 <constructor name="Document"
  type="org.mybatis.generator.api.dom.xml.Document"
@@ -9253,10 +10158,6 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="publicId" type="java.lang.String">
-</parameter>
-<parameter name="systemId" type="java.lang.String">
-</parameter>
 </constructor>
 <method name="getFormattedContent"
  return="java.lang.String"
@@ -9440,8 +10341,6 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="index" type="int">
-</parameter>
 <parameter name="element" type="org.mybatis.generator.api.dom.xml.Element">
 </parameter>
 </method>
@@ -9455,6 +10354,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<parameter name="index" type="int">
+</parameter>
 <parameter name="element" type="org.mybatis.generator.api.dom.xml.Element">
 </parameter>
 </method>
@@ -9521,6 +10422,67 @@
 </package>
 <package name="org.mybatis.generator.codegen"
 >
+<class name="AbstractExtjsGenerator"
+ extends="org.mybatis.generator.codegen.AbstractGenerator"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="AbstractExtjsGenerator"
+ type="org.mybatis.generator.codegen.AbstractExtjsGenerator"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getColumnsInThisClass"
+ return="java.util.List&lt;org.mybatis.generator.api.IntrospectedColumn&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</method>
+<method name="getCompilationUnits"
+ return="java.util.List&lt;org.mybatis.generator.api.dom.java.CompilationUnit&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getModule"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getType"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
 <class name="AbstractGenerator"
  extends="java.lang.Object"
  abstract="true"
@@ -10179,6 +11141,17 @@
 </parameter>
 <parameter name="progressCallback" type="org.mybatis.generator.api.ProgressCallback">
 </parameter>
+</method>
+<method name="getGeneratedExtjsFiles"
+ return="java.util.List&lt;org.mybatis.generator.api.GeneratedExtjsFile&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="getGeneratedJavaFiles"
  return="java.util.List&lt;org.mybatis.generator.api.GeneratedJavaFile&gt;"
@@ -13263,6 +14236,21 @@
 <parameter name="progressCallback" type="org.mybatis.generator.api.ProgressCallback">
 </parameter>
 </method>
+<method name="calculateExtjsGenerators"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="warnings" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<parameter name="progressCallback" type="org.mybatis.generator.api.ProgressCallback">
+</parameter>
+</method>
 <method name="calculateGenerators"
  return="void"
  abstract="false"
@@ -13319,6 +14307,17 @@
  final="false"
  deprecated="not deprecated"
  visibility="protected"
+>
+</method>
+<method name="getGeneratedExtjsFiles"
+ return="java.util.List&lt;org.mybatis.generator.api.GeneratedExtjsFile&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
 >
 </method>
 <method name="getGeneratedJavaFiles"
@@ -13394,6 +14393,16 @@
 >
 </method>
 <field name="clientGenerators"
+ type="java.util.List"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="extjsGenerators"
  type="java.util.List"
  transient="false"
  volatile="false"
@@ -13554,6 +14563,165 @@
 >
 <parameter name="introspectedColumn" type="org.mybatis.generator.api.IntrospectedColumn">
 </parameter>
+</method>
+</class>
+</package>
+<package name="org.mybatis.generator.codegen.mybatis3.extjs"
+>
+<class name="ExtjsControllerGenerator"
+ extends="org.mybatis.generator.codegen.AbstractExtjsGenerator"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtjsControllerGenerator"
+ type="org.mybatis.generator.codegen.mybatis3.extjs.ExtjsControllerGenerator"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getModule"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getType"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="ExtjsGridGenerator"
+ extends="org.mybatis.generator.codegen.AbstractExtjsGenerator"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtjsGridGenerator"
+ type="org.mybatis.generator.codegen.mybatis3.extjs.ExtjsGridGenerator"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getModule"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getType"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="ExtjsModelGenerator"
+ extends="org.mybatis.generator.codegen.AbstractExtjsGenerator"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtjsModelGenerator"
+ type="org.mybatis.generator.codegen.mybatis3.extjs.ExtjsModelGenerator"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getModule"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getType"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="ExtjsStoreGenerator"
+ extends="org.mybatis.generator.codegen.AbstractExtjsGenerator"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtjsStoreGenerator"
+ type="org.mybatis.generator.codegen.mybatis3.extjs.ExtjsStoreGenerator"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getModule"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getType"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 </class>
 </package>
@@ -17450,6 +18618,29 @@
 <exception name="InterruptedException" type="java.lang.InterruptedException">
 </exception>
 </method>
+<method name="generateFiles"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="callback" type="org.mybatis.generator.api.ProgressCallback">
+</parameter>
+<parameter name="generatedJavaFiles" type="java.util.List&lt;org.mybatis.generator.api.GeneratedJavaFile&gt;">
+</parameter>
+<parameter name="generatedExtjsFiles" type="java.util.List&lt;org.mybatis.generator.api.GeneratedExtjsFile&gt;">
+</parameter>
+<parameter name="generatedXmlFiles" type="java.util.List&lt;org.mybatis.generator.api.GeneratedXmlFile&gt;">
+</parameter>
+<parameter name="warnings" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<exception name="InterruptedException" type="java.lang.InterruptedException">
+</exception>
+</method>
 <method name="getBeginningDelimiter"
  return="java.lang.String"
  abstract="false"
@@ -17496,6 +18687,28 @@
 </method>
 <method name="getEndingDelimiter"
  return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getExtjsFormatter"
+ return="org.mybatis.generator.api.ExtjsFormatter"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getExtjsGeneratorConfiguration"
+ return="org.mybatis.generator.config.ExtjsGeneratorConfiguration"
  abstract="false"
  native="false"
  synchronized="false"
@@ -17693,6 +18906,19 @@
 <parameter name="commentGeneratorConfiguration" type="org.mybatis.generator.config.CommentGeneratorConfiguration">
 </parameter>
 </method>
+<method name="setExtjsGeneratorConfiguration"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="extjsGeneratorConfiguration" type="org.mybatis.generator.config.ExtjsGeneratorConfiguration">
+</parameter>
+</method>
 <method name="setId"
  return="void"
  abstract="false"
@@ -17819,6 +19045,121 @@
  visibility="public"
 >
 <parameter name="errors" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+</method>
+</class>
+<class name="ExtjsGeneratorConfiguration"
+ extends="org.mybatis.generator.config.PropertyHolder"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="ExtjsGeneratorConfiguration"
+ type="org.mybatis.generator.config.ExtjsGeneratorConfiguration"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getAppName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTargetPackage"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTargetProject"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setAppName"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="appName" type="java.lang.String">
+</parameter>
+</method>
+<method name="setTargetPackage"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="targetPackage" type="java.lang.String">
+</parameter>
+</method>
+<method name="setTargetProject"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="targetProject" type="java.lang.String">
+</parameter>
+</method>
+<method name="toXmlElement"
+ return="org.mybatis.generator.api.dom.xml.XmlElement"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="validate"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="errors" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<parameter name="contextId" type="java.lang.String">
 </parameter>
 </method>
 </class>
@@ -18743,6 +20084,28 @@
  transient="false"
  volatile="false"
  value="&quot;endingDelimiter&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CONTEXT_EXTJS_FILE_ENCODING"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;extjsFileEncoding&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CONTEXT_EXTJS_FORMATTER"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;extjsFormatter&quot;"
  static="true"
  final="true"
  deprecated="not deprecated"
@@ -19752,7 +21115,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="inputStream" type="java.io.InputStream">
+<parameter name="reader" type="java.io.Reader">
 </parameter>
 <exception name="IOException" type="java.io.IOException">
 </exception>
@@ -19769,7 +21132,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="reader" type="java.io.Reader">
+<parameter name="inputStream" type="java.io.InputStream">
 </parameter>
 <exception name="IOException" type="java.io.IOException">
 </exception>
@@ -20044,7 +21407,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="error" type="java.lang.String">
+<parameter name="errors" type="java.util.List&lt;java.lang.String&gt;">
 </parameter>
 </constructor>
 <constructor name="XMLParserException"
@@ -20054,7 +21417,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="errors" type="java.util.List&lt;java.lang.String&gt;">
+<parameter name="error" type="java.lang.String">
 </parameter>
 </constructor>
 <method name="getErrors"
@@ -20177,6 +21540,8 @@
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
+<parameter name="introspectedColumn" type="org.mybatis.generator.api.IntrospectedColumn">
+</parameter>
 </method>
 <method name="addFieldComment"
  return="void"
@@ -20191,8 +21556,6 @@
 <parameter name="field" type="org.mybatis.generator.api.dom.java.Field">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
-</parameter>
-<parameter name="introspectedColumn" type="org.mybatis.generator.api.IntrospectedColumn">
 </parameter>
 </method>
 <method name="addGeneralMethodComment"
@@ -20631,7 +21994,7 @@
  deprecated="not deprecated"
  visibility="protected"
 >
-<parameter name="c" type="char">
+<parameter name="s" type="java.lang.String">
 </parameter>
 <parameter name="isAttValue" type="boolean">
 </parameter>
@@ -20646,7 +22009,7 @@
  deprecated="not deprecated"
  visibility="protected"
 >
-<parameter name="s" type="java.lang.String">
+<parameter name="c" type="char">
 </parameter>
 <parameter name="isAttValue" type="boolean">
 </parameter>
@@ -20678,32 +22041,6 @@
 </parameter>
 <exception name="ShellException" type="org.mybatis.generator.exception.ShellException">
 </exception>
-</method>
-<method name="write"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="protected"
->
-<parameter name="node" type="org.w3c.dom.CDATASection">
-</parameter>
-</method>
-<method name="write"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="protected"
->
-<parameter name="node" type="org.w3c.dom.Comment">
-</parameter>
 </method>
 <method name="write"
  return="void"
@@ -20773,7 +22110,7 @@
  deprecated="not deprecated"
  visibility="protected"
 >
-<parameter name="node" type="org.w3c.dom.ProcessingInstruction">
+<parameter name="node" type="org.w3c.dom.CDATASection">
 </parameter>
 </method>
 <method name="write"
@@ -20787,6 +22124,32 @@
  visibility="protected"
 >
 <parameter name="node" type="org.w3c.dom.Text">
+</parameter>
+</method>
+<method name="write"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="node" type="org.w3c.dom.ProcessingInstruction">
+</parameter>
+</method>
+<method name="write"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="node" type="org.w3c.dom.Comment">
 </parameter>
 </method>
 <method name="writeAnyNode"
@@ -21181,6 +22544,19 @@
 <parameter name="type" type="java.lang.String">
 </parameter>
 </method>
+<method name="createExtjsFormatter"
+ return="org.mybatis.generator.api.ExtjsFormatter"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="context" type="org.mybatis.generator.config.Context">
+</parameter>
+</method>
 <method name="createInternalObject"
  return="java.lang.Object"
  abstract="false"
@@ -21567,7 +22943,7 @@
 >
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
-<parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
+<parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
@@ -21584,7 +22960,7 @@
 >
 <parameter name="method" type="org.mybatis.generator.api.dom.java.Method">
 </parameter>
-<parameter name="topLevelClass" type="org.mybatis.generator.api.dom.java.TopLevelClass">
+<parameter name="interfaze" type="org.mybatis.generator.api.dom.java.Interface">
 </parameter>
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
@@ -21895,8 +23271,21 @@
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
 </method>
-<method name="contextGenerateAdditionalJavaFiles"
- return="java.util.List&lt;org.mybatis.generator.api.GeneratedJavaFile&gt;"
+<method name="contextGenerateAdditionalExtjsFiles"
+ return="java.util.List&lt;org.mybatis.generator.api.GeneratedExtjsFile&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
+</parameter>
+</method>
+<method name="contextGenerateAdditionalExtjsFiles"
+ return="java.util.List&lt;org.mybatis.generator.api.GeneratedExtjsFile&gt;"
  abstract="false"
  native="false"
  synchronized="false"
@@ -21919,8 +23308,8 @@
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
 </method>
-<method name="contextGenerateAdditionalXmlFiles"
- return="java.util.List&lt;org.mybatis.generator.api.GeneratedXmlFile&gt;"
+<method name="contextGenerateAdditionalJavaFiles"
+ return="java.util.List&lt;org.mybatis.generator.api.GeneratedJavaFile&gt;"
  abstract="false"
  native="false"
  synchronized="false"
@@ -21942,6 +23331,17 @@
 >
 <parameter name="introspectedTable" type="org.mybatis.generator.api.IntrospectedTable">
 </parameter>
+</method>
+<method name="contextGenerateAdditionalXmlFiles"
+ return="java.util.List&lt;org.mybatis.generator.api.GeneratedXmlFile&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
 </method>
 <method name="initialized"
  return="void"
@@ -24301,9 +25701,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="aThis" type="double">
+<parameter name="aThis" type="long">
 </parameter>
-<parameter name="aThat" type="double">
+<parameter name="aThat" type="long">
 </parameter>
 </method>
 <method name="areEqual"
@@ -24331,9 +25731,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="aThis" type="java.lang.Object">
+<parameter name="aThis" type="double">
 </parameter>
-<parameter name="aThat" type="java.lang.Object">
+<parameter name="aThat" type="double">
 </parameter>
 </method>
 <method name="areEqual"
@@ -24346,9 +25746,9 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="aThis" type="long">
+<parameter name="aThis" type="java.lang.Object">
 </parameter>
-<parameter name="aThat" type="long">
+<parameter name="aThat" type="java.lang.Object">
 </parameter>
 </method>
 </class>
@@ -24410,7 +25810,22 @@
 >
 <parameter name="aSeed" type="int">
 </parameter>
-<parameter name="aDouble" type="double">
+<parameter name="aInt" type="int">
+</parameter>
+</method>
+<method name="hash"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="aSeed" type="int">
+</parameter>
+<parameter name="aLong" type="long">
 </parameter>
 </method>
 <method name="hash"
@@ -24440,7 +25855,7 @@
 >
 <parameter name="aSeed" type="int">
 </parameter>
-<parameter name="aInt" type="int">
+<parameter name="aDouble" type="double">
 </parameter>
 </method>
 <method name="hash"
@@ -24456,21 +25871,6 @@
 <parameter name="aSeed" type="int">
 </parameter>
 <parameter name="aObject" type="java.lang.Object">
-</parameter>
-</method>
-<method name="hash"
- return="int"
- abstract="false"
- native="false"
- synchronized="false"
- static="true"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="aSeed" type="int">
-</parameter>
-<parameter name="aLong" type="long">
 </parameter>
 </method>
 <field name="SEED"
@@ -24852,6 +26252,8 @@
 >
 <parameter name="s" type="java.lang.String">
 </parameter>
+<parameter name="e" type="java.lang.Throwable">
+</parameter>
 </method>
 <method name="error"
  return="void"
@@ -24864,8 +26266,6 @@
  visibility="public"
 >
 <parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="e" type="java.lang.Throwable">
 </parameter>
 </method>
 <method name="isDebugEnabled"
@@ -24925,6 +26325,8 @@
 >
 <parameter name="s" type="java.lang.String">
 </parameter>
+<parameter name="e" type="java.lang.Throwable">
+</parameter>
 </method>
 <method name="error"
  return="void"
@@ -24937,8 +26339,6 @@
  visibility="public"
 >
 <parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="e" type="java.lang.Throwable">
 </parameter>
 </method>
 <method name="isDebugEnabled"
@@ -25011,6 +26411,8 @@
 >
 <parameter name="s" type="java.lang.String">
 </parameter>
+<parameter name="e" type="java.lang.Throwable">
+</parameter>
 </method>
 <method name="error"
  return="void"
@@ -25023,8 +26425,6 @@
  visibility="public"
 >
 <parameter name="s" type="java.lang.String">
-</parameter>
-<parameter name="e" type="java.lang.Throwable">
 </parameter>
 </method>
 <method name="isDebugEnabled"

@@ -48,10 +48,12 @@
 
 
 
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Javadoc API documentation for MyBatis Generator Core." />
+
 <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
 <title>
 
@@ -61,16 +63,16 @@
 | MyBatis Generator Core
 
 </title>
-<link href="../../../../../assets/android-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/doclava-developer-docs.css" rel="stylesheet" type="text/css" />
 <link href="../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
 <script src="../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
 <script src="../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
-<script src="../../../../../assets/android-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../assets/doclava-developer-docs.js" type="text/javascript"></script>
 <script src="../../../../../assets/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
   setToRoot("../../../../", "../../../../../assets/");
 </script>
-<script src="../../../../../assets/android-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../assets/doclava-developer-reference.js" type="text/javascript"></script>
 <script src="../../../../../assets/navtree_data.js" type="text/javascript"></script>
 <script src="../../../../../assets/customizations.js" type="text/javascript"></script>
 <noscript>
@@ -136,9 +138,9 @@
         <div id="nav-panels">
           <div id="resize-packages-nav">
             <div id="packages-nav">
-              <div id="index-links"><nobr>
+              <div id="index-links">
                 <a href="../../../../packages.html"  >Package Index</a> | 
-                <a href="../../../../classes.html" >Class Index</a></nobr>
+                <a href="../../../../classes.html" >Class Index</a>
               </div>
               <ul>
                 
@@ -148,6 +150,8 @@
   <a href="../../../../org/mybatis/generator/api/package-summary.html">org.mybatis.generator.api</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/api/dom/package-summary.html">org.mybatis.generator.api.dom</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../org/mybatis/generator/api/dom/extjs/package-summary.html">org.mybatis.generator.api.dom.extjs</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/api/dom/java/package-summary.html">org.mybatis.generator.api.dom.java</a></li>
     <li class="api apilevel-">
@@ -170,6 +174,8 @@
   <a href="../../../../org/mybatis/generator/codegen/ibatis2/sqlmap/elements/package-summary.html">org.mybatis.generator.codegen.ibatis2.sqlmap.elements</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/codegen/mybatis3/package-summary.html">org.mybatis.generator.codegen.mybatis3</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../org/mybatis/generator/codegen/mybatis3/extjs/package-summary.html">org.mybatis.generator.codegen.mybatis3.extjs</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/codegen/mybatis3/javamapper/package-summary.html">org.mybatis.generator.codegen.mybatis3.javamapper</a></li>
     <li class="api apilevel-">
@@ -216,6 +222,7 @@
       <ul>
         <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/CommentGenerator.html">CommentGenerator</a></li>
         <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/DAOMethodNameCalculator.html">DAOMethodNameCalculator</a></li>
+        <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/ExtjsFormatter.html">ExtjsFormatter</a></li>
         <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/JavaFormatter.html">JavaFormatter</a></li>
         <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html">JavaTypeResolver</a></li>
         <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/Plugin.html">Plugin</a></li>
@@ -228,6 +235,7 @@
     <li><h2>Classes</h2>
       <ul>
         <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/FullyQualifiedTable.html">FullyQualifiedTable</a></li>
+        <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/GeneratedExtjsFile.html">GeneratedExtjsFile</a></li>
         <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/GeneratedFile.html">GeneratedFile</a></li>
         <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/GeneratedJavaFile.html">GeneratedJavaFile</a></li>
         <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/GeneratedXmlFile.html">GeneratedXmlFile</a></li>
@@ -254,9 +262,9 @@
           </div><!-- end classes -->
         </div><!-- end nav-panels -->
         <div id="nav-tree" style="display:none">
-          <div id="index-links"><nobr>
+          <div id="index-links">
             <a href="../../../../packages.html"  >Package Index</a> | 
-            <a href="../../../../classes.html" >Class Index</a></nobr>
+            <a href="../../../../classes.html" >Class Index</a>
           </div>
         </div><!-- end nav-tree -->
       </div><!-- end swapper -->
@@ -297,11 +305,6 @@
 <div id="jd-header">
   package
   <h1>org.mybatis.generator.api</h1>
-  <div class="jd-nav">
-      
-        Classes | <a class="jd-navlink" href="package-descr.html">Description</a>
-      
-  </div>
 </div><!-- end header -->
 
 <div id="naMessage"></div>
@@ -310,10 +313,8 @@
 
 
   <div class="jd-descr">
-  <p><p>Provides the main classes and interfaces used by clients of MyBatis Generator.</p>
-    
-  <p><span class="jd-more"><a href="package-descr.html">more...</a></span></p>
-  
+    <p>Provides the main classes and interfaces used by clients of MyBatis Generator.</p>
+
   </div>
 
 
@@ -321,7 +322,7 @@
 
 
   
-    <h3>Interfaces</h3>
+    <h2>Interfaces</h2>
     <div class="jd-sumtable">
     
   <table class="jd-sumtable-expando">
@@ -335,32 +336,38 @@
               <td class="jd-descrcol" width="100%">This interface is used to supply names for DAO methods.&nbsp;</td>
           </tr>
         <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/ExtjsFormatter.html">ExtjsFormatter</a></td>
+              <td class="jd-descrcol" width="100%">Extjs 格式化
+
+&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/JavaFormatter.html">JavaFormatter</a></td>
               <td class="jd-descrcol" width="100%">Objects implementing this interface are used to convert the internal 
  representation of the Java DOM classes into a string suitable for
  saving to the file system.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html">JavaTypeResolver</a></td>
               <td class="jd-descrcol" width="100%">This interface describes methods that are required in any Java type resolver.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/Plugin.html">Plugin</a></td>
               <td class="jd-descrcol" width="100%">This interface defines methods that will be called at different times during
  the code generation process.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/ProgressCallback.html">ProgressCallback</a></td>
               <td class="jd-descrcol" width="100%">This interface can be implemented to return progress information from the
  file generation process.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/ShellCallback.html">ShellCallback</a></td>
               <td class="jd-descrcol" width="100%">This interface defines methods that a shell should support to enable
  the generator
  to work.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/XmlFormatter.html">XmlFormatter</a></td>
               <td class="jd-descrcol" width="100%">Objects implementing this interface are used to convert the internal 
  representation of the XML DOM classes into a string suitable for
@@ -372,7 +379,7 @@
 
 
   
-    <h3>Classes</h3>
+    <h2>Classes</h2>
     <div class="jd-sumtable">
     
   <table class="jd-sumtable-expando">
@@ -381,39 +388,43 @@
               <td class="jd-descrcol" width="100%">&nbsp;</td>
           </tr>
         <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/GeneratedExtjsFile.html">GeneratedExtjsFile</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/GeneratedFile.html">GeneratedFile</a></td>
               <td class="jd-descrcol" width="100%">Abstract class that holds information common to all generated files.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/GeneratedJavaFile.html">GeneratedJavaFile</a></td>
               <td class="jd-descrcol" width="100%">&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/GeneratedXmlFile.html">GeneratedXmlFile</a></td>
               <td class="jd-descrcol" width="100%">&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/IntrospectedColumn.html">IntrospectedColumn</a></td>
               <td class="jd-descrcol" width="100%">This class holds information about an introspected column.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/IntrospectedTable.html">IntrospectedTable</a></td>
               <td class="jd-descrcol" width="100%">Base class for all code generator implementations.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/MyBatisGenerator.html">MyBatisGenerator</a></td>
               <td class="jd-descrcol" width="100%">This class is the main interface to MyBatis generator.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/PluginAdapter.html">PluginAdapter</a></td>
               <td class="jd-descrcol" width="100%">This class includes no-operation methods for almost every method in the
  Plugin interface.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/ShellRunner.html">ShellRunner</a></td>
               <td class="jd-descrcol" width="100%">This class allows the code generator to be run from the command line.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../org/mybatis/generator/api/VerboseProgressCallback.html">VerboseProgressCallback</a></td>
               <td class="jd-descrcol" width="100%">&nbsp;</td>
           </tr>
@@ -423,7 +434,7 @@
 
 
   
-    <h3>Enums</h3>
+    <h2>Enums</h2>
     <div class="jd-sumtable">
     
   <table class="jd-sumtable-expando">
@@ -460,7 +471,7 @@ Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
 </div> <!-- end body-content --> 
 
 <script type="text/javascript">
-init(); /* initialize android-developer-docs.js */
+init(); /* initialize doclava-developer-docs.js */
 </script>
 
 </body>

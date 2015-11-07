@@ -48,10 +48,12 @@
 
 
 
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Javadoc API documentation for MyBatis Generator Core." />
+
 <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
 <title>
 
@@ -61,16 +63,16 @@
 | MyBatis Generator Core
 
 </title>
-<link href="../../../../../assets/android-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/doclava-developer-docs.css" rel="stylesheet" type="text/css" />
 <link href="../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
 <script src="../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
 <script src="../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
-<script src="../../../../../assets/android-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../assets/doclava-developer-docs.js" type="text/javascript"></script>
 <script src="../../../../../assets/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
   setToRoot("../../../../", "../../../../../assets/");
 </script>
-<script src="../../../../../assets/android-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../assets/doclava-developer-reference.js" type="text/javascript"></script>
 <script src="../../../../../assets/navtree_data.js" type="text/javascript"></script>
 <script src="../../../../../assets/customizations.js" type="text/javascript"></script>
 <noscript>
@@ -136,9 +138,9 @@
         <div id="nav-panels">
           <div id="resize-packages-nav">
             <div id="packages-nav">
-              <div id="index-links"><nobr>
+              <div id="index-links">
                 <a href="../../../../packages.html"  >Package Index</a> | 
-                <a href="../../../../classes.html" >Class Index</a></nobr>
+                <a href="../../../../classes.html" >Class Index</a>
               </div>
               <ul>
                 
@@ -148,6 +150,8 @@
   <a href="../../../../org/mybatis/generator/api/package-summary.html">org.mybatis.generator.api</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/api/dom/package-summary.html">org.mybatis.generator.api.dom</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../org/mybatis/generator/api/dom/extjs/package-summary.html">org.mybatis.generator.api.dom.extjs</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/api/dom/java/package-summary.html">org.mybatis.generator.api.dom.java</a></li>
     <li class="api apilevel-">
@@ -170,6 +174,8 @@
   <a href="../../../../org/mybatis/generator/codegen/ibatis2/sqlmap/elements/package-summary.html">org.mybatis.generator.codegen.ibatis2.sqlmap.elements</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/codegen/mybatis3/package-summary.html">org.mybatis.generator.codegen.mybatis3</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../org/mybatis/generator/codegen/mybatis3/extjs/package-summary.html">org.mybatis.generator.codegen.mybatis3.extjs</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/codegen/mybatis3/javamapper/package-summary.html">org.mybatis.generator.codegen.mybatis3.javamapper</a></li>
     <li class="api apilevel-">
@@ -220,12 +226,13 @@
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/CommentGeneratorConfiguration.html">CommentGeneratorConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/Configuration.html">Configuration</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/Context.html">Context</a></li>
+          <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/ExtjsGeneratorConfiguration.html">ExtjsGeneratorConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/GeneratedKey.html">GeneratedKey</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/IgnoredColumn.html">IgnoredColumn</a></li>
-          <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/JDBCConnectionConfiguration.html">JDBCConnectionConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/JavaClientGeneratorConfiguration.html">JavaClientGeneratorConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/JavaModelGeneratorConfiguration.html">JavaModelGeneratorConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/JavaTypeResolverConfiguration.html">JavaTypeResolverConfiguration</a></li>
+          <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/JDBCConnectionConfiguration.html">JDBCConnectionConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/MergeConstants.html">MergeConstants</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/PluginConfiguration.html">PluginConfiguration</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/config/PropertyHolder.html">PropertyHolder</a></li>
@@ -248,9 +255,9 @@
           </div><!-- end classes -->
         </div><!-- end nav-panels -->
         <div id="nav-tree" style="display:none">
-          <div id="index-links"><nobr>
+          <div id="index-links">
             <a href="../../../../packages.html"  >Package Index</a> | 
-            <a href="../../../../classes.html" >Class Index</a></nobr>
+            <a href="../../../../classes.html" >Class Index</a>
           </div>
         </div><!-- end nav-tree -->
       </div><!-- end swapper -->
@@ -297,6 +304,7 @@
 
 
 <div class="sum-details-links">
+
 
 Summary:
 
@@ -459,16 +467,16 @@ Summary:
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            </nobr>
+            
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#TableConfiguration(org.mybatis.generator.config.Context)">TableConfiguration</a></span>(<a href="../../../../org/mybatis/generator/config/Context.html">Context</a> context)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#TableConfiguration(org.mybatis.generator.config.Context)">TableConfiguration</a></span>(<a href="../../../../org/mybatis/generator/config/Context.html">Context</a> context)
         
   </td></tr>
 
@@ -488,112 +496,112 @@ Summary:
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#addColumnOverride(org.mybatis.generator.config.ColumnOverride)">addColumnOverride</a></span>(<a href="../../../../org/mybatis/generator/config/ColumnOverride.html">ColumnOverride</a> columnOverride)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#addColumnOverride(org.mybatis.generator.config.ColumnOverride)">addColumnOverride</a></span>(<a href="../../../../org/mybatis/generator/config/ColumnOverride.html">ColumnOverride</a> columnOverride)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#addIgnoredColumn(org.mybatis.generator.config.IgnoredColumn)">addIgnoredColumn</a></span>(<a href="../../../../org/mybatis/generator/config/IgnoredColumn.html">IgnoredColumn</a> ignoredColumn)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#addIgnoredColumn(org.mybatis.generator.config.IgnoredColumn)">addIgnoredColumn</a></span>(<a href="../../../../org/mybatis/generator/config/IgnoredColumn.html">IgnoredColumn</a> ignoredColumn)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#areAnyStatementsEnabled()">areAnyStatementsEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#areAnyStatementsEnabled()">areAnyStatementsEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#equals(java.lang.Object)">equals</a></span>(Object obj)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#equals(java.lang.Object)">equals</a></span>(Object obj)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getAlias()">getAlias</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getAlias()">getAlias</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getCatalog()">getCatalog</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getCatalog()">getCatalog</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            <a href="../../../../org/mybatis/generator/config/ColumnOverride.html">ColumnOverride</a></nobr>
+            <a href="../../../../org/mybatis/generator/config/ColumnOverride.html">ColumnOverride</a>
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getColumnOverride(java.lang.String)">getColumnOverride</a></span>(String columnName)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getColumnOverride(java.lang.String)">getColumnOverride</a></span>(String columnName)
         
         <div class="jd-descrdiv">May return null if the column has not been overridden</div>
   
@@ -602,80 +610,80 @@ Summary:
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            List&lt;<a href="../../../../org/mybatis/generator/config/ColumnOverride.html">ColumnOverride</a>&gt;</nobr>
+            List&lt;<a href="../../../../org/mybatis/generator/config/ColumnOverride.html">ColumnOverride</a>&gt;
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getColumnOverrides()">getColumnOverrides</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getColumnOverrides()">getColumnOverrides</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            <a href="../../../../org/mybatis/generator/config/ColumnRenamingRule.html">ColumnRenamingRule</a></nobr>
+            <a href="../../../../org/mybatis/generator/config/ColumnRenamingRule.html">ColumnRenamingRule</a>
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getColumnRenamingRule()">getColumnRenamingRule</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getColumnRenamingRule()">getColumnRenamingRule</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getDomainObjectName()">getDomainObjectName</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getDomainObjectName()">getDomainObjectName</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            <a href="../../../../org/mybatis/generator/config/GeneratedKey.html">GeneratedKey</a></nobr>
+            <a href="../../../../org/mybatis/generator/config/GeneratedKey.html">GeneratedKey</a>
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getGeneratedKey()">getGeneratedKey</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getGeneratedKey()">getGeneratedKey</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            List&lt;String&gt;</nobr>
+            List&lt;String&gt;
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getIgnoredColumnsInError()">getIgnoredColumnsInError</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getIgnoredColumnsInError()">getIgnoredColumnsInError</a></span>()
         
         <div class="jd-descrdiv">This method returns a List of Strings.</div>
   
@@ -684,672 +692,672 @@ Summary:
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            <a href="../../../../org/mybatis/generator/config/ModelType.html">ModelType</a></nobr>
+            <a href="../../../../org/mybatis/generator/config/ModelType.html">ModelType</a>
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getModelType()">getModelType</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getModelType()">getModelType</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getSchema()">getSchema</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getSchema()">getSchema</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getSelectByExampleQueryId()">getSelectByExampleQueryId</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getSelectByExampleQueryId()">getSelectByExampleQueryId</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getSelectByPrimaryKeyQueryId()">getSelectByPrimaryKeyQueryId</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getSelectByPrimaryKeyQueryId()">getSelectByPrimaryKeyQueryId</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getTableName()">getTableName</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#getTableName()">getTableName</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            int</nobr>
+            int
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#hashCode()">hashCode</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#hashCode()">hashCode</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isAllColumnDelimitingEnabled()">isAllColumnDelimitingEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isAllColumnDelimitingEnabled()">isAllColumnDelimitingEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isColumnIgnored(java.lang.String)">isColumnIgnored</a></span>(String columnName)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isColumnIgnored(java.lang.String)">isColumnIgnored</a></span>(String columnName)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isCountByExampleStatementEnabled()">isCountByExampleStatementEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isCountByExampleStatementEnabled()">isCountByExampleStatementEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isDeleteByExampleStatementEnabled()">isDeleteByExampleStatementEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isDeleteByExampleStatementEnabled()">isDeleteByExampleStatementEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isDeleteByPrimaryKeyStatementEnabled()">isDeleteByPrimaryKeyStatementEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isDeleteByPrimaryKeyStatementEnabled()">isDeleteByPrimaryKeyStatementEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isDelimitIdentifiers()">isDelimitIdentifiers</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isDelimitIdentifiers()">isDelimitIdentifiers</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isInsertStatementEnabled()">isInsertStatementEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isInsertStatementEnabled()">isInsertStatementEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isSelectByExampleStatementEnabled()">isSelectByExampleStatementEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isSelectByExampleStatementEnabled()">isSelectByExampleStatementEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isSelectByPrimaryKeyStatementEnabled()">isSelectByPrimaryKeyStatementEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isSelectByPrimaryKeyStatementEnabled()">isSelectByPrimaryKeyStatementEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isUpdateByExampleStatementEnabled()">isUpdateByExampleStatementEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isUpdateByExampleStatementEnabled()">isUpdateByExampleStatementEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isUpdateByPrimaryKeyStatementEnabled()">isUpdateByPrimaryKeyStatementEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isUpdateByPrimaryKeyStatementEnabled()">isUpdateByPrimaryKeyStatementEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isWildcardEscapingEnabled()">isWildcardEscapingEnabled</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#isWildcardEscapingEnabled()">isWildcardEscapingEnabled</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setAlias(java.lang.String)">setAlias</a></span>(String alias)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setAlias(java.lang.String)">setAlias</a></span>(String alias)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setAllColumnDelimitingEnabled(boolean)">setAllColumnDelimitingEnabled</a></span>(boolean isAllColumnDelimitingEnabled)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setAllColumnDelimitingEnabled(boolean)">setAllColumnDelimitingEnabled</a></span>(boolean isAllColumnDelimitingEnabled)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setCatalog(java.lang.String)">setCatalog</a></span>(String catalog)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setCatalog(java.lang.String)">setCatalog</a></span>(String catalog)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setColumnRenamingRule(org.mybatis.generator.config.ColumnRenamingRule)">setColumnRenamingRule</a></span>(<a href="../../../../org/mybatis/generator/config/ColumnRenamingRule.html">ColumnRenamingRule</a> columnRenamingRule)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setColumnRenamingRule(org.mybatis.generator.config.ColumnRenamingRule)">setColumnRenamingRule</a></span>(<a href="../../../../org/mybatis/generator/config/ColumnRenamingRule.html">ColumnRenamingRule</a> columnRenamingRule)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setConfiguredModelType(java.lang.String)">setConfiguredModelType</a></span>(String configuredModelType)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setConfiguredModelType(java.lang.String)">setConfiguredModelType</a></span>(String configuredModelType)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setCountByExampleStatementEnabled(boolean)">setCountByExampleStatementEnabled</a></span>(boolean countByExampleStatementEnabled)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setCountByExampleStatementEnabled(boolean)">setCountByExampleStatementEnabled</a></span>(boolean countByExampleStatementEnabled)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setDeleteByExampleStatementEnabled(boolean)">setDeleteByExampleStatementEnabled</a></span>(boolean deleteByExampleStatementEnabled)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setDeleteByExampleStatementEnabled(boolean)">setDeleteByExampleStatementEnabled</a></span>(boolean deleteByExampleStatementEnabled)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setDeleteByPrimaryKeyStatementEnabled(boolean)">setDeleteByPrimaryKeyStatementEnabled</a></span>(boolean deleteByPrimaryKeyStatementEnabled)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setDeleteByPrimaryKeyStatementEnabled(boolean)">setDeleteByPrimaryKeyStatementEnabled</a></span>(boolean deleteByPrimaryKeyStatementEnabled)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setDelimitIdentifiers(boolean)">setDelimitIdentifiers</a></span>(boolean delimitIdentifiers)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setDelimitIdentifiers(boolean)">setDelimitIdentifiers</a></span>(boolean delimitIdentifiers)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setDomainObjectName(java.lang.String)">setDomainObjectName</a></span>(String domainObjectName)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setDomainObjectName(java.lang.String)">setDomainObjectName</a></span>(String domainObjectName)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setGeneratedKey(org.mybatis.generator.config.GeneratedKey)">setGeneratedKey</a></span>(<a href="../../../../org/mybatis/generator/config/GeneratedKey.html">GeneratedKey</a> generatedKey)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setGeneratedKey(org.mybatis.generator.config.GeneratedKey)">setGeneratedKey</a></span>(<a href="../../../../org/mybatis/generator/config/GeneratedKey.html">GeneratedKey</a> generatedKey)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setInsertStatementEnabled(boolean)">setInsertStatementEnabled</a></span>(boolean insertStatementEnabled)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setInsertStatementEnabled(boolean)">setInsertStatementEnabled</a></span>(boolean insertStatementEnabled)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setSchema(java.lang.String)">setSchema</a></span>(String schema)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setSchema(java.lang.String)">setSchema</a></span>(String schema)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setSelectByExampleQueryId(java.lang.String)">setSelectByExampleQueryId</a></span>(String selectByExampleQueryId)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setSelectByExampleQueryId(java.lang.String)">setSelectByExampleQueryId</a></span>(String selectByExampleQueryId)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setSelectByExampleStatementEnabled(boolean)">setSelectByExampleStatementEnabled</a></span>(boolean selectByExampleStatementEnabled)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setSelectByExampleStatementEnabled(boolean)">setSelectByExampleStatementEnabled</a></span>(boolean selectByExampleStatementEnabled)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setSelectByPrimaryKeyQueryId(java.lang.String)">setSelectByPrimaryKeyQueryId</a></span>(String selectByPrimaryKeyQueryId)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setSelectByPrimaryKeyQueryId(java.lang.String)">setSelectByPrimaryKeyQueryId</a></span>(String selectByPrimaryKeyQueryId)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setSelectByPrimaryKeyStatementEnabled(boolean)">setSelectByPrimaryKeyStatementEnabled</a></span>(boolean selectByPrimaryKeyStatementEnabled)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setSelectByPrimaryKeyStatementEnabled(boolean)">setSelectByPrimaryKeyStatementEnabled</a></span>(boolean selectByPrimaryKeyStatementEnabled)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setTableName(java.lang.String)">setTableName</a></span>(String tableName)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setTableName(java.lang.String)">setTableName</a></span>(String tableName)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setUpdateByExampleStatementEnabled(boolean)">setUpdateByExampleStatementEnabled</a></span>(boolean updateByExampleStatementEnabled)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setUpdateByExampleStatementEnabled(boolean)">setUpdateByExampleStatementEnabled</a></span>(boolean updateByExampleStatementEnabled)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setUpdateByPrimaryKeyStatementEnabled(boolean)">setUpdateByPrimaryKeyStatementEnabled</a></span>(boolean updateByPrimaryKeyStatementEnabled)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setUpdateByPrimaryKeyStatementEnabled(boolean)">setUpdateByPrimaryKeyStatementEnabled</a></span>(boolean updateByPrimaryKeyStatementEnabled)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setWildcardEscapingEnabled(boolean)">setWildcardEscapingEnabled</a></span>(boolean wildcardEscapingEnabled)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#setWildcardEscapingEnabled(boolean)">setWildcardEscapingEnabled</a></span>(boolean wildcardEscapingEnabled)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#toString()">toString</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#toString()">toString</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            <a href="../../../../org/mybatis/generator/api/dom/xml/XmlElement.html">XmlElement</a></nobr>
+            <a href="../../../../org/mybatis/generator/api/dom/xml/XmlElement.html">XmlElement</a>
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#toXmlElement()">toXmlElement</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#toXmlElement()">toXmlElement</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#validate(java.util.List<java.lang.String>, int)">validate</a></span>(List&lt;String&gt; errors, int listPosition)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/TableConfiguration.html#validate(java.util.List<java.lang.String>, int)">validate</a></span>(List&lt;String&gt; errors, int listPosition)
         
   </td></tr>
 
@@ -1390,64 +1398,64 @@ From class
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/PropertyHolder.html#addProperty(java.lang.String, java.lang.String)">addProperty</a></span>(String name, String value)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/PropertyHolder.html#addProperty(java.lang.String, java.lang.String)">addProperty</a></span>(String name, String value)
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/PropertyHolder.html#addPropertyXmlElements(org.mybatis.generator.api.dom.xml.XmlElement)">addPropertyXmlElements</a></span>(<a href="../../../../org/mybatis/generator/api/dom/xml/XmlElement.html">XmlElement</a> xmlElement)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/PropertyHolder.html#addPropertyXmlElements(org.mybatis.generator.api.dom.xml.XmlElement)">addPropertyXmlElements</a></span>(<a href="../../../../org/mybatis/generator/api/dom/xml/XmlElement.html">XmlElement</a> xmlElement)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            Properties</nobr>
+            Properties
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/PropertyHolder.html#getProperties()">getProperties</a></span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/PropertyHolder.html#getProperties()">getProperties</a></span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/config/PropertyHolder.html#getProperty(java.lang.String)">getProperty</a></span>(String name)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/config/PropertyHolder.html#getProperty(java.lang.String)">getProperty</a></span>(String name)
         
   </td></tr>
 
@@ -1480,176 +1488,176 @@ From class
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            Object</nobr>
+            Object
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">clone</span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">clone</span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            boolean</nobr>
+            boolean
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">equals</span>(Object arg0)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">equals</span>(Object arg0)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">finalize</span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">finalize</span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             final
             
             
-            Class&lt;?&gt;</nobr>
+            Class&lt;?&gt;
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">getClass</span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">getClass</span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            int</nobr>
+            int
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">hashCode</span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">hashCode</span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             final
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">notify</span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">notify</span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             final
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">notifyAll</span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">notifyAll</span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">toString</span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">toString</span>()
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             final
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">wait</span>()
         
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             final
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">wait</span>(long arg0, int arg1)
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             
             
             final
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad">wait</span>(long arg0)
         
   </td></tr>
 
@@ -1694,7 +1702,7 @@ From class
 
 
 
-<A NAME="TableConfiguration(org.mybatis.generator.config.Context)"></A>
+<a id="TableConfiguration(org.mybatis.generator.config.Context)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1740,7 +1748,7 @@ From class
 
 
 
-<A NAME="addColumnOverride(org.mybatis.generator.config.ColumnOverride)"></A>
+<a id="addColumnOverride(org.mybatis.generator.config.ColumnOverride)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1771,7 +1779,7 @@ From class
 </div>
 
 
-<A NAME="addIgnoredColumn(org.mybatis.generator.config.IgnoredColumn)"></A>
+<a id="addIgnoredColumn(org.mybatis.generator.config.IgnoredColumn)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1802,7 +1810,7 @@ From class
 </div>
 
 
-<A NAME="areAnyStatementsEnabled()"></A>
+<a id="areAnyStatementsEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1833,7 +1841,7 @@ From class
 </div>
 
 
-<A NAME="equals(java.lang.Object)"></A>
+<a id="equals(java.lang.Object)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1864,7 +1872,7 @@ From class
 </div>
 
 
-<A NAME="getAlias()"></A>
+<a id="getAlias()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1895,7 +1903,7 @@ From class
 </div>
 
 
-<A NAME="getCatalog()"></A>
+<a id="getCatalog()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1926,7 +1934,7 @@ From class
 </div>
 
 
-<A NAME="getColumnOverride(java.lang.String)"></A>
+<a id="getColumnOverride(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1962,7 +1970,7 @@ From class
 </div>
 
 
-<A NAME="getColumnOverrides()"></A>
+<a id="getColumnOverrides()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1993,7 +2001,7 @@ From class
 </div>
 
 
-<A NAME="getColumnRenamingRule()"></A>
+<a id="getColumnRenamingRule()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2024,7 +2032,7 @@ From class
 </div>
 
 
-<A NAME="getDomainObjectName()"></A>
+<a id="getDomainObjectName()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2055,7 +2063,7 @@ From class
 </div>
 
 
-<A NAME="getGeneratedKey()"></A>
+<a id="getGeneratedKey()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2086,7 +2094,7 @@ From class
 </div>
 
 
-<A NAME="getIgnoredColumnsInError()"></A>
+<a id="getIgnoredColumnsInError()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2125,7 +2133,7 @@ From class
 </div>
 
 
-<A NAME="getModelType()"></A>
+<a id="getModelType()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2156,7 +2164,7 @@ From class
 </div>
 
 
-<A NAME="getSchema()"></A>
+<a id="getSchema()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2187,7 +2195,7 @@ From class
 </div>
 
 
-<A NAME="getSelectByExampleQueryId()"></A>
+<a id="getSelectByExampleQueryId()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2218,7 +2226,7 @@ From class
 </div>
 
 
-<A NAME="getSelectByPrimaryKeyQueryId()"></A>
+<a id="getSelectByPrimaryKeyQueryId()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2249,7 +2257,7 @@ From class
 </div>
 
 
-<A NAME="getTableName()"></A>
+<a id="getTableName()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2280,7 +2288,7 @@ From class
 </div>
 
 
-<A NAME="hashCode()"></A>
+<a id="hashCode()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2311,7 +2319,7 @@ From class
 </div>
 
 
-<A NAME="isAllColumnDelimitingEnabled()"></A>
+<a id="isAllColumnDelimitingEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2342,7 +2350,7 @@ From class
 </div>
 
 
-<A NAME="isColumnIgnored(java.lang.String)"></A>
+<a id="isColumnIgnored(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2373,7 +2381,7 @@ From class
 </div>
 
 
-<A NAME="isCountByExampleStatementEnabled()"></A>
+<a id="isCountByExampleStatementEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2404,7 +2412,7 @@ From class
 </div>
 
 
-<A NAME="isDeleteByExampleStatementEnabled()"></A>
+<a id="isDeleteByExampleStatementEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2435,7 +2443,7 @@ From class
 </div>
 
 
-<A NAME="isDeleteByPrimaryKeyStatementEnabled()"></A>
+<a id="isDeleteByPrimaryKeyStatementEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2466,7 +2474,7 @@ From class
 </div>
 
 
-<A NAME="isDelimitIdentifiers()"></A>
+<a id="isDelimitIdentifiers()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2497,7 +2505,7 @@ From class
 </div>
 
 
-<A NAME="isInsertStatementEnabled()"></A>
+<a id="isInsertStatementEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2528,7 +2536,7 @@ From class
 </div>
 
 
-<A NAME="isSelectByExampleStatementEnabled()"></A>
+<a id="isSelectByExampleStatementEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2559,7 +2567,7 @@ From class
 </div>
 
 
-<A NAME="isSelectByPrimaryKeyStatementEnabled()"></A>
+<a id="isSelectByPrimaryKeyStatementEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2590,7 +2598,7 @@ From class
 </div>
 
 
-<A NAME="isUpdateByExampleStatementEnabled()"></A>
+<a id="isUpdateByExampleStatementEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2621,7 +2629,7 @@ From class
 </div>
 
 
-<A NAME="isUpdateByPrimaryKeyStatementEnabled()"></A>
+<a id="isUpdateByPrimaryKeyStatementEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2652,7 +2660,7 @@ From class
 </div>
 
 
-<A NAME="isWildcardEscapingEnabled()"></A>
+<a id="isWildcardEscapingEnabled()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2683,7 +2691,7 @@ From class
 </div>
 
 
-<A NAME="setAlias(java.lang.String)"></A>
+<a id="setAlias(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2714,7 +2722,7 @@ From class
 </div>
 
 
-<A NAME="setAllColumnDelimitingEnabled(boolean)"></A>
+<a id="setAllColumnDelimitingEnabled(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2745,7 +2753,7 @@ From class
 </div>
 
 
-<A NAME="setCatalog(java.lang.String)"></A>
+<a id="setCatalog(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2776,7 +2784,7 @@ From class
 </div>
 
 
-<A NAME="setColumnRenamingRule(org.mybatis.generator.config.ColumnRenamingRule)"></A>
+<a id="setColumnRenamingRule(org.mybatis.generator.config.ColumnRenamingRule)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2807,7 +2815,7 @@ From class
 </div>
 
 
-<A NAME="setConfiguredModelType(java.lang.String)"></A>
+<a id="setConfiguredModelType(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2838,7 +2846,7 @@ From class
 </div>
 
 
-<A NAME="setCountByExampleStatementEnabled(boolean)"></A>
+<a id="setCountByExampleStatementEnabled(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2869,7 +2877,7 @@ From class
 </div>
 
 
-<A NAME="setDeleteByExampleStatementEnabled(boolean)"></A>
+<a id="setDeleteByExampleStatementEnabled(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2900,7 +2908,7 @@ From class
 </div>
 
 
-<A NAME="setDeleteByPrimaryKeyStatementEnabled(boolean)"></A>
+<a id="setDeleteByPrimaryKeyStatementEnabled(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2931,7 +2939,7 @@ From class
 </div>
 
 
-<A NAME="setDelimitIdentifiers(boolean)"></A>
+<a id="setDelimitIdentifiers(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2962,7 +2970,7 @@ From class
 </div>
 
 
-<A NAME="setDomainObjectName(java.lang.String)"></A>
+<a id="setDomainObjectName(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2993,7 +3001,7 @@ From class
 </div>
 
 
-<A NAME="setGeneratedKey(org.mybatis.generator.config.GeneratedKey)"></A>
+<a id="setGeneratedKey(org.mybatis.generator.config.GeneratedKey)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3024,7 +3032,7 @@ From class
 </div>
 
 
-<A NAME="setInsertStatementEnabled(boolean)"></A>
+<a id="setInsertStatementEnabled(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3055,7 +3063,7 @@ From class
 </div>
 
 
-<A NAME="setSchema(java.lang.String)"></A>
+<a id="setSchema(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3086,7 +3094,7 @@ From class
 </div>
 
 
-<A NAME="setSelectByExampleQueryId(java.lang.String)"></A>
+<a id="setSelectByExampleQueryId(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3117,7 +3125,7 @@ From class
 </div>
 
 
-<A NAME="setSelectByExampleStatementEnabled(boolean)"></A>
+<a id="setSelectByExampleStatementEnabled(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3148,7 +3156,7 @@ From class
 </div>
 
 
-<A NAME="setSelectByPrimaryKeyQueryId(java.lang.String)"></A>
+<a id="setSelectByPrimaryKeyQueryId(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3179,7 +3187,7 @@ From class
 </div>
 
 
-<A NAME="setSelectByPrimaryKeyStatementEnabled(boolean)"></A>
+<a id="setSelectByPrimaryKeyStatementEnabled(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3210,7 +3218,7 @@ From class
 </div>
 
 
-<A NAME="setTableName(java.lang.String)"></A>
+<a id="setTableName(java.lang.String)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3241,7 +3249,7 @@ From class
 </div>
 
 
-<A NAME="setUpdateByExampleStatementEnabled(boolean)"></A>
+<a id="setUpdateByExampleStatementEnabled(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3272,7 +3280,7 @@ From class
 </div>
 
 
-<A NAME="setUpdateByPrimaryKeyStatementEnabled(boolean)"></A>
+<a id="setUpdateByPrimaryKeyStatementEnabled(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3303,7 +3311,7 @@ From class
 </div>
 
 
-<A NAME="setWildcardEscapingEnabled(boolean)"></A>
+<a id="setWildcardEscapingEnabled(boolean)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3334,7 +3342,7 @@ From class
 </div>
 
 
-<A NAME="toString()"></A>
+<a id="toString()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3365,7 +3373,7 @@ From class
 </div>
 
 
-<A NAME="toXmlElement()"></A>
+<a id="toXmlElement()"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3396,7 +3404,7 @@ From class
 </div>
 
 
-<A NAME="validate(java.util.List<java.lang.String>, int)"></A>
+<a id="validate(java.util.List<java.lang.String>, int)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3435,7 +3443,7 @@ From class
 
 
 <!-- ========= END OF CLASS DATA ========= -->
-<A NAME="navbar_top"></A>
+<a id="navbar_top"></a>
 
 <div id="footer">
 Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
@@ -3448,7 +3456,7 @@ Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
 </div> <!-- end body-content --> 
 
 <script type="text/javascript">
-init(); /* initialize android-developer-docs.js */
+init(); /* initialize doclava-developer-docs.js */
 </script>
 
 </body>

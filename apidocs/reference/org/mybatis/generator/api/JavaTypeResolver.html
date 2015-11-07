@@ -48,10 +48,12 @@
 
 
 
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Javadoc API documentation for MyBatis Generator Core." />
+
 <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
 <title>
 
@@ -61,16 +63,16 @@
 | MyBatis Generator Core
 
 </title>
-<link href="../../../../../assets/android-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/doclava-developer-docs.css" rel="stylesheet" type="text/css" />
 <link href="../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
 <script src="../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
 <script src="../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
-<script src="../../../../../assets/android-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../assets/doclava-developer-docs.js" type="text/javascript"></script>
 <script src="../../../../../assets/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
   setToRoot("../../../../", "../../../../../assets/");
 </script>
-<script src="../../../../../assets/android-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../assets/doclava-developer-reference.js" type="text/javascript"></script>
 <script src="../../../../../assets/navtree_data.js" type="text/javascript"></script>
 <script src="../../../../../assets/customizations.js" type="text/javascript"></script>
 <noscript>
@@ -136,9 +138,9 @@
         <div id="nav-panels">
           <div id="resize-packages-nav">
             <div id="packages-nav">
-              <div id="index-links"><nobr>
+              <div id="index-links">
                 <a href="../../../../packages.html"  >Package Index</a> | 
-                <a href="../../../../classes.html" >Class Index</a></nobr>
+                <a href="../../../../classes.html" >Class Index</a>
               </div>
               <ul>
                 
@@ -148,6 +150,8 @@
   <a href="../../../../org/mybatis/generator/api/package-summary.html">org.mybatis.generator.api</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/api/dom/package-summary.html">org.mybatis.generator.api.dom</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../org/mybatis/generator/api/dom/extjs/package-summary.html">org.mybatis.generator.api.dom.extjs</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/api/dom/java/package-summary.html">org.mybatis.generator.api.dom.java</a></li>
     <li class="api apilevel-">
@@ -170,6 +174,8 @@
   <a href="../../../../org/mybatis/generator/codegen/ibatis2/sqlmap/elements/package-summary.html">org.mybatis.generator.codegen.ibatis2.sqlmap.elements</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/codegen/mybatis3/package-summary.html">org.mybatis.generator.codegen.mybatis3</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../org/mybatis/generator/codegen/mybatis3/extjs/package-summary.html">org.mybatis.generator.codegen.mybatis3.extjs</a></li>
     <li class="api apilevel-">
   <a href="../../../../org/mybatis/generator/codegen/mybatis3/javamapper/package-summary.html">org.mybatis.generator.codegen.mybatis3.javamapper</a></li>
     <li class="api apilevel-">
@@ -216,6 +222,7 @@
       <ul>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/CommentGenerator.html">CommentGenerator</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/DAOMethodNameCalculator.html">DAOMethodNameCalculator</a></li>
+          <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/ExtjsFormatter.html">ExtjsFormatter</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/JavaFormatter.html">JavaFormatter</a></li>
           <li class="selected api apilevel-"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html">JavaTypeResolver</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/Plugin.html">Plugin</a></li>
@@ -228,6 +235,7 @@
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/FullyQualifiedTable.html">FullyQualifiedTable</a></li>
+          <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/GeneratedExtjsFile.html">GeneratedExtjsFile</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/GeneratedFile.html">GeneratedFile</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/GeneratedJavaFile.html">GeneratedJavaFile</a></li>
           <li class="api apilevel-"><a href="../../../../org/mybatis/generator/api/GeneratedXmlFile.html">GeneratedXmlFile</a></li>
@@ -254,9 +262,9 @@
           </div><!-- end classes -->
         </div><!-- end nav-panels -->
         <div id="nav-tree" style="display:none">
-          <div id="index-links"><nobr>
+          <div id="index-links">
             <a href="../../../../packages.html"  >Package Index</a> | 
-            <a href="../../../../classes.html" >Class Index</a></nobr>
+            <a href="../../../../classes.html" >Class Index</a>
           </div>
         </div><!-- end nav-tree -->
       </div><!-- end swapper -->
@@ -289,6 +297,7 @@
 
 
 <div class="sum-details-links">
+
 
 Summary:
 
@@ -458,16 +467,16 @@ Summary:
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             abstract
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html#addConfigurationProperties(java.util.Properties)">addConfigurationProperties</a></span>(Properties properties)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html#addConfigurationProperties(java.util.Properties)">addConfigurationProperties</a></span>(Properties properties)
         
         <div class="jd-descrdiv">Adds properties for this instance from any properties configured in the
  JavaTypeResolverConfiguration.</div>
@@ -477,16 +486,16 @@ Summary:
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             abstract
             
             
             
             
-            <a href="../../../../org/mybatis/generator/api/dom/java/FullyQualifiedJavaType.html">FullyQualifiedJavaType</a></nobr>
+            <a href="../../../../org/mybatis/generator/api/dom/java/FullyQualifiedJavaType.html">FullyQualifiedJavaType</a>
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html#calculateJavaType(org.mybatis.generator.api.IntrospectedColumn)">calculateJavaType</a></span>(<a href="../../../../org/mybatis/generator/api/IntrospectedColumn.html">IntrospectedColumn</a> introspectedColumn)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html#calculateJavaType(org.mybatis.generator.api.IntrospectedColumn)">calculateJavaType</a></span>(<a href="../../../../org/mybatis/generator/api/IntrospectedColumn.html">IntrospectedColumn</a> introspectedColumn)
         
         <div class="jd-descrdiv">Calculates and returns the Java type that should be associated with this
  column based on the jdbc type, length, and scale of the column.</div>
@@ -496,16 +505,16 @@ Summary:
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             abstract
             
             
             
             
-            String</nobr>
+            String
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html#calculateJdbcTypeName(org.mybatis.generator.api.IntrospectedColumn)">calculateJdbcTypeName</a></span>(<a href="../../../../org/mybatis/generator/api/IntrospectedColumn.html">IntrospectedColumn</a> introspectedColumn)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html#calculateJdbcTypeName(org.mybatis.generator.api.IntrospectedColumn)">calculateJdbcTypeName</a></span>(<a href="../../../../org/mybatis/generator/api/IntrospectedColumn.html">IntrospectedColumn</a> introspectedColumn)
         
         <div class="jd-descrdiv">Calculates and returns the JDBC type name that should be associated with
  this column based on the jdbc type, length, and scale of the column.</div>
@@ -515,16 +524,16 @@ Summary:
 
 	 
     <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             abstract
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html#setContext(org.mybatis.generator.config.Context)">setContext</a></span>(<a href="../../../../org/mybatis/generator/config/Context.html">Context</a> context)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html#setContext(org.mybatis.generator.config.Context)">setContext</a></span>(<a href="../../../../org/mybatis/generator/config/Context.html">Context</a> context)
         
         <div class="jd-descrdiv">Sets the instance of the Context object associated with this instance.</div>
   
@@ -533,16 +542,16 @@ Summary:
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
+        <td class="jd-typecol">
             abstract
             
             
             
             
-            void</nobr>
+            void
         </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html#setWarnings(java.util.List<java.lang.String>)">setWarnings</a></span>(List&lt;String&gt; warnings)</nobr>
+        <td class="jd-linkcol" width="100%">
+        <span class="sympad"><a href="../../../../org/mybatis/generator/api/JavaTypeResolver.html#setWarnings(java.util.List<java.lang.String>)">setWarnings</a></span>(List&lt;String&gt; warnings)
         
         <div class="jd-descrdiv">The generator will supply a list to this method.</div>
   
@@ -597,7 +606,7 @@ Summary:
 
 
 
-<A NAME="addConfigurationProperties(java.util.Properties)"></A>
+<a id="addConfigurationProperties(java.util.Properties)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -630,7 +639,7 @@ Summary:
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>properties</td>
+          <th>properties</th>
           <td>All properties from the configuration
 </td>
         </tr>
@@ -641,7 +650,7 @@ Summary:
 </div>
 
 
-<A NAME="calculateJavaType(org.mybatis.generator.api.IntrospectedColumn)"></A>
+<a id="calculateJavaType(org.mybatis.generator.api.IntrospectedColumn)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -672,7 +681,7 @@ Summary:
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>introspectedColumn</td>
+          <th>introspectedColumn</th>
           <td>the column whose Java type needs to be calculated</td>
         </tr>
       </table>
@@ -689,7 +698,7 @@ Summary:
 </div>
 
 
-<A NAME="calculateJdbcTypeName(org.mybatis.generator.api.IntrospectedColumn)"></A>
+<a id="calculateJdbcTypeName(org.mybatis.generator.api.IntrospectedColumn)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -720,7 +729,7 @@ Summary:
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>introspectedColumn</td>
+          <th>introspectedColumn</th>
           <td>the column whose Java type needs to be calculated</td>
         </tr>
       </table>
@@ -737,7 +746,7 @@ Summary:
 </div>
 
 
-<A NAME="setContext(org.mybatis.generator.config.Context)"></A>
+<a id="setContext(org.mybatis.generator.config.Context)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -769,7 +778,7 @@ Summary:
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>context</td>
+          <th>context</th>
           <td>The current Context
 </td>
         </tr>
@@ -780,7 +789,7 @@ Summary:
 </div>
 
 
-<A NAME="setWarnings(java.util.List<java.lang.String>)"></A>
+<a id="setWarnings(java.util.List<java.lang.String>)"></a>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -822,7 +831,7 @@ Summary:
 
 
 <!-- ========= END OF CLASS DATA ========= -->
-<A NAME="navbar_top"></A>
+<a id="navbar_top"></a>
 
 <div id="footer">
 Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
@@ -835,7 +844,7 @@ Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
 </div> <!-- end body-content --> 
 
 <script type="text/javascript">
-init(); /* initialize android-developer-docs.js */
+init(); /* initialize doclava-developer-docs.js */
 </script>
 
 </body>
