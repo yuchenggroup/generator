@@ -54,6 +54,7 @@
         <item href="configreference/ignoreColumn.html" name="&amp;lt;ignoreColumn&amp;gt;" />
         <item href="configreference/javaClientGenerator.html" name="&amp;lt;javaClientGenerator&amp;gt;" />
         <item href="configreference/javaModelGenerator.html" name="&amp;lt;javaModelGenerator&amp;gt;" />
+        <item href="configreference/extjsGenerator.html" name="&amp;lt;extjsGenerator&amp;gt;" />
         <item href="configreference/javaTypeResolver.html" name="&amp;lt;javaTypeResolver&amp;gt;" />
         <item href="configreference/jdbcConnection.html" name="&amp;lt;jdbcConnection&amp;gt;" />
         <item href="configreference/plugin.html" name="&amp;lt;plugin&amp;gt;" />
