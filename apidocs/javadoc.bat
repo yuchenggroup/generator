@@ -1,0 +1,1 @@
+D:\Develop\Java\jdk1.7.0_76\jre\..\bin\javadoc.exe -J-Xmx1024m @options @packages
