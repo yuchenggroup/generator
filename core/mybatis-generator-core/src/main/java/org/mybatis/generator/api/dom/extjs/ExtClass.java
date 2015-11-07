@@ -28,6 +28,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 /**
@@ -261,6 +262,11 @@ public abstract class ExtClass {
     private String getTextContent(Node childNode) {
         //
         String textContent = childNode.getTextContent();
+        try {
+            textContent = new String(textContent.getBytes("UTF-8"), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         return textContent;
     }
 }
