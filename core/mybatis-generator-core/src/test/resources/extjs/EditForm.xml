@@ -9,7 +9,34 @@ Ext.define("${appName}.view.${shortPackage}.${modelName}EditForm", {
 	border: 10,
 	autoScroll: false,
 	layout : 'border',
-	items:[]
+	items:[
+		{
+			xtype: 'fieldcontainer',
+			layout: 'column',
+			fieldDefaults: {
+			msgTarget: 'side',
+			columnWidth: .3,
+			style : {
+				marginLeft : '25px'
+			},
+				labelWidth: 90
+			},
+			items:[
+				{
+				xtype: "textfield",
+				name: "planName",
+				width :250,
+				allowBlank:false,
+				fieldLabel: "计划名称"
+				}
+			]
+		}
+
+
+	<field separator=",\n        ">
+			{header: '${fieldName}', dataIndex: '${fieldName}', align:'center', width: 225}
+	</field>
+	]
 
 });
 </class>
