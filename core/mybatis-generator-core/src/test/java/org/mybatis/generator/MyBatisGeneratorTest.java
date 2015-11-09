@@ -33,7 +33,7 @@ public class MyBatisGeneratorTest {
     public void testGenerateMyBatis3() throws Exception {
         List<String> warnings = new ArrayList<String>();
         ConfigurationParser cp = new ConfigurationParser(warnings);
-        Configuration config = cp.parseConfiguration(this.getClass().getClassLoader().getResourceAsStream("generatorConfigMyBatis3.xml"));
+        Configuration config = cp.parseConfiguration(this.getClass().getClassLoader().getResourceAsStream("generatorConfigExtjs.xml"));
             
         DefaultShellCallback shellCallback = new DefaultShellCallback(true);
         
