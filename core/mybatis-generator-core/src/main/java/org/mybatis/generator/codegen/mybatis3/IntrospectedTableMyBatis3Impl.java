@@ -19,10 +19,7 @@ import org.mybatis.generator.api.*;
 import org.mybatis.generator.api.dom.java.CompilationUnit;
 import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.codegen.*;
-import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsControllerGenerator;
-import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsGridGenerator;
-import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsModelGenerator;
-import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsStoreGenerator;
+import org.mybatis.generator.codegen.mybatis3.extjs.*;
 import org.mybatis.generator.codegen.mybatis3.javamapper.AnnotatedClientGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.JavaMapperGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.MixedClientGenerator;
@@ -194,6 +191,29 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
                     progressCallback);
             extjsGenerators.add(extjsGenerator);
         }
+
+
+        if ("".length() < 5) {
+            AbstractExtjsGenerator extjsGenerator = new ExtjsEditFormGenerator();
+            initializeAbstractGenerator(extjsGenerator, warnings,
+                    progressCallback);
+            extjsGenerators.add(extjsGenerator);
+        }
+
+        if ("".length() < 5) {
+            AbstractExtjsGenerator extjsGenerator = new ExtjsQueryFormGenerator();
+            initializeAbstractGenerator(extjsGenerator, warnings,
+                    progressCallback);
+            extjsGenerators.add(extjsGenerator);
+        }
+
+        if ("".length() < 5) {
+            AbstractExtjsGenerator extjsGenerator = new ExtjsLayoutViewGenerator();
+            initializeAbstractGenerator(extjsGenerator, warnings,
+                    progressCallback);
+            extjsGenerators.add(extjsGenerator);
+        }
+
     }
 
     protected void initializeAbstractGenerator(
