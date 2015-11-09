@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class>
+Ext.define('${appName}.store.${shortPackage}.${modelName}Store', {
+    extend: 'Ext.data.Store',
+    autoLoad: true,
+    model: '${appName}.model.${shortPackage}.${modelName}',
+    remoteSort: true,
+    pageSize: 20,
+    proxy: {
+        type: 'ajax',
+        api: {
+            read : 'rest/${shortPackage}/${modelName}/read.json', //获取
+            create :'rest/${shortPackage}/${modelName}/create.json',  //创建
+            update : 'rest/${shortPackage}/${modelName}/update.json', //更新
+            destroy :'rest/${shortPackage}/${modelName}/delete.json'  //删除
+        },
+        actionMethods: {
+            read   : 'POST'
+        },
+        reader: {
+            type: 'json',
+            root: 'data',
+            totalProperty: 'totalCount'
+        },
+        limitParam: 'pageSize'
+    }
+});
+</class>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class>
+Ext.define('${appName}.controller.${shortPackage}.${modelName}Controller', {
+    extend: 'Ext.app.Controller',
+    views: ['${shortPackage}.${modelName}LayoutView','${shortPackage}.${modelName}Grid','${shortPackage}.${modelName}QueryForm','${shortPackage}.${modelName}EditForm'],
+    stores : ["${shortPackage}.${modelName}Store"],
+    models : ["${shortPackage}.${modelName}"],
+    refs: [{
+    ref : 'form',
+    selector : '${shortPackage}${modelName}EditForm'
+    },{
+    ref : 'queryForm',
+    selector : '${shortPackage}${modelName}QueryForm'
+    },{
+        ref : 'grid',
+        selector : '${shortPackage}${modelName}Grid'
+    }],
+    getMainView: function () {
+        return this.getView('${shortPackage}.${modelName}LayoutView');
+    },
+    init: function () {
+            this.control({
+                '${shortPackage}${modelName}Grid' : {
+                    //选择行事件
+                    'selectionchange' : function(view,records,eOpts) {
+                        if(records.length>0) {
+                            this.getGrid().down('button[action=update]').setDisabled(false);
+                            this.getGrid().down('button[action=delete]').setDisabled(false);
+                            this.getGrid().down('button[action=view]').setDisabled(false);
+                        } else {
+                            this.getGrid().down('button[action=update]').setDisabled(true);
+                            this.getGrid().down('button[action=delete]').setDisabled(true);
+                            this.getGrid().down('button[action=view]').setDisabled(true);
+                        }
+                     },
+                    'itemdblclick':function (grid,row){
+                        this.update${shortPackage}${modelName}();
+                    },
+                    'render' : function() {
+                            var values=this.getQueryForm().getValues();
+                            this.getStore('${shortPackage}.${modelName}Store').loadPage(1, {
+                            params: values
+                         });
+                    }
+                },
+                //新建
+                '${shortPackage}${modelName}Grid  button[action=create]': {
+                    click : this.create${shortPackage}${modelName}
+                },
+                //更新
+                '${shortPackage}${modelName}Grid  button[action=update]': {
+                     click : this.update${shortPackage}${modelName}
+                },
+                //删除
+                '${shortPackage}${modelName}Grid  button[action=delete]': {
+                    click : this.delete${shortPackage}${modelName}
+                },
+                //查询
+                '${shortPackage}${modelName}QueryForm  button[action=query]': {
+                    click : this.onQuery
+                },
+                //重置
+                '${shortPackage}${modelName}QueryForm  button[action=reset]': {
+                    click : this.onReset
+                }
+        });
+    },
+    /**
+        *查询
+    */
+    onQuery: function (btn) {
+        var me = this,
+        form = btn.up('form'),
+        values = form.getForm().getValues();
+        //查询
+        me.getStore('${shortPackage}.${modelName}Store').loadPage(1, {
+             params: values
+        });
+        me.getStore('${shortPackage}.${modelName}Store').proxy.extraParams = values;
+    },/**
+    *重置
+    */
+    onReset: function (btn) {
+        var me = this,
+        form = btn.up('form');
+        form.getForm().reset();
+        //查询
+        me.getStore('${shortPackage}.${modelName}Store').proxy.extraParams = null;
+        me.getStore('${shortPackage}.${modelName}Store').loadPage(1, {
+         params: null
+        });
+    },
+    /**
+    * 新增
+    */
+    create${shortPackage}${modelName} : function() {
+        var me = this;
+        wr.openFormWin({
+            title : '新增',
+            items : {
+                xtype : '${shortPackage}${modelName}Form'
+            }
+        },function(form,win){
+            form.form.submit({
+                    url : me.getGrid().getStore().getProxy().api.create,
+                    method : 'post',
+                    submitEmptyText:false,
+                    params:{},
+                    waitMsg : '正在保存数据...',
+                    success : function(form,action) {
+                        form.reset();
+                        win.close();
+                        me.getGrid().getStore().load();
+                    },
+                    failure : function(form,action) {
+                        Ext.Msg.alert('保存失败', action.result.message+'！');
+                    }
+             });
+        });
+    },
+    /**
+    *更新计划
+    */
+    update${shortPackage}${modelName} : function() {
+        var me = this,
+        records = this.getGrid().getSelectionModel().getSelection();
+        if (records.length == 0) {
+            Ext.MessageBox.alert('提示', '请勾选需要修改的记录。');
+            return;
+        } else if (records.length > 1) {
+            Ext.MessageBox.alert('提示', '不支持同时修改多项记录。');
+            return;
+        }
+        var record = records[0];
+        //打开更新窗口
+        wr.openFormWin({
+                title : '更新',
+                items : {
+                    xtype : '${shortPackage}${modelName}Form'
+                }
+                },function(form,win){
+                    form.form.submit({
+                        url : me.getGrid().getStore().getProxy().api.update,
+                        method : 'post',
+                        waitMsg : '正在保存数据...',
+                        success : function(form,action) {
+                            form.reset();
+                            win.close();
+                            var records = me.getGrid().getSelectionModel().getSelection();
+                            me.getGrid().getSelectionModel().deselect(records);
+                            me.getGrid().getStore().load();
+                        },
+                        failure : function(form,action) {
+                             Ext.Msg.alert('保存失败', '更新资源信息失败！');
+                        }
+                    });
+         });
+    },
+
+    /**
+    *删除计划
+    */
+    delete${shortPackage}${modelName} : function() {
+        var records = this.getGrid().getSelectionModel().getSelection();
+        url = this.getGrid().getStore().getProxy().api['destroy'],
+        me = this;
+        var len=records.length;
+        if (len == 0) {
+        Ext.MessageBox.alert('提示', '请勾选需要删除的记录。');
+            return;
+        }
+        var ids = [];
+        for(var rec in records){
+            ids.push( rec.get('id'));
+        }
+
+        Ext.MessageBox.confirm('提示', '您确实要删除选定的记录吗？', function (btn) {
+        if (btn == 'yes') {
+            Ext.Ajax.request({
+                url: url,
+                params: {ids: ids},
+                success: function (response) {
+                    var data = response.responseText;
+                    var obj = eval("(" + data + ")");
+                    if (obj.success) {
+                    Ext.MessageBox.alert("成功", "删除成功！");
+                    me.getGrid().getStore().load();
+                    } else {
+                        Ext.MessageBox.alert("失败", "删除失败！"+obj.message);
+                    }
+                }
+            });
+        }
+        });
+    }
+    });
+</class>
