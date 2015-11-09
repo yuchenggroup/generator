@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class>
+Ext.define("${appName}.view.${shortPackage}.${modelName}LayoutView", {
+	extend : "Ext.panel.Panel",
+	alias : "widget.${shortPackage}${modelName}LayoutView",
+	border : false,
+	layout : 'border',
+	items : [ {
+		region : 'north',
+		xtype : "${shortPackage}${modelName}QueryForm"
+	}, {
+		region : 'center',
+		xtype : "${shortPackage}${modelName}View",
+		layout : 'fit',
+		split : true,
+		border : true
+	} ]
+});
+</class>
