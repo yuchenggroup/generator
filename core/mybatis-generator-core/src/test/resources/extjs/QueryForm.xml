@@ -2,8 +2,8 @@
 <class>
 Ext.define("${appName}.view.${shortPackage}.${modelName}QueryForm", {
 	extend: "Ext.form.Panel",
-	alias: "widget.activitymQueryForm",
-	title: "市场活动",
+	alias: "widget.${shortPackage}${modelName}QueryForm",
+	title: "查询",
 	border: 1,
 	layout: 'fit',
 	height:120,
