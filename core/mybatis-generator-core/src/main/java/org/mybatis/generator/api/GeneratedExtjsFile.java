@@ -20,10 +20,7 @@ import org.mybatis.generator.api.dom.java.CompilationUnit;
 import org.mybatis.generator.api.dom.java.Field;
 import org.mybatis.generator.api.dom.java.InnerClass;
 import org.mybatis.generator.codegen.AbstractExtjsGenerator;
-import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsControllerGenerator;
-import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsGridGenerator;
-import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsModelGenerator;
-import org.mybatis.generator.codegen.mybatis3.extjs.ExtjsStoreGenerator;
+import org.mybatis.generator.codegen.mybatis3.extjs.*;
 import org.mybatis.generator.config.ExtjsGeneratorConfiguration;
 
 import java.util.List;
@@ -95,6 +92,12 @@ public class GeneratedExtjsFile extends GeneratedFile {
                 moduleClass = new ExtGridClass(fields);
             }else if(generator instanceof ExtjsControllerGenerator){
                 moduleClass = new ExtControllerClass(fields);
+            }else if(generator instanceof ExtjsEditFormGenerator){
+                moduleClass = new ExtEditFormClass(fields);
+            }else if(generator instanceof ExtjsLayoutViewGenerator){
+                moduleClass = new ExtLaytoutViewClass(fields);
+            }else if(generator instanceof ExtjsQueryFormGenerator){
+                moduleClass = new ExtQueryFormClass(fields);
             }
             //
             String appName = extjsGeneratorConfiguration.getAppName();
