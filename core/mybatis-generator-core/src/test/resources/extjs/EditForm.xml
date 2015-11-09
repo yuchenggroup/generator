@@ -2,7 +2,7 @@
 <class>
 Ext.define("${appName}.view.${shortPackage}.${modelName}EditForm", {
 	extend:"Ext.form.Panel",
-	alias:"widget.${shortPackage.${modelName}EditForm",
+	alias:"widget.${shortPackage}${modelName}EditForm",
 	width : 500,
 	height:400,
 	bodyPadding: '10',
