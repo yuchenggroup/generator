@@ -128,6 +128,12 @@ public class GeneratedExtjsFile extends GeneratedFile {
             append = "Grid";
         }else if(generator instanceof ExtjsControllerGenerator){
             append = "Controller";
+        }else if(generator instanceof ExtjsLayoutViewGenerator){
+            append = "LayoutView";
+        }else if(generator instanceof ExtjsQueryFormGenerator){
+            append = "QueryForm";
+        }else if(generator instanceof ExtjsEditFormGenerator){
+            append = "EditForm";
         }else{
             append = "";
         }
