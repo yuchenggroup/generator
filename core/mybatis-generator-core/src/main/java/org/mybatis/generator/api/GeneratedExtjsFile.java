@@ -170,6 +170,12 @@ public class GeneratedExtjsFile extends GeneratedFile {
             module = "View";
         }else if(generator instanceof ExtjsControllerGenerator){
             module = "Controller";
+        }else if(generator instanceof ExtjsQueryFormGenerator){
+            module = "View";
+        }else if(generator instanceof ExtjsEditFormGenerator){
+            module = "View";
+        }else if(generator instanceof ExtjsLayoutViewGenerator){
+            module = "View";
         }else{
             module = "";
         }
