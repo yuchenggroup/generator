@@ -21,8 +21,6 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-
-
         <!-- 生成模型(Java Model)的包名和位置; 建议总的包为 com.cncounter.cncounter.model.xxx -->
         <javaModelGenerator targetPackage="com.ezubo.global.achievement.model" targetProject="target/generated-sources/mybatis3">
             <property name="enableSubPackages" value="true"/>
@@ -36,21 +34,10 @@
             <property name="trimStrings" value="true"/>
         </extjsGenerator>
 
-
-
-
-
-
-
         <sqlMapGenerator targetPackage="com.yuchenggroup.global.dao"
                          targetProject="target/generated-sources/mybatis3">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-
-
-
-
-
 
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.yuchenggroup.global.client"
                              targetProject="target/generated-sources/mybatis3">
@@ -60,6 +47,8 @@
             <columnOverride column="enablestate" javaType="Integer" jdbcType="TINYINT" />
             <columnOverride column="dr" javaType="Integer" jdbcType="TINYINT" />
         </table>
+
+
     </context>
 
 </generatorConfiguration>
