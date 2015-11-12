@@ -22,20 +22,17 @@ Ext.define("${appName}.view.${shortPackage}.${modelName}EditForm", {
 				labelWidth: 90
 			},
 			items:[
-				{
-				xtype: "textfield",
-				name: "planName",
-				width :250,
-				allowBlank:false,
-				fieldLabel: "计划名称"
-				}
+				<field separator=",\n        ">
+					{
+					xtype: "textfield",
+					name: "${fieldName}",
+					width :250,
+					allowBlank:false,
+					fieldLabel: "${fieldName}"
+					}
+				</field>
 			]
 		}
-
-
-	<field separator=",\n        ">
-			{header: '${fieldName}', dataIndex: '${fieldName}', align:'center', width: 225}
-	</field>
 	]
 
 });
