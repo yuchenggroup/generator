@@ -10,7 +10,7 @@ Ext.define("${appName}.view.${shortPackage}.${modelName}LayoutView", {
 		xtype : "${shortPackage}${modelName}QueryForm"
 	}, {
 		region : 'center',
-		xtype : "${shortPackage}${modelName}View",
+		xtype : "${shortPackage}${modelName}Grid",
 		layout : 'fit',
 		split : true,
 		border : true
