@@ -98,7 +98,7 @@ Ext.define('${appName}.controller.${shortPackage}.${modelName}Controller', {
         wr.openFormWin({
             title : '新增',
             items : {
-                xtype : '${shortPackage}${modelName}Form'
+                xtype : '${shortPackage}${modelName}EditForm'
             }
         },function(form,win){
             form.form.submit({
@@ -136,7 +136,7 @@ Ext.define('${appName}.controller.${shortPackage}.${modelName}Controller', {
         wr.openFormWin({
                 title : '更新',
                 items : {
-                    xtype : '${shortPackage}${modelName}Form'
+                    xtype : '${shortPackage}${modelName}EditForm'
                 }
                 },function(form,win){
                     form.form.submit({
