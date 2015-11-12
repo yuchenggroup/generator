@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class>
+Ext.define("${appName}.view.${shortPackage}.${modelName}QueryForm", {
+	extend: "Ext.form.Panel",
+	alias: "widget.${shortPackage}${modelName}QueryForm",
+	title: "查询",
+	border: 1,
+	layout: 'fit',
+	height:120,
+	items: [{
+		layout: 'column',
+		xtype: 'fieldcontainer',
+		fieldDefaults: {
+			msgTarget: 'side',
+			style : {
+				marginLeft : '10px',
+				marginTop:'10px'
+			},
+			labelWidth: 85
+		},
+		items: [
+			 {
+						msgTarget: 'side',
+						style : {
+							marginLeft : '25px',
+							marginTop:'10px'
+						},
+						xtype: 'authcbutton',
+						action: 'query',
+						iconCls: 'find',
+						text: '查询'
+					},
+				{
+					msgTarget: 'side',
+					style : {
+						marginLeft : '25px',
+						marginTop:'10px'
+					},
+					xtype: 'authcbutton',
+					action: 'reset',
+					iconCls: 'find',
+					text: '重置'
+				}
+			 ]
+	}]
+});
+</class>

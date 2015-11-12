@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class>
+Ext.define("${appName}.view.${shortPackage}.${modelName}EditForm", {
+	extend:"Ext.form.Panel",
+	alias:"widget.${shortPackage}${modelName}EditForm",
+	width : 500,
+	height:400,
+	bodyPadding: '10',
+	border: 10,
+	autoScroll: false,
+	layout : 'border',
+	items:[
+		{
+			xtype: 'fieldcontainer',
+			layout: 'column',
+			fieldDefaults: {
+			msgTarget: 'side',
+			columnWidth: .3,
+			style : {
+				marginLeft : '25px'
+			},
+				labelWidth: 90
+			},
+			items:[
+				<field separator=",\n        ">
+					{
+					xtype: "textfield",
+					name: "${fieldName}",
+					width :250,
+					allowBlank:false,
+					fieldLabel: "${fieldName}"
+					}
+				</field>
+			]
+		}
+	]
+
+});
+</class>

@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class>
-Ext.define("${appName}.view.${shortPackage}.${modelName}Grid", {
+	Ext.define("${appName}.view.${shortPackage}.${modelName}View",{
 	extend: "Ext.grid.Panel",
-	alias: "widget.${shortPackage}${modelName}Grid",
-	store: "${shortPackage}.${modelName}Store",
-	viewConfig: {
-		loadMask: true
+	alias : "widget.${shortPackage}${modelName}View",
+	store : '${shortPackage}.${modelName}Store',
+	selModel: Ext.create('Ext.selection.CheckboxModel', {mode: "MULTI"}),
+	viewConfig : {
+	loadMask : true
 	},
-	initComponent : function(){
-		this.selModel = Ext.create('Ext.selection.CheckboxModel', {mode: "SINGLE", allowDeselect: true});
-		this.callParent();
-	},
-    tbar: [],
-	columns: [
-        <field separator=",\n        ">{header: '${fieldName}', dataIndex: '${fieldName}', align:'center', width: 225}</field>
-    ],
+	tbar : [{
+	xtype : 'authcbutton',
+	action : 'create',
+	iconCls : 'add',
+	text :'新增'
+	},{
+	xtype : 'authcbutton',
+	action : 'update',
+	iconCls : 'edit',
+	text :'修改'
+	},{
+	xtype : 'authcbutton',
+	action :'delete',
+	iconCls : 'delete',
+	text : '删除'
+	}],
+	columns: [ <field separator=",\n        ">{header: '${fieldName}', dataIndex: '${fieldName}', align:'center', width: 225}</field>],
 	bbar: {
-		xtype: 'pagingtoolbar',
-		store: '${shortPackage}.${modelName}Store',
-		displayInfo: true,
-		displayMsg: '显示 {0} - {1} 条，共计 {2} 条',
-		emptyMsg: '无数据'
+	xtype: 'pagingtoolbar',
+	store: '${shortPackage}.${modelName}Store',
+	displayInfo: true,
+	displayMsg: '显示 {0} - {1} 条，共计 {2} 条',
+	emptyMsg: '无数据'
 	}
-});
+	});
 </class>
