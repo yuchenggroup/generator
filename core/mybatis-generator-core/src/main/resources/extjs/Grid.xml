@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class>
-	Ext.define("${appName}.view.${shortPackage}.${modelName}View",{
+	Ext.define("${appName}.view.${shortPackage}.${modelName}Grid",{
 	extend: "Ext.grid.Panel",
-	alias : "widget.${shortPackage}${modelName}View",
+	alias : "widget.${shortPackage}${modelName}Grid",
 	store : '${shortPackage}.${modelName}Store',
 	selModel: Ext.create('Ext.selection.CheckboxModel', {mode: "MULTI"}),
 	viewConfig : {
