@@ -8,18 +8,18 @@ Ext.define("${appName}.view.${shortPackage}.${modelName}EditForm", {
 	bodyPadding: '10',
 	border: 10,
 	autoScroll: false,
-	layout : 'border',
+	layout: 'fit',
 	items:[
-		{
-			xtype: 'fieldcontainer',
-			layout: 'column',
-			fieldDefaults: {
-			msgTarget: 'side',
-			columnWidth: .3,
-			style : {
-				marginLeft : '25px'
-			},
-				labelWidth: 90
+			{
+				layout: 'column',
+				xtype: 'fieldcontainer',
+				fieldDefaults: {
+				msgTarget: 'side',
+				style : {
+				marginLeft : '10px',
+				marginTop:'10px'
+				},
+				labelWidth: 85
 			},
 			items:[
 				<field separator=",\n        ">

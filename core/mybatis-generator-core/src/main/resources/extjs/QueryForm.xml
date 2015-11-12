@@ -19,6 +19,15 @@ Ext.define("${appName}.view.${shortPackage}.${modelName}QueryForm", {
 			labelWidth: 85
 		},
 		items: [
+			<field separator=",\n        ">
+				{
+				xtype: "textfield",
+				name: "${fieldName}",
+				width :250,
+				allowBlank:false,
+				fieldLabel: "${fieldName}"
+				}
+			</field>,
 			 {
 						msgTarget: 'side',
 						style : {
