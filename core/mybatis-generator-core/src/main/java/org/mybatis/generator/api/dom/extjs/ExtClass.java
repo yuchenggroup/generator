@@ -93,6 +93,8 @@ public abstract class ExtClass {
         resultMap.put("appName", appName);
         resultMap.put("shortPackage", shortPackage);
         resultMap.put("modelName", modelName);
+        String  smodelName = modelName.substring(0, 1).toLowerCase() + modelName.substring(1);
+        resultMap.put("smodelName", smodelName);
         //
         return resultMap;
     }
