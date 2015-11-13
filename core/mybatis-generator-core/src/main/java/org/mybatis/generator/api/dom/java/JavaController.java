@@ -24,6 +24,8 @@ public class JavaController  extends JavaElement implements CompilationUnit {
 
     private List<String> fileCommentLines;
 
+    private List<String> services;
+
     /**
      *
      */
@@ -35,6 +37,7 @@ public class JavaController  extends JavaElement implements CompilationUnit {
         importedTypes = new TreeSet<FullyQualifiedJavaType>();
         fileCommentLines = new ArrayList<String>();
         staticImports = new TreeSet<String>();
+        services =new ArrayList<String>();
     }
 
     public JavaController(String type) {
@@ -125,6 +128,14 @@ public class JavaController  extends JavaElement implements CompilationUnit {
         sb.append(" {"); //$NON-NLS-1$
         indentLevel++;
 
+
+        for (String service : services) {
+            sb.append(service);
+            sb.append(';');
+            newLine(sb);
+        }
+
+
         Iterator<Method> mtdIter = getMethods().iterator();
         while (mtdIter.hasNext()) {
             newLine(sb);
@@ -211,5 +222,7 @@ public class JavaController  extends JavaElement implements CompilationUnit {
     public void addStaticImports(Set<String> staticImports) {
         this.staticImports.addAll(staticImports);
     }
-
+    public void addService(String service){
+        services.add(service);
+    }
 }
