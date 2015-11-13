@@ -66,9 +66,8 @@ public class CreateControllerNamePlugin extends PluginAdapter {
         javaController.addAnnotation("@RequestMapping(\"/"+packageFile+"/"+smodel+"\")");
         javaController.addAnnotation("@Controller");
         //添加Sevice
-        javaController.addService("\n private Log logger = LogFactory.getLog("+controllerName+".class);");
-        javaController.addService("\n @Autowired");
-        javaController.addService(" private " + serviceName + " service;");
+        javaController.addService(" \n private Log logger = LogFactory.getLog("+controllerName+".class);");
+        javaController.addService(" \n" +" @Autowired  \n  private " + serviceName + " service;");
 
         //添加查询方法
         javaController.addMethod(queryMethod());
@@ -101,20 +100,25 @@ public class CreateControllerNamePlugin extends PluginAdapter {
     }
 
     public  void importPackage(){
-        FullyQualifiedJavaType imporType1 =new FullyQualifiedJavaType("com.yuchenggroup.global.client.Test");
-        FullyQualifiedJavaType imporType2 =new FullyQualifiedJavaType("java.util.List");
-        FullyQualifiedJavaType imporType3 =new FullyQualifiedJavaType("javax.servlet.http.HttpServletRequest");
-        FullyQualifiedJavaType imporType4 =new FullyQualifiedJavaType("javax.servlet.http.HttpServletResponse");
-        FullyQualifiedJavaType imporType5 =new FullyQualifiedJavaType("java.math.BigDecimal");
-        FullyQualifiedJavaType imporType6 =new FullyQualifiedJavaType("java.util.Map");
-        FullyQualifiedJavaType imporType7 =new FullyQualifiedJavaType("org.springframework.beans.factory.annotation.Autowired");
-        FullyQualifiedJavaType imporType8 =new FullyQualifiedJavaType("org.springframework.stereotype.Controller");
-        FullyQualifiedJavaType imporType9 =new FullyQualifiedJavaType("org.springframework.web.bind.annotation.RequestMapping");
-        FullyQualifiedJavaType imporType10 =new FullyQualifiedJavaType("org.springframework.web.bind.annotation.ResponseBody");
+        FullyQualifiedJavaType imporType2 =new FullyQualifiedJavaType("com.ezubo.global.achievement.manage.web.controller.BaseController");
+        FullyQualifiedJavaType imporType3 =new FullyQualifiedJavaType("com.ezubo.global.achievement.manage.web.helper.LoginUserHelper");
+        FullyQualifiedJavaType imporType4 =new FullyQualifiedJavaType("com.ezubo.global.achievement.utils.page.Page");
+        FullyQualifiedJavaType imporType5 =new FullyQualifiedJavaType("com.ezubo.global.achievement.webmodel.GridData");
+        FullyQualifiedJavaType imporType6 =new FullyQualifiedJavaType("com.ezubo.global.achievement.webmodel.ResultData");
+        FullyQualifiedJavaType imporType7 =new FullyQualifiedJavaType("com.ezubo.global.common.log.YcLog");
+        FullyQualifiedJavaType imporType8 =new FullyQualifiedJavaType("com.ezubo.global.common.util.Constants");
+        FullyQualifiedJavaType imporType9 =new FullyQualifiedJavaType("com.ezubo.global.common.util.WebUtil");
+        FullyQualifiedJavaType imporType10 =new FullyQualifiedJavaType("org.apache.ibatis.logging.Log");
         FullyQualifiedJavaType imporType11 =new FullyQualifiedJavaType(modePackage+"."+bmodel);
-
-
-        set.add(imporType1);
+        FullyQualifiedJavaType imporType12 =new FullyQualifiedJavaType("org.apache.ibatis.logging.LogFactory");
+        FullyQualifiedJavaType imporType13 =new FullyQualifiedJavaType("org.springframework.beans.factory.annotation.Autowired");
+        FullyQualifiedJavaType imporType14 =new FullyQualifiedJavaType("org.springframework.stereotype.Controller");
+        FullyQualifiedJavaType imporType15 =new FullyQualifiedJavaType("org.springframework.web.bind.annotation.*");
+        FullyQualifiedJavaType imporType16 =new FullyQualifiedJavaType("javax.servlet.http.HttpServletRequest");
+        FullyQualifiedJavaType imporType17 =new FullyQualifiedJavaType("javax.servlet.http.HttpServletResponse");
+        FullyQualifiedJavaType imporType18 =new FullyQualifiedJavaType("java.util.Date");
+        FullyQualifiedJavaType imporType19 =new FullyQualifiedJavaType("java.util.List");
+        FullyQualifiedJavaType imporType20 =new FullyQualifiedJavaType("java.util.Map");
         set.add(imporType2);
         set.add(imporType3);
         set.add(imporType4);
@@ -125,6 +129,15 @@ public class CreateControllerNamePlugin extends PluginAdapter {
         set.add(imporType9);
         set.add(imporType10);
         set.add(imporType11);
+        set.add(imporType12);
+        set.add(imporType13);
+        set.add(imporType14);
+        set.add(imporType15);
+        set.add(imporType16);
+        set.add(imporType17);
+        set.add(imporType18);
+        set.add(imporType19);
+        set.add(imporType20);
     }
 
     /**
@@ -132,7 +145,7 @@ public class CreateControllerNamePlugin extends PluginAdapter {
      * @return
      */
     public FullyQualifiedJavaType superClass(){
-        FullyQualifiedJavaType supclass =new FullyQualifiedJavaType("Test");
+        FullyQualifiedJavaType supclass =new FullyQualifiedJavaType("BaseController");
         return supclass;
     }
 
@@ -156,7 +169,8 @@ public class CreateControllerNamePlugin extends PluginAdapter {
                 "     * 查询"+comment+"列表 \n" +
                 "     * @return\n" +
                 "     */");
-        readBodyLines.add(" Map<String, String> paramMap = WebUtil.parseParamMap(request);\n" +
+        readBodyLines.add(" " +
+                        "        Map<String, String> paramMap = WebUtil.parseParamMap(request);\n" +
                         "        Map map =new Page().parseParamMap(paramMap);\n" +
                         "        GridData gridData = GridData.newInstance();\n" +
                         "        String message=\"\";\n" +
@@ -207,7 +221,7 @@ public class CreateControllerNamePlugin extends PluginAdapter {
                 "     * @return\n" +
                 "     */");
         readBodyLines.add("" +
-                " Map<String, String> paramMap = WebUtil.parseParamMap(request);\n" +
+                "        Map<String, String> paramMap = WebUtil.parseParamMap(request);\n" +
                 "        ResultData resultData=null;\n" +
                 "        try {\n" +
                 "            resultData=GridData.newInstance();\n" +
@@ -254,11 +268,11 @@ public class CreateControllerNamePlugin extends PluginAdapter {
                 "     * @return\n" +
                 "     */");
         readBodyLines.add("  " +
-                "       Map<String, String> paramMap = WebUtil.parseParamMap(request);\n" +
+                "        Map<String, String> paramMap = WebUtil.parseParamMap(request);\n" +
                 "        ResultData resultData=null;\n" +
                 "        try {\n" +
                 "            resultData=GridData.newInstance();\n" +
-                "            crmMarketService.deletesActivity(ids, LoginUserHelper.currentUser().getName(), new Long(LoginUserHelper.currentUser().getId()));\n" +
+                "           //service.update("+smodel+");\n"+
                 "        } catch (Exception e) {\n" +
                 "            logger.error(\"修改"+comment+"\", e);\n" +
                 "            return resultData;\n" +
@@ -298,7 +312,7 @@ public class CreateControllerNamePlugin extends PluginAdapter {
                 "     * @return\n" +
                 "     */");
         readBodyLines.add("" +
-                " Map<String, String> paramMap = WebUtil.parseParamMap(request);\n" +
+                "        Map<String, String> paramMap = WebUtil.parseParamMap(request);\n" +
                 "        ResultData resultData=null;\n" +
                 "        try {\n" +
                 "            resultData=GridData.newInstance();\n" +
