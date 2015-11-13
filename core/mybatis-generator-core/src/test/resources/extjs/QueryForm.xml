@@ -24,7 +24,6 @@ Ext.define("${appName}.view.${shortPackage}.${modelName}QueryForm", {
 				xtype: "textfield",
 				name: "${fieldName}",
 				width :250,
-				allowBlank:false,
 				fieldLabel: "${fieldName}"
 				}
 			</field>,
