@@ -9,9 +9,11 @@
     <context id="MyBatis3XMLMapper" targetRuntime="MyBatis3" defaultModelType="flat">
 
         <plugin type="com.ezubo.global.common.mybatis.generator.plugin.CreateControllerNamePlugin">
-            <property name="packageName" value="com.ezubo.global.achievement.manage.web.controller.test"/>
-            <property name="controllerName" value="SmUserController"/>
+            <property name="packageName" value="com.ezubo.global.achievement.manage.web.controller"/>
             <property name="targetProject" value="target/generated-sources/mybatis3"/>
+            <property name="model" value="SmUser"/>
+            <property name="packageFile" value="test"/>
+            <property name="comment" value="人员查询"/>
         </plugin>
 
 
