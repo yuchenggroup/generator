@@ -10,10 +10,24 @@
 
         <plugin type="com.ezubo.global.common.mybatis.generator.plugin.CreateControllerNamePlugin">
             <property name="packageName" value="com.ezubo.global.achievement.manage.web.controller"/>
-            <property name="targetProject" value="target/generated-sources/mybatis3"/>
-            <property name="model" value="SmUser"/>
             <property name="packageFile" value="test"/>
+            <property name="targetProject" value="target/generated-sources/mybatis3"/>
             <property name="comment" value="人员查询"/>
+            <property name="model" value="SmUser"/>
+        </plugin>
+
+        <plugin type="com.ezubo.global.common.mybatis.generator.plugin.CreateInterfaceImplNamePlugin">
+            <property name="packageName" value="com.ezubo.global.achievement.manage"/>
+            <property name="packageFile" value="test"/>
+            <property name="model" value="SmUser"/>
+            <property name="targetProject" value="target/generated-sources/mybatis3"/>
+        </plugin>
+
+        <plugin type="com.ezubo.global.common.mybatis.generator.plugin.CreateInterfaceNamePlugin">
+            <property name="packageName" value="com.ezubo.global.achievement.manage"/>
+            <property name="packageFile" value="test"/>
+            <property name="model" value="SmUser"/>
+            <property name="targetProject" value="target/generated-sources/mybatis3"/>
         </plugin>
 
 
