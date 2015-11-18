@@ -142,7 +142,7 @@ public class CreateInterfaceImplNamePlugin extends PluginAdapter {
         method.setName("read");
         method.addParameter(parameter);
         method.setVisibility(JavaVisibility.PUBLIC);
-        readBodyLines.add("return "+sMapper+".read(map);");
+        readBodyLines.add("return "+sMapper+".selectAll();");
         method.addBodyLines(readBodyLines);
         return method;
     }
@@ -162,7 +162,7 @@ public class CreateInterfaceImplNamePlugin extends PluginAdapter {
         method.setName("countRead");
         method.addParameter(parameter);
         method.setVisibility(JavaVisibility.PUBLIC);
-        readBodyLines.add("return "+sMapper+".countRead(map);");
+        readBodyLines.add("return null;//"+sMapper+".countRead(map);");
         method.addBodyLines(readBodyLines);
         return method;
     }
