@@ -100,6 +100,7 @@ public class CreateControllerNamePlugin extends PluginAdapter {
     }
 
     public  void importPackage(){
+        FullyQualifiedJavaType imporType1 =new FullyQualifiedJavaType("com.ezubo.global.achievement.manage."+packageFile+"."+serviceName);
         FullyQualifiedJavaType imporType2 =new FullyQualifiedJavaType("com.ezubo.global.achievement.manage.web.controller.BaseController");
         FullyQualifiedJavaType imporType3 =new FullyQualifiedJavaType("com.ezubo.global.achievement.manage.web.helper.LoginUserHelper");
         FullyQualifiedJavaType imporType4 =new FullyQualifiedJavaType("com.ezubo.global.achievement.utils.page.Page");
@@ -119,6 +120,7 @@ public class CreateControllerNamePlugin extends PluginAdapter {
         FullyQualifiedJavaType imporType18 =new FullyQualifiedJavaType("java.util.Date");
         FullyQualifiedJavaType imporType19 =new FullyQualifiedJavaType("java.util.List");
         FullyQualifiedJavaType imporType20 =new FullyQualifiedJavaType("java.util.Map");
+        set.add(imporType1);
         set.add(imporType2);
         set.add(imporType3);
         set.add(imporType4);
@@ -175,8 +177,8 @@ public class CreateControllerNamePlugin extends PluginAdapter {
                         "        GridData gridData = GridData.newInstance();\n" +
                         "        String message=\"\";\n" +
                         "        try {\n" +
-                        "            //gridData.setData(service.read(map));\n" +
-                        "            //gridData.setTotalCount(service.countRead(map));\n" +
+                        "            gridData.setData(service.read(map));\n" +
+                        "            gridData.setTotalCount(service.countRead(map));\n" +
                         "        } catch (Exception e) {\n" +
                         "            logger.error(\"查询失败\", e);\n" +
                         "            return gridData;\n" +
@@ -225,7 +227,7 @@ public class CreateControllerNamePlugin extends PluginAdapter {
                 "        ResultData resultData=null;\n" +
                 "        try {\n" +
                 "            resultData=GridData.newInstance();\n" +
-                 "           //service.create("+smodel+");\n"+
+                 "           service.create("+smodel+");\n"+
 
                 "        } catch (Exception e) {\n" +
                 "            logger.error(\"新增"+comment+"\", e);\n" +
@@ -272,7 +274,7 @@ public class CreateControllerNamePlugin extends PluginAdapter {
                 "        ResultData resultData=null;\n" +
                 "        try {\n" +
                 "            resultData=GridData.newInstance();\n" +
-                "           //service.update("+smodel+");\n"+
+                "           service.update("+smodel+");\n"+
                 "        } catch (Exception e) {\n" +
                 "            logger.error(\"修改"+comment+"\", e);\n" +
                 "            return resultData;\n" +
@@ -297,7 +299,7 @@ public class CreateControllerNamePlugin extends PluginAdapter {
         Parameter parameter1=new Parameter(pajavatype1,"request",false);
         method.addParameter(parameter1);
 
-        FullyQualifiedJavaType pajavatype2=new FullyQualifiedJavaType("Long[]");
+        FullyQualifiedJavaType pajavatype2=new FullyQualifiedJavaType("Long");
         Parameter parameter2=new Parameter(pajavatype2, "ids", false);
         parameter2.addAnnotation(" @RequestParam(\"ids\") ");
         method.addParameter(parameter2);
@@ -316,7 +318,7 @@ public class CreateControllerNamePlugin extends PluginAdapter {
                 "        ResultData resultData=null;\n" +
                 "        try {\n" +
                 "            resultData=GridData.newInstance();\n" +
-                "           //service.delete(ids);\n"+
+                "           service.delete(ids);\n"+
 
                 "        } catch (Exception e) {\n" +
                 "            logger.error(\"删除"+comment+"\", e);\n" +
