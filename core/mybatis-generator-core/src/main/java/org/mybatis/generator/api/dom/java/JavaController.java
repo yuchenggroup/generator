@@ -41,6 +41,8 @@ public class JavaController  extends JavaElement implements CompilationUnit {
 
     private List<String> services;
 
+    private Set<FullyQualifiedJavaType> superInterfaceTypes;
+
     /**
      *
      */
@@ -53,6 +55,7 @@ public class JavaController  extends JavaElement implements CompilationUnit {
         fileCommentLines = new ArrayList<String>();
         staticImports = new TreeSet<String>();
         services =new ArrayList<String>();
+        superInterfaceTypes = new HashSet<FullyQualifiedJavaType>();
     }
 
     public JavaController(String type) {
@@ -140,6 +143,20 @@ public class JavaController  extends JavaElement implements CompilationUnit {
             }
         }
 
+        if (superInterfaceTypes.size() > 0) {
+            sb.append(" implements "); //$NON-NLS-1$
+            boolean comma = false;
+            for (FullyQualifiedJavaType fqjt : superInterfaceTypes) {
+                if (comma) {
+                    sb.append(", "); //$NON-NLS-1$
+                } else {
+                    comma = true;
+                }
+
+                sb.append(fqjt.getShortName());
+            }
+        }
+
         sb.append(" {"); //$NON-NLS-1$
         indentLevel++;
 
@@ -197,11 +214,6 @@ public class JavaController  extends JavaElement implements CompilationUnit {
         return null;
     }
 
-    @Override
-    public Set<FullyQualifiedJavaType> getSuperInterfaceTypes() {
-        return null;
-    }
-
     public Set<FullyQualifiedJavaType> getSuperClassTypes() {
         return superClassTypes;
     }
@@ -239,5 +251,17 @@ public class JavaController  extends JavaElement implements CompilationUnit {
     }
     public void addService(String service){
         services.add(service);
+    }
+
+    /**
+     * @return Returns the superInterfaces.
+     */
+    @Override
+    public Set<FullyQualifiedJavaType> getSuperInterfaceTypes() {
+        return superInterfaceTypes;
+    }
+
+    public void addSuperInterface(FullyQualifiedJavaType superInterface) {
+        superInterfaceTypes.add(superInterface);
     }
 }
